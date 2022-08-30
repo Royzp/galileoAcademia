@@ -6,7 +6,7 @@ if (empty($_SESSION['active'])) {
 $mysqli = new mysqli('localhost', 'root', '', 'bd_academia');
 include_once 'conexion_bd/conexion.php';
 include_once 'conexion_bd/config_conexion.php';
-include_once 'conexion_bd/datos_matriculas.php';
+include_once 'conexion_bd/datos_items.php';
 
 ?>
 
@@ -71,7 +71,7 @@ include_once 'conexion_bd/datos_matriculas.php';
 
                 <div class="container-fluid">
                     <?php
-                    include_once("tablas/tabla_matriculas.php");
+                    include_once("tablas/tabla_items.php");
                     ?>
                 </div>
 

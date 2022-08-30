@@ -99,33 +99,52 @@ tbody tr:nth-child(odd) {
         ?>
         <!-- Content Wrapper. Contains page content -->
         <div class="content-wrapper">
-            <br>
-            <center>
-                <b>
-                    <h4 class="m-0" style="font-family:'Source Sans Pro';font-weight: bold;font-size: 19px;">
-                        <!-- <img src="../views/dist/img/regist.jpg" style="height:35px;width: auto;">  -->
-                        INDICADORES - GALILEO
-                    </h4>
-                </b>
-            </center>
+           
 
             <!-- Main content -->
 
-
-
             <div class="container">
-
-
 
                 <form id="formVenta" name="formVenta" >
 
                     <div class="row">
+                        <div  style="padding: 16px 14px;" class="col-md-12">
+                            <center>
+                                <b>
+                                    <h4 class="m-0 text-left" style="font-family:'Source Sans Pro';font-weight: bold;font-size: 19px;">
+                                        <!-- <img src="../views/dist/img/regist.jpg" style="height:35px;width: auto;">  -->
+                                        VENTA DE ITEMS
+                                    </h4>
+                                </b>
+                            </center>
+                        </div>
+
+                        <div class="col-md-4" >
+
+                            <form action="" class="row">
+                                <div class="col-md-12">
+                                    <label  for="">Nombres y apellidos</label>
+                                    <input class="form-control" class="w-100" type="text" placeholder="Nombres">
+                                </div>
+                                <div class="col-md-12">
+                                    <label  for="">N° Documento</label>
+                                    <input class="form-control" class="w-100" type="text" placeholder="Numero de documento">
+                                </div>
+                                <div class="col-md-12">
+                                    <label  for="">Aula</label>
+                                    <input class="form-control" class="w-100" type="text" placeholder="Aula">
+                                </div>
+
+                            </form>
+                        </div>
                         <!--Inicio de row-->
-                        <div class="col-md-6">
+                        <div class="col-md-8">
                             <div class="row">
-                                <div class="col-md-12" style="padding: 16px 24px;">
+                                <div class="col-md-12">
+                                    <label for="">Servicio o producto</label>
+
                                     <select class='mi-selector' style="width: 100% ; height: 35px!important;"
-                                        id="txt_producto_id" name="txt_producto_id" required="" onchange="select_producto();">
+                                        id="txt_producto_id" name="txt_producto_id" onchange="select_producto();"  required>
                                         <option value="undefined">Seleccione Producto:</option>
                                         <?php
                                             $query = $mysqli->query("SELECT * FROM tb_concepto  where concepto_id > 2");
@@ -151,15 +170,11 @@ tbody tr:nth-child(odd) {
                                                 </td>                                                
                                                 <td>
                                                     <a onclick="calcularNuevaVenta()"
-                                                        class="btn btn-outline-dark btn-sm w-100" style="min-width: 70px;" id=""
+                                                        class="btn btn-outline-dark btn-sm w-100" style="min-width: 120px;" id=""
                                                         style="background: #6E6761;"><i class="fas fa-plus"></i>
                                                     </a>
                                                 </td>
-                                                <td>
-                                                    <a class="btn btn-outline-dark btn-sm w-100" style="min-width: 70px;background: #e3061a;" onclick="limpiarFormulario()"
-                                                       ><i class="fas fa-ban"></i>
-                                                    </a>
-                                                </td>
+                                                
                                             </tr>
                                         </tbody>
                                     </table>
@@ -168,7 +183,13 @@ tbody tr:nth-child(odd) {
                             <!-- </form> -->
                             <br>
                             <div class="col-sm-12">
+                            <a style="color: blue;" onclick="limpiarFormulario()">
+                                            Limpiar Tabla <i class="fas fa-ban"></i>
+                                    </a>
+                                    <br>
                                 <div class="table-responsive">
+                                                                
+                                                
                                     <table class="table table-sm table-bordered table-hover text-center">
                                         <thead style="background: #DC823B; color:floralwhite">
                                             <tr style=" background: #007bff;">
@@ -802,6 +823,7 @@ tbody tr:nth-child(odd) {
     function select_producto() {
 
         var concepto_id = $("#txt_producto_id").val();      
+        $("#cantidad_producto").val('1');      
 
         var ob = {
             concepto_id: concepto_id
