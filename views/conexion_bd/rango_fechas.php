@@ -1,5 +1,6 @@
 <?php
   require'conn.php';
+  
   if(ISSET($_POST['search'])){
     $date1 = date("Y-m-d", strtotime($_POST['date1']));
     $date2 = date("Y-m-d", strtotime($_POST['date2']));
