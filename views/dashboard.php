@@ -113,7 +113,7 @@ $mysqli = new mysqli('localhost', 'root', '', 'bd_academia');
                     <label>Hasta</label>
                     <input type="date" class="form-control" placeholder="End" name="date2" />
                     <button class="btn btn-primary" name="search"><i class="fa fa-search" aria-hidden="true"></i></button>
-                    <a href="index.php" type="button" class="btn btn-success"><i class="fa fa-spinner" aria-hidden="true"></i></a>
+                    <a href="http://localhost:8080/galileoAcademia/views/dashboard.php" type="button" class="btn btn-success"><i class="fa fa-spinner" aria-hidden="true"></i></a>
                 </form>
             </div>
 
@@ -121,17 +121,18 @@ $mysqli = new mysqli('localhost', 'root', '', 'bd_academia');
 
             <br /><br />
             <div class="table-responsive">
-                <table class="table table-bordered">
+                <table class="table table-bordered" id="tablaDate">
                     <thead class="alert-info">
                         <tr>
-                            <th>Nombres</th>
-                            <th>Apellidos</th>
-                            <th>Proyecto</th>
-                            <th>Fecha de Registro</th>
+                            <th>ID</th>
+                            <th>FECHA REGISTRO</th>
+                            <th>ALUMNOS</th>
+                            <th>MONTO TOTAL</th>  
+                            
                         </tr>
                     </thead>
                     <tbody>
-                        <?php include 'range.php' ?>
+                        <?php include_once 'conexion_bd/rango_fechas.php' ?>
                     </tbody>
                 </table>
             </div>
@@ -223,9 +224,67 @@ $mysqli = new mysqli('localhost', 'root', '', 'bd_academia');
     <!-- AdminLTE App -->
     <script src="../views/dist/js/adminlte.min.js"></script>
 
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css">
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js">
+    </script>
+
+
     <script type="text/javascript">
 
     </script>
+
+<script type="text/javascript">
+        $(document).ready(function() {
+
+
+            $('#tablaDate').DataTable({
+                "bJQueryUI": true,
+                "order": [
+                    [0, 'desc']
+                ],
+                "sPaginationType": "full_numbers",
+                "bDestroy": true,
+                "aoColumnDefs": [{
+                    'bSortable': false,
+                    'aTargets': [0, 1]
+
+                }],
+                "aLengthMenu": [
+                    [5, 10, 25, 50, 100, -1],
+                    [5, 10, 25, 50, 100, "Todo"]
+                ],
+                "iDisplayLength": 5,
+
+                "language": {
+                    "sProcessing": "Procesando...",
+                    "sLengthMenu": "Mostrar _MENU_ registros",
+                    "sZeroRecords": "No se encontraron resultados",
+                    "sEmptyTable": "Ningún dato disponible en esta tabla",
+                    "sInfo": "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
+                    "sInfoEmpty": "Mostrando registros del 0 al 0 de un total de 0 registros",
+                    "sInfoFiltered": "(filtrado de un total de _MAX_ registros)",
+                    "sInfoPostFix": "",
+                    "sSearch": "Buscar:",
+                    "sUrl": "",
+                    "sInfoThousands": ",",
+                    "sLoadingRecords": "Cargando...",
+                    "oPaginate": {
+                        "sFirst": "Primero",
+                        "sLast": "Último",
+                        "sNext": "Siguiente",
+                        "sPrevious": "Anterior"
+                    },
+                    "oAria": {
+                        "sSortAscending": ": Activar para ordenar la columna de manera ascendente",
+                        "sSortDescending": ": Activar para ordenar la columna de manera descendente"
+                    }
+                }
+            });
+
+        });
+    </script>
+
+
 
 </body>
 
