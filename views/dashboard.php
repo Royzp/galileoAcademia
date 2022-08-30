@@ -1,16 +1,17 @@
 <?php
-    session_start();
+session_start();
 
-    if (empty($_SESSION['active'])) {
-        header('location: http://localhost:8080/GalileoAcademia/');
-    }
+if (empty($_SESSION['active'])) {
+    header('location: http://localhost:8080/GalileoAcademia/');
+}
 
-    include_once 'conexion_bd/conexion.php';
-    $mysqli = new mysqli('localhost', 'root', '', 'bd_academia');
+include_once 'conexion_bd/conexion.php';
+$mysqli = new mysqli('localhost', 'root', '', 'bd_academia');
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -37,40 +38,46 @@
         border-radius: 4px;
         box-shadow: 0px 0px 13px 1px #0e0e0e54;
     }
-    .indicadores_monto .text{
+
+    .indicadores_monto .text {
         font-size: 18px;
         font-weight: bold;
         text-transform: uppercase;
     }
-    .indicadores_monto .monto h3{
+
+    .indicadores_monto .monto h3 {
         font-weight: bold;
         font-size: 30px;
-    }    
-    table {
-    width: 100%;
-    /* margin-top: 80px; */
-    /* border: 1px solid #343a40; */
-    border-collapse: collapse;
-    font-size: 18px;
-    }
-    th,
-    td {
-    /* border: 1px solid #343a40; */
-    padding: 16px 24px;
-    text-align: left;
-    }
-    thead th {
-    background-color: #087f5b;
-    color: #fff;
-    width: 25%;
-    }
-    tbody tr:nth-child(even) {
-    background-color: #f8f9fa;
-    }
-    tbody tr:nth-child(odd) {
-    background-color: #e9ecef;
     }
 
+    table {
+        width: 100%;
+        /* margin-top: 80px; */
+        /* border: 1px solid #343a40; */
+        border-collapse: collapse;
+        font-size: 18px;
+    }
+
+    th,
+    td {
+        /* border: 1px solid #343a40; */
+        padding: 16px 24px;
+        text-align: left;
+    }
+
+    thead th {
+        background-color: #087f5b;
+        color: #fff;
+        width: 25%;
+    }
+
+    tbody tr:nth-child(even) {
+        background-color: #f8f9fa;
+    }
+
+    tbody tr:nth-child(odd) {
+        background-color: #e9ecef;
+    }
 </style>
 
 
@@ -79,7 +86,7 @@
 
         <!-- Navbar -->
         <?php
-            include_once("navbar_sidebar.php");
+        include_once("navbar_sidebar.php");
         ?>
 
         <!-- Content Wrapper. Contains page content -->
@@ -94,78 +101,116 @@
                 </b>
             </center>
 
-            <!-- Main content -->
-            <div class="container">
-                <div class="row pt-4">
-                    <div class="col-6">
-                        <div class="indicadores_monto" style="background: #098f00">
-                            <div class="row">
-                                <div class="col-6 text">Total de ingresos</div>
-                                <div class="col-6 monto">
-                                    <h3> + S/10,000.00</h3>
-                                </div>
+
+            <br>
+
+            <div class="col-md-3"></div>
+            <div class="col-md-6 well" style="margin-left: 19%;">
+
+                <form class="form-inline" method="POST" action="">
+                    <label>Fecha Desde:</label>
+                    <input type="date" class="form-control" placeholder="Start" name="date1" />
+                    <label>Hasta</label>
+                    <input type="date" class="form-control" placeholder="End" name="date2" />
+                    <button class="btn btn-primary" name="search"><i class="fa fa-search" aria-hidden="true"></i></button>
+                    <a href="index.php" type="button" class="btn btn-success"><i class="fa fa-spinner" aria-hidden="true"></i></a>
+                </form>
+            </div>
+
+            <!--  Tabla de Filtro -->
+
+            <br /><br />
+            <div class="table-responsive">
+                <table class="table table-bordered">
+                    <thead class="alert-info">
+                        <tr>
+                            <th>Nombres</th>
+                            <th>Apellidos</th>
+                            <th>Proyecto</th>
+                            <th>Fecha de Registro</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php include 'range.php' ?>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Fin Tabla -->
+
+        <!-- Main content -->
+        <div class="container">
+            <div class="row pt-4">
+                <div class="col-6">
+                    <div class="indicadores_monto" style="background: #098f00">
+                        <div class="row">
+                            <div class="col-6 text">Total de ingresos</div>
+                            <div class="col-6 monto">
+                                <h3> + S/10,000.00</h3>
                             </div>
-                        </div>                        
-                    </div>
-                    <div class="col-6">
-                        <div class="indicadores_monto" style="background: red">
-                            <div class="row">
-                                <div class="col-6 text">Total de egresos</div>
-                                <div class="col-6 monto">
-                                    <h3>- S/7,000.00</h3>
-                                </div>
-                            </div>
-                        </div>                       
+                        </div>
                     </div>
                 </div>
+                <div class="col-6">
+                    <div class="indicadores_monto" style="background: red">
+                        <div class="row">
+                            <div class="col-6 text">Total de egresos</div>
+                            <div class="col-6 monto">
+                                <h3>- S/7,000.00</h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-                <div class="row">
-                    <div class="col-12 pt-4">
+            <div class="row">
+                <div class="col-12 pt-4">
 
                     <h4>Ingresos por sede</h4>
-                        <table class="table">
-                            <thead>
-                                <tr>
-                                    <th>Sede</th>
-                                    <th>Ingreso</th>
-                                    <th>egresos</th>
-                                </tr>
-                            </thead>
+                    <table class="table">
+                        <thead>
                             <tr>
-                                <td>Barranca</td>
-                                <td>S/ 32,000.00</td>
-                                <td>S/ 8,000.00</td>
+                                <th>Sede</th>
+                                <th>Ingreso</th>
+                                <th>egresos</th>
                             </tr>
-                            <tr>
-                                <td>Supe</td>
-                                <td>S/ 32,000.00</td>
-                                <td>S/ 8,000.00</td>
-                            </tr>
-                            <tr>
-                                <td>Huacho</td>
-                                <td>S/ 32,000.00</td>
-                                <td>S/ 8,000.00</td>
-                            </tr>
-                        </table>
-                    </div>
+                        </thead>
+                        <tr>
+                            <td>Barranca</td>
+                            <td>S/ 32,000.00</td>
+                            <td>S/ 8,000.00</td>
+                        </tr>
+                        <tr>
+                            <td>Supe</td>
+                            <td>S/ 32,000.00</td>
+                            <td>S/ 8,000.00</td>
+                        </tr>
+                        <tr>
+                            <td>Huacho</td>
+                            <td>S/ 32,000.00</td>
+                            <td>S/ 8,000.00</td>
+                        </tr>
+                    </table>
                 </div>
             </div>
-            <!-- /.content -->
-
         </div>
-        <!-- /.content-wrapper -->
+        <!-- /.content -->
 
-       
+    </div>
+    <!-- /.content-wrapper -->
 
-        <!-- Main Footer -->
-        <footer class="main-footer">
-            <!-- To the right -->
-            <div class="float-right d-none d-sm-inline">
-                Desarrollado:Jhampol Chumbes Patricio.
-            </div>
-            <!-- Default to the left -->
-            <strong>Sistema Informatico &copy; Academia Galileo.</strong>
-        </footer>
+
+
+    <!-- Main Footer -->
+    <footer class="main-footer">
+        <!-- To the right -->
+        <div class="float-right d-none d-sm-inline">
+            Desarrollado:Jhampol Chumbes Patricio.
+        </div>
+        <!-- Default to the left -->
+        <strong>Sistema Informatico &copy; Academia Galileo.</strong>
+    </footer>
     </div>
     <!-- ./wrapper -->
 
@@ -179,7 +224,7 @@
     <script src="../views/dist/js/adminlte.min.js"></script>
 
     <script type="text/javascript">
-       
+
     </script>
 
 </body>
