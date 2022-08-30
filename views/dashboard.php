@@ -253,7 +253,7 @@ $mysqli = new mysqli('localhost', 'root', '', 'bd_academia');
                     [5, 10, 25, 50, 100, -1],
                     [5, 10, 25, 50, 100, "Todo"]
                 ],
-                "iDisplayLength": 5,
+                "iDisplayLength": 10,
 
                 "language": {
                     "sProcessing": "Procesando...",
