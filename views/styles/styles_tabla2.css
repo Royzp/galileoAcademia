@@ -1,0 +1,205 @@
+
+       
+      .layout-boxed .wrapper {
+        /* max-width: 100% !important; */
+    }
+
+    #tablaDate2 {
+        border: none;
+        box-shadow: 0px 0px 5px 3px rgba(107, 104, 104, 0.1411764705882353);
+        text-transform: uppercase;
+    }
+
+    #tablaDate2 thead tr {
+        background-color:#A30D0D!important;
+        color: #fff;
+        border: none;
+    }
+
+    #tablaDate2 tbody tr {
+        border: none;
+    }
+
+    #tablaDate2 tbody tr td {
+        border: none;
+        border-bottom: 1px solid #A30D0D ;
+    }
+
+     #tablaDate2 tr:hover{
+
+    background-color: #FAA4A4 ; 
+   }
+
+    .btn_table {
+        border: none;
+        line-height: 6px;
+        padding: 2px;
+        background: transparent !important;
+        border-radius: 2px;
+    }
+
+    .btn_table i {
+        font-size: 18px;
+        color: #040404;
+    }
+
+    #tablaDate_wrapper input {
+        border: none;
+        box-shadow: 0px 0px 5px 3px rgba(107, 104, 104, 0.1411764705882353);
+        height: 32px;
+        padding: 5px;
+        margin-left: 15px;
+    }
+
+    #tablaDate_wrapper select {
+        height: 30px;
+        text-align: center;
+        padding-left: 10px;
+        margin: 2px 10px;
+        border: none;
+        box-shadow: 0px 0px 5px 3px rgba(107, 104, 104, 0.1411764705882353);
+    }
+
+    #tablaDate_filter {
+        margin: 5px;
+    }
+
+    #tablaDate_wrapper {
+        margin-top: 10px;
+    }
+
+    table.dataTable thead th,
+    table.dataTable thead td {
+        padding: 10px 18px;
+        border-bottom: 1px solid transparent !important;
+    }
+
+
+    #printButton {
+        border: none;
+        box-shadow: 0px 0px 5px 3px rgba(107, 104, 104, 0.1411764705882353);
+        height: 32px;
+        padding: 5px;
+        margin-left: 15px;
+        border-radius: 0px;
+        width: 180px;
+    }
+
+    #miModal input {
+        border: none;
+        box-shadow: 1px 2px 5px 1px rgba(120, 120, 120, 0.53);
+        height: 32px;
+        padding: 0 15px;
+    }
+
+    .btn {
+
+        border: none !important;
+        border-radius: 0px !important;
+        padding: 5px 10px;
+        text-transform: uppercase;
+        font-weight: bold;
+    }
+
+    #miModal #myModalLabel {
+
+        font-weight: bold;
+        color: #1d652a;
+    }
+
+    .modal-header .close {
+        font-size: 38px;
+    }
+
+     .label.input{
+        display: block;
+
+     }
+
+     .style__status1{
+        background: #da2929;
+        color:#fff;
+        font-weight: bold;
+     }
+     .style__status3{
+        background: #616161;
+        color:#fff;
+        font-weight: bold;
+     }
+     .style__status2{
+        background: #1cc749;
+        color:#fff;
+        font-weight: bold;
+     }
+
+
+
+    
+        div.scrollmenu{
+          overflow: auto;
+          white-space: nowrap;
+        }
+
+
+
+     /* ESTADOS  */
+
+     .style_status1{
+
+        background: #18C413  ;
+        color: #fff;
+        font-weight: bold;
+
+
+       }
+        
+        .style_status2{
+           
+         background: #621292  ;
+         color: #fff;
+        font-weight: bold;
+        }
+        
+        .style_status3{
+
+         background: #EE330A ;
+         color: #fff;
+        font-weight: bold;
+
+        }
+
+
+        .style_status4{
+
+         background: #8F8F8F ;
+         color: #fff;
+        font-weight: bold;
+
+        }
+
+      
+        .style_status5{
+
+         background: #BECA04  ;
+         color: #fff;
+        font-weight: bold;
+
+        }
+
+
+        /* ============Paginador===========*/
+
+
+        .paginador ul{
+
+            padding: 15px;
+            list-style: none;
+            background: #FFF;
+            margin-top: 15px;
+            display: -webkit-flex;
+            display: -moz-flex;
+            display: -ms-flex;
+            display: -o-flex;
+            display: flex;
+
+        }
