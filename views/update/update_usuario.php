@@ -21,7 +21,7 @@
 
    
 
-    $sql  =" UPDATE tb_usuario SET  
+    $sql  =" UPDATE tb_usuario  SET  
          
          numero_dni      =  '". $dni ."' ,
          nombre_user   =  '". $nombre ."',

@@ -1,10 +1,25 @@
-<?php    
-     if ($_POST['datito']){
-      require_once '../conexion_bd/config_conexion.php';
-       $pid = ($_POST['datito']);
-       $query = "Delete From tb_usuario Where id_user=".$pid ;
-       $resp=mysqli_query($conexion,$query);
-       echo $resp;
-     }
+<?php 
+
+
+$conexion=mysqli_connect('localhost','root','','bd_academia');
+mysqli_query($conexion,"set names utf8");
+
+    $idusuario   = $_POST["id_usuario"];
+    $estado      = $_POST["estado_edit"];
+    
+
+    $sql  =" UPDATE tb_usuario SET  
+                              estado   =  'N'
+                             WHERE
+                            id_user='".$idusuario."'  ";
+
+
+
+    if(mysqli_query($conexion, $sql)){
  
-?>
+        echo "1";
+    } else {
+        echo "0";
+    }
+    // Cierra la conexion
+    mysqli_close($conexion);
