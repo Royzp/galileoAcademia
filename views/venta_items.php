@@ -144,7 +144,7 @@ tbody tr:nth-child(odd) {
                                     <label for="">Servicio o producto</label>
 
                                     <select class='mi-selector' style="width: 100% ; height: 35px!important;"
-                                        id="txt_producto_id" name="txt_producto_id" onchange="select_producto();"  required>
+                                        id="txt_producto_id" name="txt_producto_id" onchange="select_producto();">
                                         <option value="undefined">Seleccione Producto:</option>
                                         <?php
                                             $query = $mysqli->query("SELECT * FROM tb_concepto  where concepto_id > 2");
