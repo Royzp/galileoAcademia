@@ -225,15 +225,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                     </select>
                                 </div>
 
-
-                                <div class="col-md-4">
-                                    <label style="font-size: 14px;">CONDICION</label>
-                                    <br>
-                                    <input class="w-100" type="text" name="condicion_alumno" id="condicion_alumno"
-                                        required>
-                                </div>
-
-
                                 <br>
 
                             </div>
@@ -460,7 +451,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 console.log("Respuesta insert_alumno.php: ", data);
                 if (data > 0) {
                     window.location.replace(
-                        "http://localhost:8080/GalileoAcademia/views/matricula_detalle.php?id_matricula=" +
+                        "http://localhost/GalileoAcademia/views/matricula_detalle.php?id_matricula=" +
                         data);
 
                 } else {

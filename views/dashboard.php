@@ -116,7 +116,7 @@ $mysqli = new mysqli('localhost', 'root', '', 'bd_academia');
                                         <th>ID</th>
                                         <th>FECHA REGISTRO</th>
                                         <th>ALUMNOS</th>
-                                        <th>ALUMNOS</th>
+                                        <th>SEDE</th>
                                         <th>MONTO TOTAL</th>
 
                                     </tr>

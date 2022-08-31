@@ -23,7 +23,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // datos de la matricula
     $carrera_alumno         = $con->real_escape_string(htmlentities($_POST['carrera_alumno']));
     $turno_alumno           = $con->real_escape_string(htmlentities($_POST['turno_alumno']));
-    $condicion_alumno       = $con->real_escape_string(htmlentities($_POST['condicion_alumno']));
     $direcc_alumno          = $con->real_escape_string(htmlentities($_POST['direcc_alumno']));
     $sede                   = $con->real_escape_string(htmlentities($_POST['sede_matricula']));
     $modalidad              = $con->real_escape_string(htmlentities($_POST['modalidad_academia']));
@@ -49,6 +48,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $tercera_cuota          = $con->real_escape_string(htmlentities($_POST['tercera_cuota']));
     $fecha_tercera          = $con->real_escape_string(htmlentities($_POST['fecha_tercera_cuota']));
 
+    $fecha_sistem = date("Y-m-d h:i:sa");
 
     // 1.- BUSCAR PERSONA POR NUMERO DE DOCUMENTO
     $existe_persona = $con->query("SELECT * FROM tb_persona AS p WHERE p.numero_documento = '$numero_documento' ");
@@ -95,13 +95,15 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                                                             modalidad_id,
                                                             ciclo_id,
                                                             periodo_id,
-                                                            condicion,
                                                             nombres_apoderado,
                                                             numero_documento_apoderado,
                                                             telefono,
                                                             direccion,
                                                             tipo_pago_matricula,
-                                                            medio_informacion_id
+                                                            medio_informacion_id,
+                                                            status,
+                                                            created_by,
+                                                            created_date
                                                             )
                                                 VALUES (
                                                         '$persona_id',
@@ -111,13 +113,15 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                                                         '$modalidad ',
                                                         '$ciclo_id ',
                                                         '$periodo_id',
-                                                        '$condicion_alumno',
                                                         '$nombre_apodera',
                                                         '$dni_apoderado',
                                                         '$telef_apoderado',
                                                         '$direc_apoderado',
                                                         '$tipo_pago_matricula',
-                                                        '$promo_academia')");
+                                                        '$promo_academia',
+                                                        'Y',
+                                                        'Admin Developer',
+                                                        '$fecha_sistem')");
     // echo 'success';
     if ($ins_matricula == true) {
         $matricula_id = $con->insert_id;
@@ -126,8 +130,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
 
     //  REGISTRA  RECIBO Y CUOTAS
-    $fecha_sistem = date("Y-m-d h:i:sa");
-
+    
     //  valor  0  es  fraccionado
     if ($tipo_pago_matricula == 1) {
 
