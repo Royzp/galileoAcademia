@@ -41,13 +41,22 @@
                              <td><?php echo $item['nombre_user']; ?></td>
                              <td><?php echo $item['apellido_user']; ?></td>
                              <td><?php echo $item['clave_user']; ?></td>
-                             <td><?php echo $item['type_user_name']; ?></td>
+                             <td><?php echo $item['nombre_tipo_usuario']; ?></td>
 
 
                              <!--<td class="text-right" style="max-width: 100px;width: 50px;">-->
                              <td class="text-right">
 
-                                 <button type="button" class="btn btn_table btn-info btnEditar7" data-toggle="modal" data-target="#exampleModal2" data-id="<?php echo $item['id_user']; ?>" data-dni="<?php echo $item['numero_dni']; ?>" data-nombre="<?php echo $item['nombre_user']; ?>" data-apellido="<?php echo $item['apellido_user']; ?>" data-contra="<?php echo $item['clave_user']; ?>" data-typeuser="<?php echo $item['tipo_user']; ?>">
+                                 <button type="button" 
+                                 class="btn btn_table btn-info btnEditar7"
+                                  data-toggle="modal" 
+                                  data-target="#exampleModal2" 
+                                  data-id="<?php echo $item['id_user']; ?>" 
+                                  data-dni="<?php echo $item['numero_dni']; ?>"
+                                   data-nombre="<?php echo $item['nombre_user']; ?>"
+                                    data-apellido="<?php echo $item['apellido_user']; ?>" 
+                                    data-contra="<?php echo $item['clave_user']; ?>"
+                                     data-typeuser="<?php echo $item['tipo_user']; ?>">
                                      <i class="material-icons">edit</i>
                                  </button>
 

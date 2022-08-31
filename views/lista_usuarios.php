@@ -374,7 +374,7 @@ include_once 'conexion_bd/consulta_user.php';
                                     )
 
                                 }
-                               // alert(data);
+                               alert(data);
                             }
                         });
 

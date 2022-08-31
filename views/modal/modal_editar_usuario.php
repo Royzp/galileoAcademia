@@ -83,9 +83,12 @@
                                         <label>TIPO USUARIO </label>
 
                                         <select class="form-control" id="txt_tipouser_edit" name="txt_tipouser_edit" style=" width: 340px;">
-                                            <option value="1">ADMINISTRADOR</option>
-                                            <option value="2">USUARIO</option>
-
+                                        <?php
+                                            $query2 = $mysqli->query("SELECT   id_tipo_usuario,nombre_tipo_usuario FROM  tb_tipo_usuario ");
+                                            while ($valor = mysqli_fetch_array($query2)) {
+                                                echo '<option value="' . $valor['id_tipo_usuario'] . '" >' . $valor['nombre_tipo_usuario'] . '</option>';
+                                            }
+                                            ?>
 
                                         </select>
                                     </div>
