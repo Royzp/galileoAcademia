@@ -13,7 +13,9 @@
                      
                       <th>CODE</th>
                       <th>Tipo</th>                      
-                      <th>Concepto</th>                      
+                      <th>Concepto</th>  
+                      <th>Precio</th>                      
+                                               
                            
                       <th style="max-width: 100px;width: 50px;">ACCIÓN</th>
 
@@ -27,22 +29,40 @@
                               <td align="center"><?php echo $item['concepto_id']; ?></td>                              
                               <td align="center"><?php echo $item['tipo_concepto']; ?></td>
                               <td align="center"><?php echo $item['concepto']; ?></td>
+                              <td align="center"><?php echo $item['precio']; ?></td>
                               
                               <!-- <td class="text-right" style="min-width: 100px;width: 80px;"> -->
                               <td class="text-center" style="min-width: 100px;width: 80px;">
 
                                 <button 
                                      type="button" 
-                                     class="btn btn_table btn-info btnEditarDocument" 
+                                     class="btn btn_table btn-info btnEditarItems" 
                                      data-toggle="modal" 
-                                     data-target="#exampleModal2" 
-                                     data-id="<?php echo $item['matricula_id']; ?>" 
-                                     data-producto="<?php echo $item['nombre']; ?>" >
-                                      <i class="material-icons">more</i>
+                                     data-target="#exampleModalEditItems" 
+                                     data-id="<?php echo $item['concepto_id']; ?>" 
+                                     data-tipoconcepto="<?php echo $item['tipo_concepto']; ?>" 
+                                     data-concepto="<?php echo $item['concepto']; ?>"
+                                     data-precio="<?php echo $item['precio']; ?>"
+                                     data-idtipo="<?php echo $item['tipo_concepto_id']; ?>"
+                                     data-estate="<?php echo $item['estate']; ?>">
+                                     <i class="material-icons">edit</i>
                                   </button>
-                                <button type="button" class="btn btn_table btn-info" onclick="goDetalle(<?php echo $item['matricula_id']; ?>)">
-                                    <i class="material-icons">more</i>
-                                </button>
+
+                                  <button 
+                                     type="button" 
+                                     class="btn btn_table btn-info btnEliminarItems" 
+                                     data-toggle="modal" 
+                                     data-target="#exampleModalElimItems" 
+                                     data-id="<?php echo $item['concepto_id']; ?>" 
+                                     data-concepto="<?php echo $item['concepto']; ?>"
+                                     data-precio="<?php echo $item['precio']; ?>"
+                                     data-estate="<?php echo $item['estate']; ?>">
+                                     <i class="material-icons">delete_forever</i>
+                                  </button>
+
+                                <!-- <button type="button" class="btn btn_table btn-info" onclick="goDetalle(<?php echo $item['matricula_id']; ?>)">
+                                <i class="material-icons">delete_forever</i>
+                                </button> -->
 
                               </td>
 

@@ -16,13 +16,13 @@ include_once 'conexion_bd/datos_matriculas.php';
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Ferreteria</title>
+    <title>Academia Galileo</title>
     <script src="../views/plugins/jquery/jquery.min.js"></script>
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link rel="icon" type="image" href="../views/dist/img/martillo.png" />
+    <link rel="icon" type="image" href="../views/dist/img/icono_galileo.png" />
     <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="../views/plugins/fontawesome-free/css/all.min.css">
     <!-- Theme style -->
@@ -145,7 +145,7 @@ include_once 'conexion_bd/datos_matriculas.php';
 
     <?php
 
-    include_once("modal/modal_editar_producto.php");
+    include_once("modal/modal_eliminar_matricula.php");
 
     ?>
 
@@ -234,6 +234,7 @@ include_once 'conexion_bd/datos_matriculas.php';
     document.getElementById("currentDateTime").value = dateTime;
     </script>
 
+
     <script>
     $('#print').click(function() {
         $('.container_print').printThis({
@@ -261,52 +262,7 @@ include_once 'conexion_bd/datos_matriculas.php';
     });
     </script>
 
-    <script type="text/javascript">
-    function onSubmitProducto() {
-
-        var frm = document.getElementById('frm_producto_ferreteria');
-        var df = new FormData(frm);
-
-        $.ajax({
-            url: 'insert_ferreteria_producto.php',
-            type: 'POST',
-            processData: false,
-            contentType: false,
-            data: df,
-            success(data) {
-                console.log(data);
-
-
-                if (data == 'success') {
-
-                    // 1. RESET FORMULARIO   
-                    $('#frm_producto_ferreteria').trigger('reset');
-                    // 2. CERRAMOS EL MODAL
-                    $('.modal').modal('hide');
-                    location.reload();
-
-                    recargarData();
-
-                } else {
-                    alert(data);
-                }
-            }
-        });
-    }
-
-    function openModelPDF(url) {
-        $('#modalPdf').modal('show');
-
-
-        $('#iframePDF').attr('src', '<?php echo 'http://' . $_SERVER['HTTP_HOST'] . '/GestionInformatica/views/'; ?>' +
-            url);
-    }
-    </script>
-
-    <!-- FIN DE REGISTRO MODAL -->
-
-
-
+  
 
     <script type="text/javascript">
     jQuery(document).ready(function($) {
@@ -317,43 +273,6 @@ include_once 'conexion_bd/datos_matriculas.php';
     </script>
 
 
-    <script>
-    $(document).ready(function() {
-        $.datepicker.setDefaults({
-            dateFormat: 'yy-mm-dd'
-        });
-        $(function() {
-            $("#from_date").datepicker();
-            $("#to_date").datepicker();
-        });
-        /*$('#button_filter_in').click(function() {
-          var from_date = $('#from_date').val();
-          var to_date = $('#to_date').val();
-          // alert(from_date + to_date);
-          if (from_date != '' && to_date != '') {
-            $.ajax({
-              url: "filter_logistica.php",
-              method: "POST",
-              data: {
-                from_date: from_date,
-                to_date: to_date
-              },
-              success: function(data) {
-                $('#order_table').html(data);
-              }
-            });
-          } else {
-            alert("Seleccione una Fecha");
-          }
-        });*/
-    });
-    </script>
-
-
-
-
-
-
 
 
 
@@ -362,58 +281,34 @@ include_once 'conexion_bd/datos_matriculas.php';
     <!--  FORMULARIO EDITAR FORMULARIO -->
 
     <script type="text/javascript">
-    $(document).on("click", ".btnEditarDocument", function() {
-        var id_producto = $(this).attr("data-id");
-        var nombre_producto = $(this).attr("data-producto");
-        var categoria = $(this).attr("data-categoria");
-        var lote = $(this).attr("data-lote");
-        var stock = $(this).attr("data-stock");
-        var precio_venta = $(this).attr("data-precio");
-        var proveedor = $(this).attr("data-proveedor");
-        var marca = $(this).attr("data-marca");
-        var modelo = $(this).attr("data-modelo");
-        var unidad_medida = $(this).attr("data-unidad");
-        var foto_producto = $(this).attr("data-foto");
+    $(document).on("click", ".btnEliminarMAtricula", function() {
+        var matricula_id = $(this).attr("data-id");
+        var nombre = $(this).attr("data-nombre");
+        var nombre_ciclo = $(this).attr("data-ciclo");
+        var nombre_periodo = $(this).attr("data-periodo");
+        var estate = $(this).attr("data-estado");
+        
+        
 
 
 
 
         //mostrar al modal
-        $('#exampleModal2').modal('show');
-        $('#idDocumento').attr('value', id_producto);
-        $('#txt_nombre_producto').attr('value', nombre_producto);
+        $('#exampleModalEliminarMatricula').modal('show');
+        $('#id_elim_Matricula').attr('value', matricula_id);
+        $('#nombre_matricula_elim').attr('value', nombre);
+        $('#nombre_ciclo_elim').attr('value', nombre_ciclo);
 
-        $('#txt_categoria_edit').attr('value', categoria);
-        $('#txt_categoria_edit').find("option").each(function() {
-            if ($(this).val() == categoria) {
-                $(this).prop("selected", "selected");
-            }
 
-        });
-
-        $('#txt_lote_edit').attr('value', lote);
-        $('#txt_stock_edit').attr('value', stock);
-        $('#txt_precio_edit').attr('value', precio_venta);
-
-        $('#txt_proveedor_edit').attr('value', proveedor);
-        $('#txt_proveedor_edit').find("option").each(function() {
-            if ($(this).val() == proveedor) {
-                $(this).prop("selected", "selected");
-            }
-
-        });
-
-        $('#txt_marca_edit').attr('value', marca);
-        $('#txt_modelo_edit').attr('value', modelo);
-        $('#txt_unidad_edit').attr('value', unidad_medida);
-        $('#txt_foto_edit').attr('value', foto_producto);
-
+        $('#nombre_periodo_elim').attr('value', nombre_periodo);
+        $('#estado_elim').attr('value', estate);
+        
 
 
 
 
     });
-    $('#exampleModal2').on('shown.bs.modal', function() {
+    $('#exampleModalEliminarMatricula').on('shown.bs.modal', function() {
         //alert("Registro Encontrado");
     });
     </script>
@@ -437,7 +332,7 @@ include_once 'conexion_bd/datos_matriculas.php';
 
 
         //Envio de formulario  de actualizar
-        $("#Actualizar_Doc").submit(function(e) {
+        $("#frm_eliminar_matricula").submit(function(e) {
             e.preventDefault();
             //validar que coincidan
             //para copiar dentro de if
@@ -445,7 +340,7 @@ include_once 'conexion_bd/datos_matriculas.php';
 
 
             Swal.fire({
-                title: 'Estas seguro de Editar ?',
+                title: 'Estas seguro de Eliminar esta Matricula?',
                 text: "No podrás revertir esto!",
                 icon: 'warning',
                 showCancelButton: true,
@@ -456,24 +351,15 @@ include_once 'conexion_bd/datos_matriculas.php';
                 if (result.isConfirmed) {
 
                     $.ajax({
-                        url: 'update/update_logistica.php',
+                        url: 'delete/delete_matricula.php',
                         type: 'POST',
                         data: {
 
-                            numero_edit: $('#numero_compra_edit').val(),
-                            peru_edit: $('#peru_compra_edit').val(),
-                            fecha_edit: $('#fecha_emision_edit').val(),
-                            dias_edit: $('#dia_entrega_edit').val(),
-                            expediente_edit: $('#expediente_edit').val(),
-                            document_edit: $('#documento_edit').val(),
-                            siaf_edit: $('#siaf_edit').val(),
-                            meta_edit: $('#meta_edit').val(),
-                            area_usuaria_edit: $('#area_edit').val(),
-                            provee_edit: $('#proveedor_edit').val(),
-                            monto_edit: $('#monto_edit').val(),
-                            descript_edit: $('#descripcion_edit').val(),
+                            
+                            status_eliminar: $('#estado_elim').val(),
+                            
 
-                            id_logistica: $('#id_Documento_logistica').val()
+                            id_matricula: $('#id_elim_Matricula').val()
 
                         },
 
@@ -489,7 +375,7 @@ include_once 'conexion_bd/datos_matriculas.php';
                                 )
 
                             }
-                            alert(data);
+                           // alert(data);
                         }
                     });
 
@@ -508,224 +394,7 @@ include_once 'conexion_bd/datos_matriculas.php';
     });
     </script>
 
-    <script>
-    function updateProducto() {
-
-        //alert("Prueba");
-        let frm = document.getElementById('actualizar_producto');
-        let df = new FormData(frm);
-        // var id_document = $(this).attr("data-id");
-
-        var id_producto = $('#idDocumento').val();
-
-        $.ajax({
-            url: 'update_producto.php?id_produc=' + id_producto,
-            type: 'POST',
-            processData: false,
-            contentType: false,
-            data: df,
-            /*
-            data: {
-              id_doc: id_document
-            },*/
-
-            success(data) {
-                console.info(data);
-                if (data == 'success') {
-                    // 1. RESET FORMULARIO   
-                    $('#actualizar_producto').trigger('reset');
-                    // 2. CERRAMOS EL MODAL
-                    $('.modal').modal('hide');
-                    location.reload();
-                    recargarData();
-                } else {
-                    alert(data);
-                }
-            }
-        });
-    }
-    </script>
-
-
-
-
-
-
-    <!--  FIN FORMULARIO EDITAR DOCUMENTO -->
-
-
-    <!-- DELETE DOCUMENTO -->
-
-    <script type="text/javascript">
-    $(document).on("click", "#btnEliminar", function() {
-        var id_document = $(this).attr("data-id");
-        Swal.fire({
-            title: 'Estas seguro de Eliminar ?',
-            text: "No podrás revertir esto!",
-            icon: 'warning',
-            showCancelButton: true,
-            confirmButtonColor: '#3085d6',
-            cancelButtonColor: '#d33',
-            confirmButtonText: 'Sí, ingresar'
-        }).then((result) => {
-            if (result.isConfirmed) {
-
-                $.ajax({
-                    url: 'delete/delete_logistica.php',
-                    type: 'POST',
-                    data: {
-                        datito: id_document
-                    },
-
-                    success(data) {
-                        if (data >= "1") {
-                            location.reload();
-
-                            $('.modal').modal('hide');
-                            Swal.fire(
-                                'Modificado!',
-                                'Fue Ingresado Correctamente',
-                                'success'
-                            )
-
-                        }
-                        //alert(data);
-                    }
-                });
-
-            }
-        })
-
-
-
-    });
-    </script>
-
-    <!-- FIN DELETE DOCUMENTO -->
-
-    <!-- REGISTRO DE NUEVO MODAL -->
-
-    <script>
-    function select_producto() {
-
-
-
-        var id_producto = $("#txt_producto_id").val();
-        //alert("Hola select =" + id_caja);
-
-        var ob = {
-            id_producto: id_producto
-        };
-
-        $.ajax({
-            type: "POST",
-            url: "conexion_bd/mostrar_datos_productos.php",
-            data: ob,
-            beforeSend: function(objeto) {
-
-            },
-            success: function(data) {
-
-                $("#preProducto").html(data);
-
-            }
-
-
-        });
-
-
-    }
-    </script>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    <script>
-    function preview(e) {
-        // console.log(e.target.files);
-
-        const url = e.target.files[0];
-        const urlTmp = URL.createObjectURL(url);
-
-        document.getElementById("img-preview").src = urlTmp;
-        document.getElementById("icon-image").classList.add("form-group");
-        document.getElementById("icon-cerrar").innerHTML =
-            '<button class="btn btn-danger" onclick="deleteImg(event)"><i class="fas fa-times"></i></button>';
-
-    }
-
-    function deleteImg(e) {
-
-        document.getElementById("icon-cerrar").innerHTML = '';
-        document.getElementById("icon-image").classList.add("form-group");
-        document.getElementById("img-preview").src = '';
-
-    }
-    </script>
-
-    <script>
-    function preview2(e) {
-        // console.log(e.target.files);
-
-        const url = e.target.files[0];
-        const urlTmp = URL.createObjectURL(url);
-
-        document.getElementById("img-preview2").src = urlTmp;
-        document.getElementById("icon-image2").classList.add("form-group");
-        document.getElementById("icon-cerrar2").innerHTML =
-            '<button class="btn btn-danger" onclick="deleteImg2(event)"><i class="fas fa-times"></i></button>';
-
-    }
-
-    function deleteImg2(e) {
-
-        document.getElementById("icon-cerrar2").innerHTML = '';
-        document.getElementById("icon-image2").classList.add("form-group");
-        document.getElementById("img-preview2").src = '';
-
-    }
-    </script>
-
-
-    <script>
-    function preview3(e) {
-        // console.log(e.target.files);
-
-        const url = e.target.files[0];
-        const urlTmp = URL.createObjectURL(url);
-
-        document.getElementById("img-preview3").src = urlTmp;
-        document.getElementById("icon-image3").classList.add("form-group");
-        document.getElementById("icon-cerrar3").innerHTML =
-            '<button class="btn btn-danger" onclick="deleteImg3(event)"><i class="fas fa-times"></i></button>';
-
-    }
-
-    function deleteImg3(e) {
-
-        document.getElementById("icon-cerrar3").innerHTML = '';
-        document.getElementById("icon-image3").classList.add("form-group");
-        document.getElementById("img-preview3").src = '';
-
-    }
-    </script>
-
-
-
+  
 
 
 

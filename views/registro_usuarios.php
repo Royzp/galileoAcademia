@@ -177,6 +177,27 @@ scratch. This page gets rid of all links and provides the needed markup only.
                         <br>
                         <label>Contraseña</label>
                         <input type="text" name="tx_contra" id="tx_contra" placeholder="Ingrese Contraseña" required="" autocomplete="off">
+
+                        <label>Sede</label>
+                        <br>
+                        <select id="select_sede" name="select_sede" style="width: 488px!important;">
+
+                            <option>Seleccione:</option>
+
+                            <?php
+
+                            $query2 = $mysqli->query("SELECT   sede_id,nombre_sede FROM  tb_sede ");
+                            while ($valor = mysqli_fetch_array($query2)) {
+
+                                echo '<option value="' . $valor['sede_id'] . '" >' . $valor['nombre_sede'] . '</option>';
+                            }
+
+                            ?>
+
+
+
+                        </select>
+
                         <label>Tipo Usuario</label>
                         <br>
                         <select id="select_user" name="select_user" style="width: 488px!important;">

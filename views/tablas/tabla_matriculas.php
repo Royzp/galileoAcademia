@@ -41,16 +41,21 @@
 
                                 <button 
                                      type="button" 
-                                     class="btn btn_table btn-info btnEditarDocument" 
+                                     class="btn btn_table btn-info btnEliminarMAtricula" 
                                      data-toggle="modal" 
                                      data-target="#exampleModal2" 
-                                     data-id="<?php echo $item['matricula_id']; ?>" 
-                                     data-producto="<?php echo $item['nombre']; ?>" >
-                                      <i class="material-icons">more</i>
+                                     data-id="<?php echo $item['matricula_id']; ?>"
+                                     data-nombre="<?php echo $item['nombre']; ?>" 
+                                     data-ciclo="<?php echo $item['nombre_ciclo']; ?>" 
+                                     data-periodo="<?php echo $item['nombre_periodo']; ?>"
+                                     data-estado="<?php echo $item['estate']; ?>">
+                                     <i class="material-icons">
+                                         delete_forever
+                                     </i>
                                   </button>
-                                <button type="button" class="btn btn_table btn-info" onclick="goDetalle(<?php echo $item['matricula_id']; ?>)">
+                                <!-- <button type="button" class="btn btn_table btn-info" onclick="goDetalle(<?php echo $item['matricula_id']; ?>)">
                                     <i class="material-icons">more</i>
-                                </button>
+                                </button> -->
 
                               </td>
 

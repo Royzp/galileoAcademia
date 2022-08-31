@@ -7,7 +7,7 @@
     INNER JOIN tb_periodo AS pe ON pe.periodo_id = m.periodo_id
     INNER JOIN tb_ciclo AS c ON c.ciclo_id = m.ciclo_id
     INNER JOIN tb_medio_informacion AS mi ON mi.medio_informacion_id = m.medio_informacion_id
-    INNER JOIN tb_turno AS tu ON tu.turno_id = m.turno";
+    INNER JOIN tb_turno AS tu ON tu.turno_id = m.turno  WHERE estate = 'Y' ";
     $sentencia = $pdo->prepare($sql);
     $sentencia-> execute();
     $resultado = $sentencia-> fetchAll();
