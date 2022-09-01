@@ -2,7 +2,7 @@
 session_start();
 // if($_SESSION['tipoUser'] !=2){
 //     header('location:  http://localhost:8080/GalileoAcademia/');
-   
+
 // }
 
 if (empty($_SESSION['active'])) {
@@ -31,8 +31,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <title>Academia Galileo</title>
 
     <!-- Google Font: Source Sans Pro -->
-    <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
     <!-- Font Awesome Icons -->
@@ -42,7 +41,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <link rel="stylesheet" href="../views/dist/css/adminlte.min.css">
     <link rel="stylesheet" href="styles/menu_lateral.css">
     <link rel="stylesheet" href="styles/style_table.css">
-    
+
 
 </head>
 
@@ -51,159 +50,159 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <body class="hold-transition sidebar-mini">
     <div class="wrapper">
 
-      <!-- Navbar -->
-    <nav class="main-header navbar navbar-expand navbar-white navbar-light">
-      <!-- Left navbar links -->
-      <ul class="navbar-nav">
-        <li class="nav-item">
-          <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
-        </li>
-        <li class="nav-item d-none d-sm-inline-block">
-          <a href="../views/pantalla_principal_s.php" class="nav-link"> <i class="fa fa-home" aria-hidden="true">Inicio</i></a>
-        </li>
+        <!-- Navbar -->
+        <nav class="main-header navbar navbar-expand navbar-white navbar-light">
+            <!-- Left navbar links -->
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
+                </li>
+                <li class="nav-item d-none d-sm-inline-block">
+                    <a href="../views/pantalla_principal_s.php" class="nav-link"> <i class="fa fa-home" aria-hidden="true">Inicio</i></a>
+                </li>
 
 
 
-        <!--  <li class="nav-item d-none d-sm-inline-block">
+                <!--  <li class="nav-item d-none d-sm-inline-block">
         <a href="#" class="nav-link">Contact</a>
       </li> -->
 
 
-      </ul>
+            </ul>
 
-      <!-- Right navbar links -->
-      <ul class="navbar-nav ml-auto">
-        <!-- Navbar Search -->
-        <li class="nav-item">
-          <a class="nav-link" data-widget="navbar-search" href="#" role="button">
-            <i class="fas fa-search"></i>
-          </a>
-          <div class="navbar-search-block">
-            <form class="form-inline">
-              <div class="input-group input-group-sm">
-                <input class="form-control form-control-navbar" type="search" placeholder="Search" aria-label="Search">
-                <div class="input-group-append">
-                  <button class="btn btn-navbar" type="submit">
-                    <i class="fas fa-search"></i>
-                  </button>
-                  <button class="btn btn-navbar" type="button" data-widget="navbar-search">
-                    <i class="fas fa-times"></i>
-                  </button>
-                </div>
-              </div>
-            </form>
-          </div>
-        </li>
-
-
-
-        <li class="nav-item">
-          <a class="nav-link" data-widget="fullscreen" href="#" role="button">
-            <i class="fas fa-expand-arrows-alt"></i>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#" role="button">
-            <i class="fa fa-power-off"></i>
-          </a>
-        </li>
-      </ul>
-    </nav>
-
-    <!-- /.navbar -->
-
-    <!-- Main Sidebar Container -->
-    <aside class="main-sidebar sidebar-dark-primary elevation-4" style="background: #ffff;">
-      <!-- Brand Logo -->
-      <a href="index3.html" class="brand-link">
-        <img src="../views/dist/img/gali.png" width="230" height="90">
-        <!-- <span class="brand-text font-weight-light">AdminLTE 3</span>-->
-      </a>
-
-      <!-- Sidebar -->
-      <div class="sidebar">
-        <!-- Sidebar user panel (optional) -->
-        <div class="" align="center">
-          <div class="image">
-            <img src="../views/dist/img/docente.png" style="height:100px;width: 100px;">
-          </div>
-          <div class="info" align="center">
-            <a href="#" style="color: black;font-weight: bold;"><?php echo $_SESSION['nombre']; ?></a>
-
-
-
-            <!-- <span class="hidden-xs"><?php echo $_SESSION['nombre']; ?></span> -->
-
-
-          </div>
-        </div>
-
-        <br>
-
-      
-        <!-- Sidebar Menu -->
-        <nav class="mt-2">
-
-
-          <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-
-            
-
-            <li class="nav-header" style="color:black;font-weight: bold;">PANEL PRINCIPAL</li>
-
-            <li class="nav-item" >
-                    <a href="registro_alumno_s.php" class="nav-link" style="color: white;">
-                        <i class="nav-icon fas fa-file"></i>
-                        <p>Matricula</p>
+            <!-- Right navbar links -->
+            <ul class="navbar-nav ml-auto">
+                <!-- Navbar Search -->
+                <li class="nav-item">
+                    <a class="nav-link" data-widget="navbar-search" href="#" role="button">
+                        <i class="fas fa-search"></i>
                     </a>
-                </li>
-
-                <li class="nav-item" >
-                    <a href="lista_matriculas_s.php" class="nav-link" style="color: white;">
-                        <i class="nav-icon fas fa-th"></i>
-                        <p>
-                            Lista de Matriculas
-                        </p>
-                    </a>
-                </li>
-                <li class="nav-item" >
-                    <a href="venta_items_s.php" class="nav-link" style="color: white;">
-                        <i class="nav-icon fas fa-th"></i>
-                        <p>
-                            Venta de Items
-                            <!-- <span class="badge badge-info right">2</span> -->
-                        </p>
-                    </a>
+                    <div class="navbar-search-block">
+                        <form class="form-inline">
+                            <div class="input-group input-group-sm">
+                                <input class="form-control form-control-navbar" type="search" placeholder="Search" aria-label="Search">
+                                <div class="input-group-append">
+                                    <button class="btn btn-navbar" type="submit">
+                                        <i class="fas fa-search"></i>
+                                    </button>
+                                    <button class="btn btn-navbar" type="button" data-widget="navbar-search">
+                                        <i class="fas fa-times"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
                 </li>
 
 
-           
 
-            <li class="nav-header" style="color:black;font-weight: bold;">REPORTE</li>
-
-            <li class="nav-item" >
-                    <a href="lista_recibo_s.php" class="nav-link" style="color: white;">
-                        <i class="nav-icon fa fa-calendar"></i>
-                        <p>Recibos emitidos</p>
+                <li class="nav-item">
+                    <a class="nav-link" data-widget="fullscreen" href="#" role="button">
+                        <i class="fas fa-expand-arrows-alt"></i>
                     </a>
                 </li>
-
-                <li class="nav-item" >
-                    <a href="lista_recibo_extornado_s.php" class="nav-link" style="color: white;">
-                        <i class="nav-icon fa fa-calendar"></i>
-                        <p>Recibos extornados</p>
+                <li class="nav-item">
+                    <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#" role="button">
+                        <i class="fa fa-power-off"></i>
                     </a>
                 </li>
-
-
-            <!-- Fin -->
-
-          </ul>
+            </ul>
         </nav>
-        <!-- /.sidebar-menu -->
-      </div>
-      <!-- /.sidebar -->
-    </aside>
+
+        <!-- /.navbar -->
+
+        <!-- Main Sidebar Container -->
+        <aside class="main-sidebar sidebar-dark-primary elevation-4" style="background: #ffff;">
+            <!-- Brand Logo -->
+            <a href="index3.html" class="brand-link">
+                <img src="../views/dist/img/gali.png" width="230" height="90">
+                <!-- <span class="brand-text font-weight-light">AdminLTE 3</span>-->
+            </a>
+
+            <!-- Sidebar -->
+            <div class="sidebar">
+                <!-- Sidebar user panel (optional) -->
+                <div class="" align="center">
+                    <div class="image">
+                        <img src="../views/dist/img/docente.png" style="height:100px;width: 100px;">
+                    </div>
+                    <div class="info" align="center">
+                        <a href="#" style="color: black;font-weight: bold;"><?php echo $_SESSION['nombre']; ?></a>
+
+
+
+                        <!-- <span class="hidden-xs"><?php echo $_SESSION['nombre']; ?></span> -->
+
+
+                    </div>
+                </div>
+
+                <br>
+
+
+                <!-- Sidebar Menu -->
+                <nav class="mt-2">
+
+
+                    <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+
+
+
+                        <li class="nav-header" style="color:black;font-weight: bold;">PANEL PRINCIPAL</li>
+
+                        <li class="nav-item">
+                            <a href="registro_alumno_s.php" class="nav-link" style="color: white;">
+                                <i class="nav-icon fas fa-file"></i>
+                                <p>Matricula</p>
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a href="lista_matriculas_s.php" class="nav-link" style="color: white;">
+                                <i class="nav-icon fas fa-th"></i>
+                                <p>
+                                    Lista de Matriculas
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="venta_items_s.php" class="nav-link" style="color: white;">
+                                <i class="nav-icon fas fa-th"></i>
+                                <p>
+                                    Venta de Items
+                                    <!-- <span class="badge badge-info right">2</span> -->
+                                </p>
+                            </a>
+                        </li>
+
+
+
+
+                        <li class="nav-header" style="color:black;font-weight: bold;">REPORTE</li>
+
+                        <li class="nav-item">
+                            <a href="lista_recibo_s.php" class="nav-link" style="color: white;">
+                                <i class="nav-icon fa fa-calendar"></i>
+                                <p>Recibos emitidos</p>
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a href="lista_recibo_extornado_s.php" class="nav-link" style="color: white;">
+                                <i class="nav-icon fa fa-calendar"></i>
+                                <p>Recibos extornados</p>
+                            </a>
+                        </li>
+
+
+                        <!-- Fin -->
+
+                    </ul>
+                </nav>
+                <!-- /.sidebar-menu -->
+            </div>
+            <!-- /.sidebar -->
+        </aside>
 
         <!-- Content Wrapper. Contains page content -->
         <div class="content-wrapper">
@@ -225,8 +224,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
                 <section id="container">
 
-                    <form method="Post" name="frm_registro_alumno" id="frm_registro_alumno"
-                        enctype="multipart/form-data">
+                    <form method="Post" name="frm_registro_alumno" id="frm_registro_alumno" enctype="multipart/form-data">
 
                         <div class="datos_cliente">
                             <div class="action_cliente">
@@ -252,8 +250,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
                                 <div class="col-md-4">
                                     <label style="font-size: 14px;">NUMERO DOCUMENTO </label>
-                                    <input class="w-100" type="text" name="numero_dni_alumno" id="numero_dni_alumno"
-                                        required>
+                                    <input class="w-100" type="text" name="numero_dni_alumno" id="numero_dni_alumno" required>
                                 </div>
 
                                 <div class="col-md-4">
@@ -265,28 +262,24 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                 <div class="col-md-4">
                                     <label style="font-size: 14px;">APELLIDOS</label>
                                     <br>
-                                    <input class="w-100" type="text" name="apellido_alumno" id="apellido_alumno"
-                                        required>
+                                    <input class="w-100" type="text" name="apellido_alumno" id="apellido_alumno" required>
                                 </div>
 
                                 <div class="col-md-4">
                                     <label style="font-size: 14px;">NUMERO CELULAR </label>
-                                    <input class="w-100" type="text" name="numero_cel_alumno" id="numero_cel_alumno"
-                                        required>
+                                    <input class="w-100" type="text" name="numero_cel_alumno" id="numero_cel_alumno" required>
                                 </div>
 
                                 <div class="col-md-4">
                                     <label style="font-size: 14px;">COLEGIO DE PROCEDENCIA</label>
                                     <br>
-                                    <input class="w-100" type="text" name="colegio_procedencia" id="colegio_procedencia"
-                                        required>
+                                    <input class="w-100" type="text" name="colegio_procedencia" id="colegio_procedencia" required>
                                 </div>
 
                                 <div class="col-md-4">
                                     <label style="font-size: 14px;">AÑO CULMINO SUS ESTUDIOS</label>
                                     <br>
-                                    <input class="w-100" type="text" name="culmino_estudios" id="culmino_estudios"
-                                        required>
+                                    <input class="w-100" type="text" name="culmino_estudios" id="culmino_estudios" required>
                                 </div>
 
 
@@ -395,8 +388,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
                                 <div class="col-md-6">
                                     <label style="font-size: 14px;">NOMBRE DEL PADRE U APODERADO </label>
-                                    <input class="w-100" type="text" name="nombre_apoderado" id="nombre_apoderado"
-                                        required>
+                                    <input class="w-100" type="text" name="nombre_apoderado" id="nombre_apoderado" required>
                                 </div>
 
                                 <div class="col-md-3">
@@ -408,15 +400,13 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                 <div class="col-md-3">
                                     <label style="font-size: 14px;">TELEFONO</label>
                                     <br>
-                                    <input class="w-100" type="text" name="telefono_apoderado" id="telefono_apoderado"
-                                        required>
+                                    <input class="w-100" type="text" name="telefono_apoderado" id="telefono_apoderado" required>
                                 </div>
 
                                 <div class="col-md-12">
                                     <label style="font-size: 14px;">DIRECCION</label>
                                     <br>
-                                    <input class="w-100" type="text" name="direccion_apoderado" id="direccion_apoderado"
-                                        required>
+                                    <input class="w-100" type="text" name="direccion_apoderado" id="direccion_apoderado" required>
                                 </div>
 
 
@@ -435,8 +425,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                     <div class="col-md-3">
                                         <label style="font-size: 14px;">TIPO DE PAGO</label>
                                         <br>
-                                        <select id="tipo_pago_matricula" name="tipo_pago_matricula" class="w-100"
-                                            onchange="showDiv2(this)" required>
+                                        <select id="tipo_pago_matricula" name="tipo_pago_matricula" class="w-100" onchange="showDiv2(this)" required>
                                             <option value="1" selected>PAGO UNICO</option>
                                             <option value="0">FRACCIONADO</option>
                                         </select>
@@ -453,8 +442,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                     <div class="col-md-3 hidden_div2" style="display: none ;">
                                         <label style="font-size: 14px;">N° CUOTAS</label>
                                         <br>
-                                        <select id="numero_cuotas" name="numero_cuotas" class="w-100"
-                                            onchange="showDiv2(this)">
+                                        <select id="numero_cuotas" name="numero_cuotas" class="w-100" onchange="showDiv2(this)">
                                             <option>Seleccione:</option>
                                             <option value="2" selected>2</option>
                                             <option value="3">3</option>
@@ -474,8 +462,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                     <div class="col-md-3 hidden_div2" style="display: none ;">
                                         <label style="font-size: 14px;">FECHA (2da.cuota)</label>
                                         <br>
-                                        <input class="w-100" type="date" name="fecha_segunda_cuota"
-                                            id="fecha_segunda_cuota">
+                                        <input class="w-100" type="date" name="fecha_segunda_cuota" id="fecha_segunda_cuota">
                                     </div>
 
                                     <div style="display: none ;" class="col-md-3 hidden_div3">
@@ -487,8 +474,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                     <div style="display: none ;" class="col-md-3 hidden_div3">
                                         <label style="font-size: 14px;">FECHA(3ra.cuota)</label>
                                         <br>
-                                        <input class="w-100" type="date" name="fecha_tercera_cuota"
-                                            id="fecha_tercera_cuota">
+                                        <input class="w-100" type="date" name="fecha_tercera_cuota" id="fecha_tercera_cuota">
                                     </div>
 
 
@@ -504,8 +490,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
                                     <div class="col-md-6">
                                         <br>
-                                        <select class="w-100" id="promocion_academia" name="promocion_academia"
-                                            required>
+                                        <select class="w-100" id="promocion_academia" name="promocion_academia" required>
                                             <option>Seleccione:</option>
                                             <?php
                                             $query2 = $mysqli->query("SELECT   medio_informacion_id,medio_informacion FROM  tb_medio_informacion ");
@@ -521,13 +506,10 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                         <div class="row" id="acciones_venta">
                                             <div class="col-6">
 
-                                                <a href="#" class=" w-100 px-2 btn btn-danger btn_ok"
-                                                    id="btn_anular_venta"><i class="fas fa-ban"></i> Anular</a>
+                                                <a href="#" class=" w-100 px-2 btn btn-danger btn_ok" id="btn_anular_venta"><i class="fas fa-ban"></i> Anular</a>
                                             </div>
                                             <div class="col-6">
-                                                <a href="#" class=" w-100 btn btn-success btn_new "
-                                                    id="btn_facturar_venta" onclick="onSubmitRegistroAlumno()"><i
-                                                        class="far fa-edit"></i> Procesar</a>
+                                                <a href="#" class=" w-100 btn btn-success btn_new " id="btn_facturar_venta" onclick="onSubmitRegistroAlumno()"><i class="far fa-edit"></i> Procesar</a>
                                             </div>
 
                                         </div>
@@ -554,7 +536,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
 
 
-
+            <?php include_once("navbar_cerrar_sesion.php") ?>
 
 
 
@@ -589,162 +571,162 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
 
     <script type="text/javascript">
-    function onSubmitRegistroAlumno() {
+        function onSubmitRegistroAlumno() {
 
-        var frm = document.getElementById('frm_registro_alumno');
-        var df = new FormData(frm);
+            var frm = document.getElementById('frm_registro_alumno');
+            var df = new FormData(frm);
 
-        $.ajax({
-            url: 'insert/insert_alumno.php',
-            type: 'POST',
-            processData: false,
-            contentType: false,
-            data: df,
-            success(data) {
-                console.log("Respuesta insert_alumno.php: ", data);
-                if (data > 0) {
-                    window.location.replace(
-                        "http://localhost/GalileoAcademia/views/matricula_detalle.php?id_matricula=" +
-                        data);
+            $.ajax({
+                url: 'insert/insert_alumno.php',
+                type: 'POST',
+                processData: false,
+                contentType: false,
+                data: df,
+                success(data) {
+                    console.log("Respuesta insert_alumno.php: ", data);
+                    if (data > 0) {
+                        window.location.replace(
+                            "http://localhost/GalileoAcademia/views/matricula_detalle.php?id_matricula=" +
+                            data);
 
-                } else {
-                    alert(data);
+                    } else {
+                        alert(data);
+                    }
                 }
-            }
-        });
-    }
+            });
+        }
 
-    function openModelPDF(url) {
-        $('#modalPdf').modal('show');
+        function openModelPDF(url) {
+            $('#modalPdf').modal('show');
 
 
-        $('#iframePDF').attr('src', '<?php echo 'http://' . $_SERVER['HTTP_HOST'] . '/GestionInformatica/views/'; ?>' +
-            url);
-    }
+            $('#iframePDF').attr('src', '<?php echo 'http://' . $_SERVER['HTTP_HOST'] . '/GestionInformatica/views/'; ?>' +
+                url);
+        }
     </script>
 
 
     <script type="text/javascript">
-    function showDiv2(select) {
-        // document.getElementById('hi1').style.display = "block";
-        if (select.value == 1) {
+        function showDiv2(select) {
+            // document.getElementById('hi1').style.display = "block";
+            if (select.value == 1) {
 
-            $('.hidden_div1').css('display', 'block')
-            $('.hidden_div2').css('display', 'none')
-            // document.getElementById('hidden_div1').style.display = "block";
-            // document.getElementById('hidden_div2').style.display = "none";
-        } else {
+                $('.hidden_div1').css('display', 'block')
+                $('.hidden_div2').css('display', 'none')
+                // document.getElementById('hidden_div1').style.display = "block";
+                // document.getElementById('hidden_div2').style.display = "none";
+            } else {
 
-            $('.hidden_div1').css('display', 'none')
-            $('.hidden_div2').css('display', 'block')
-            // document.getElementById('hidden_div1').style.display = "none";
-            // document.getElementById('hidden_div2').style.display = "block";
+                $('.hidden_div1').css('display', 'none')
+                $('.hidden_div2').css('display', 'block')
+                // document.getElementById('hidden_div1').style.display = "none";
+                // document.getElementById('hidden_div2').style.display = "block";
+            }
         }
-    }
     </script>
 
 
 
     <script>
-    $('.btn_new_cliente').click(function(e) {
+        $('.btn_new_cliente').click(function(e) {
 
-        e.preventDefault();
-        $('#nomb_cliente_nw').removeAttr('disabled');
-        $('#cel_cliente_new').removeAttr('disabled');
-        $('#direcc_cliente_new').removeAttr('disabled');
+            e.preventDefault();
+            $('#nomb_cliente_nw').removeAttr('disabled');
+            $('#cel_cliente_new').removeAttr('disabled');
+            $('#direcc_cliente_new').removeAttr('disabled');
 
-        $('#div_registro_cliente').slideDown();
+            $('#div_registro_cliente').slideDown();
 
-    })
+        })
 
-    //CALCULAR PAGOS
+        //CALCULAR PAGOS
 
 
-    // CAMBIOS EN EL PRIMER PAGO
-    $('#primer_pago').keyup(function(e) {
+        // CAMBIOS EN EL PRIMER PAGO
+        $('#primer_pago').keyup(function(e) {
 
-        e.preventDefault();
+            e.preventDefault();
 
-        var total = $('#monto_total').val();
-        var monto_pagado = $('#primer_pago').val();
-        var pendiente = parseFloat(total) - parseFloat(monto_pagado);
+            var total = $('#monto_total').val();
+            var monto_pagado = $('#primer_pago').val();
+            var pendiente = parseFloat(total) - parseFloat(monto_pagado);
 
-        $('#segunda_cuota').val('');
-        $('#tercera_cuota').val('');
+            $('#segunda_cuota').val('');
+            $('#tercera_cuota').val('');
 
-        if (pendiente > 0) {
+            if (pendiente > 0) {
+                if ($('#numero_cuotas').val() == 2) {
+                    $('.hidden_div3').css('display', 'none');
+                    $('#segunda_cuota').val(pendiente);
+                }
+                if ($('#numero_cuotas').val() == 3) {
+                    $('.hidden_div3').css('display', 'block');
+
+                    let pend_2 = pendiente / 2;
+                    $('#segunda_cuota').val(pend_2);
+                    $('#tercera_cuota').val(pend_2);
+                }
+            }
+        });
+
+
+        // CAMBIOS EN EL MONTO TOTAL
+        $('#monto_total').keyup(function(e) {
+
+            e.preventDefault();
+
+            var total = $('#monto_total').val();
+            var monto_pagado = $('#primer_pago').val();
+            var pendiente = parseFloat(total) - parseFloat(monto_pagado);
+
+            $('#primer_pago').val('');
+            $('#segunda_cuota').val('');
+            $('#tercera_cuota').val('');
+
+            var total = $('#monto_total').val();
+            if ($('#tipo_pago_matricula').val() == 1) {
+                $('#primer_pago').val(total);
+            }
+
+        });
+
+
+        //  CAMBIOS EN EL TIPO DE MATRICULA
+        $('#tipo_pago_matricula').change(function(e) {
+            e.preventDefault();
+
+            $('#primer_pago').val('');
+            $('#segunda_cuota').val('');
+            $('#tercera_cuota').val('');
+
+            var total = $('#monto_total').val();
+            if ($('#tipo_pago_matricula').val() == 1) {
+                $('#primer_pago').val(total);
+            }
+        });
+
+        // CAMBIO EN EL NUMERO DE CUOTAS
+        $('#numero_cuotas').change(function(e) {
+            e.preventDefault();
+            $('#segunda_cuota').val('');
+            $('#tercera_cuota').val('');
+
+            var total = $('#monto_total').val();
+            var monto_pagado = $('#primer_pago').val();
+            var pendiente = parseFloat(total) - parseFloat(monto_pagado);
+
             if ($('#numero_cuotas').val() == 2) {
                 $('.hidden_div3').css('display', 'none');
                 $('#segunda_cuota').val(pendiente);
             }
             if ($('#numero_cuotas').val() == 3) {
-                $('.hidden_div3').css('display', 'block');
 
+                $('.hidden_div3').css('display', 'block');
                 let pend_2 = pendiente / 2;
                 $('#segunda_cuota').val(pend_2);
                 $('#tercera_cuota').val(pend_2);
             }
-        }
-    });
-
-
-    // CAMBIOS EN EL MONTO TOTAL
-    $('#monto_total').keyup(function(e) {
-
-        e.preventDefault();
-
-        var total = $('#monto_total').val();
-        var monto_pagado = $('#primer_pago').val();
-        var pendiente = parseFloat(total) - parseFloat(monto_pagado);
-
-        $('#primer_pago').val('');
-        $('#segunda_cuota').val('');
-        $('#tercera_cuota').val('');
-
-        var total = $('#monto_total').val();
-        if ($('#tipo_pago_matricula').val() == 1) {
-            $('#primer_pago').val(total);
-        }
-
-    });
-
-
-    //  CAMBIOS EN EL TIPO DE MATRICULA
-    $('#tipo_pago_matricula').change(function(e) {
-        e.preventDefault();
-
-        $('#primer_pago').val('');
-        $('#segunda_cuota').val('');
-        $('#tercera_cuota').val('');
-
-        var total = $('#monto_total').val();
-        if ($('#tipo_pago_matricula').val() == 1) {
-            $('#primer_pago').val(total);
-        }
-    });
-
-    // CAMBIO EN EL NUMERO DE CUOTAS
-    $('#numero_cuotas').change(function(e) {
-        e.preventDefault();
-        $('#segunda_cuota').val('');
-        $('#tercera_cuota').val('');
-
-        var total = $('#monto_total').val();
-        var monto_pagado = $('#primer_pago').val();
-        var pendiente = parseFloat(total) - parseFloat(monto_pagado);
-
-        if ($('#numero_cuotas').val() == 2) {
-            $('.hidden_div3').css('display', 'none');
-            $('#segunda_cuota').val(pendiente);
-        }
-        if ($('#numero_cuotas').val() == 3) {
-
-            $('.hidden_div3').css('display', 'block');
-            let pend_2 = pendiente / 2;
-            $('#segunda_cuota').val(pend_2);
-            $('#tercera_cuota').val(pend_2);
-        }
-    });
+        });
     </script>
 
 

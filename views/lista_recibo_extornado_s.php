@@ -275,7 +275,9 @@ include_once 'conexion_bd/datos_recibos_extorno.php';
 
         </div>
         <!-- /.content-wrapper -->
+        
 
+        <?php include_once("navbar_cerrar_sesion.php") ?>
 
 
 

@@ -273,7 +273,7 @@ include_once 'conexion_bd/datos_matriculas.php';
         <aside class="control-sidebar control-sidebar-dark" style="height: 280px;">
     <!-- Control sidebar content goes here -->
     <div class="p-3" align="center">
-        <h3>ACAD.GALILEO</h3>
+        <h3>ACAD.GALILEO</h3> 
         <hr style="background: #FE0000;">
         <img src="../views/dist/img/docente.png" width="100" height="100">
 

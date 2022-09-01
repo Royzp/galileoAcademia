@@ -281,7 +281,7 @@ include_once 'conexion_bd/datos_recibos.php';
         <!-- /.content-wrapper -->
 
 
-
+        <?php  include_once("navbar_cerrar_sesion.php") ?>
 
     </div>
     <!-- ./wrapper -->

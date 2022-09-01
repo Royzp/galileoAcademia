@@ -276,13 +276,8 @@ include_once 'conexion_bd/datos_matriculas.php';
         <!-- /.content-wrapper -->
 
 
+        <?php  include_once("navbar_cerrar_sesion.php") ?>
 
-
-
-        <!-- Control Sidebar -->
-        <!-- /.control-sidebar -->
-
-        <!-- Main Footer -->
         <!-- /.main footer -->
 
     </div>

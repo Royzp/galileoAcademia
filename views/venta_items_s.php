@@ -553,7 +553,7 @@ tbody tr:nth-child(odd) {
         </div>
 
 
-
+  <?php  include_once("navbar_cerrar_sesion.php") ?>
 
 
     </div>
