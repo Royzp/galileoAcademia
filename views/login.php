@@ -16,9 +16,15 @@ if (isset($_SESSION['tipoUser'])) {
       break;
 
     case 2:
-      header('location: pantalla_principal_user.php');
+      header('location: pantalla_principal_g.php');
       // header('location: registro_usuarios.php');
       break;
+
+
+      case 3:
+        header('location: pantalla_principal_s.php');
+        // header('location: registro_usuarios.php');
+        break;
 
     default:
   }
@@ -64,6 +70,8 @@ if (!empty($_SESION['active'])) {
 
       $query  = mysqli_query($conexion, " SELECT * FROM  tb_usuario WHERE numero_dni = '" . $user . "'  AND  clave_user  = '" . MD5($clav) . "' AND estado = 'Y'  ");
       mysqli_connect($conexion);
+      
+      
       $result = mysqli_num_rows($query);
       echo $result;
 
@@ -96,6 +104,8 @@ if (!empty($_SESION['active'])) {
         $_SESSION['nombre']   = $data['nombre_user'];
         $_SESSION['apellido'] = $data['apellido_user'];
         $_SESSION['tipoUser'] = $data['tipo_user'];
+        $_SESSION['sede'] = $data['sede_user_id'];
+       
 
 
         // header('location:views/template.php');
@@ -114,9 +124,14 @@ if (!empty($_SESION['active'])) {
               break;
 
             case 2:
-              header('location: views/pantalla_principal_user.php');
+              header('location: views/pantalla_principal_g.php');
               // header('location: registro_usuarios.php');
               break;
+
+              case 3:
+                header('location: views/pantalla_principal_s.php');
+                // header('location: registro_usuarios.php');
+                break;
 
             default:
           }
