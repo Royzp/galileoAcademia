@@ -27,6 +27,7 @@
 
     <link rel="stylesheet" href="../views/dist/css/adminlte.min.css">
     <link rel="stylesheet" href="styles/menu_lateral.css">
+    <link rel="stylesheet" href="styles/style_ticket_print.css">
 
 </head>
 
@@ -275,75 +276,9 @@ tbody tr:nth-child(odd) {
                             <div class="row">
                                 <div class="col-12">
 
-                                    <!DOCTYPE html >
-                                    <html  id="printId">
-
-                                    <head>
-                                        <link rel="stylesheet" href="style.css">
-                                        <script src="script.js"></script>
-
-                                        <style>
-                                        .ticket{
-                                            font-size: 12px;
-                                            font-family: 'Times New Roman';
-                                        }
-                                        
-                                        .ticket td,
-                                        .ticket th,
-                                        .ticket tr,
-                                        .ticket table {
-                                            border-top: 1px solid black;
-                                            border-collapse: collapse;
-                                            padding: 3px 5px;
-                                            
-                                        }
-                                        
-                                        .ticket td{
-                                            font-size: 12px;
-
-                                        }
-
-                                        td.producto,
-                                        th.producto {
-                                            width: 75px;
-                                            max-width: 75px;
-                                        }
-
-                                        td.cantidad,
-                                        th.cantidad {
-                                            width: 40px;
-                                            max-width: 40px;
-                                            word-break: break-all;
-                                        }
-
-                                        td.precio,
-                                        th.precio {
-                                            width: 40px;
-                                            max-width: 40px;
-                                            word-break: break-all;
-                                        }
-
-                                        .centrado {
-                                            text-align: center;
-                                            align-content: center;
-                                        }
-
-                                        .ticket {
-                                            width: 155px;
-                                            max-width: 155px;
-                                        }
-
-                                        img {
-                                            max-width: inherit;
-                                            width: inherit;
-                                        }
-                                        </style>
-                                    </head>
-
-
-                                    <body>
-                                        <div class="ticket">
-                                            <img src="https://yt3.ggpht.com/-3BKTe8YFlbA/AAAAAAAAAAI/AAAAAAAAAAA/ad0jqQ4IkGE/s900-c-k-no-mo-rj-c0xffffff/photo.jpg"
+                                   
+                                        <div class="ticket" id="printId">
+                                            <img style="width: 90px;" src="https://yt3.ggpht.com/-3BKTe8YFlbA/AAAAAAAAAAI/AAAAAAAAAAA/ad0jqQ4IkGE/s900-c-k-no-mo-rj-c0xffffff/photo.jpg"
                                                 alt="Logotipo">
                                             <p class="centrado">Parzibyte's blog
                                                 <br>New New York
@@ -384,14 +319,12 @@ tbody tr:nth-child(odd) {
                                                 <br>parzibyte.me
                                             </p>
                                         </div>
-                                    </body>
-
-                                    </html>
 
                                 </div>
 
                                 <div class="col-12">
-                                <button class="btn" onclick="print()">Modal</button>
+                                <button class="btn" onclick="printDocument('printId')">IMPRIMIR</button>
+                                <!-- <button class="btn" onclick="print()">IMPRIMIR</button> -->
 
                                 </div>
                             </div>
@@ -599,19 +532,66 @@ tbody tr:nth-child(odd) {
     function print() 
     {
 
-        let elem = document.getElementById(printId)
-        var mywindow = window.open('', 'my div', 'height=400,width=600');
-        mywindow.document.write(elem);
-        // mywindow.document.write('<html><head><title>my div</title>');
-        // mywindow.document.write('</head><body >');
-        // mywindow.document.write('<img src="'+data+'" />');
-        // mywindow.document.write('</body></html>');
+        var divToPrint = document.getElementById('printId');  
+    //Firefox was just opening a new window with same content as opener and not performing the printing dialog, so needed to make it open a new instance of the window opener    
+        // newWin= window.open(self.location.href);
+    //We want to format the document appropriately
+       newWin.document.write("\<!DOCTYPE html\>\<html lang='es'\>\<head\>\<meta charset='utf-8'\/\>\<meta name='viewport' content='width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no'><meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'\>\<meta name='HandheldFriendly' content='true'\/\>");
+    //HTML ELEMENTS THAT WE WANT TO HIDE FROM THE PRINTING AREA
+        newWin.document.write("<style type='text/css'>@media print{.dataTables_info,.dataTables_filter{height:0!important;width:0!important;margin:0!important;padding:0!important;min-height:0!important;line-height:0!important;overflow:visible!important;visibility:hidden}");
+        newWin.document.write("<style  rel='stylesheet' media='print'  href='styles/style_ticket_print.css'>");
+    //General Styling for Printing
+        newWin.document.write("body {z-index:100!important;visibility:visible!important;position:relative!important;display:block!important;background-color:lightgray!important;height:297mm!important;width:211mm!important;position:relative!important;padding:0;top:0!important;left:0!important;margin:0!important;orphans:0!important;widows:0!important;overflow:visible!important;page-break-after:always}");
+    //Some forced styling in css rules includying page break for a div
+        newWin.document.write("body h1{font-size:1em; font-family:Verdana;} a.marked{color:black; text-decoration:none} .pagebreak { page-break-before: always; } ");
+        newWin.document.write("@page{size:A4; margin:2em; orphans:0!important;widows:0!important}}</style>\<\/head>\<body>");
+        newWin.document.write(divToPrint.innerHTML);
+        newWin.document.write("</body></html>");
 
-        mywindow.print();
-        mywindow.close();
-
-        return true;
+        // newWin.document.close();
+        newWin.focus();
+        newWin.print();
+        // newWin.close();
+        // newWin.focus();
+        // newWin.print();
     }
+
+
+
+
+    function printDocument(elemid) {
+
+//Check if element is empty
+if (elemid == "") {
+    window.print();
+}
+else {
+    //array to store ids separated with comma if available
+    var arrelemid = elemid.split(',');
+    var htmlContent = "";
+    for (var i = 0; i < arrelemid.length; i++) {
+        htmlContent += document.getElementById(arrelemid[i]).innerHTML;
+    }
+
+    //Window Width (ww) and Window Height (wh) of the user's screen, in pixels
+    var ww = screen.availWidth;
+    var wh = screen.availHeight - 90;
+
+    //Print Window (pw)
+    var pw = window.open("", "newWin", "width=" + ww + ",height=" + wh);
+    pw.document.write('<html><title>Printed Page</title><body>');
+    pw.document.write('</head><body>');
+    pw.document.write(htmlContent);
+    pw.document.write('</body></html>');
+    pw.document.close();
+    pw.print();
+    pw.close();
+
+    // Created by Sartaj Husain for www.codebrary.com
+}
+}
+
+
     </script>
 
 

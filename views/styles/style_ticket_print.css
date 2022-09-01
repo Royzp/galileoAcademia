@@ -1,0 +1,63 @@
+.ticket{
+    font-size: 12px;
+    font-family: 'Times New Roman';
+}
+
+.ticket td,
+.ticket th,
+.ticket tr,
+.ticket table {
+    border-top: 1px solid black;
+    border-collapse: collapse;
+    padding: 3px 5px;
+    
+}
+
+.ticket td{
+    font-size: 12px;
+
+}
+
+td.producto,
+th.producto {
+    width: 75px;
+    max-width: 75px;
+}
+
+td.cantidad,
+th.cantidad {
+    width: 30px;
+    max-width: 30px;
+    word-break: break-all;
+}
+
+td.precio,
+th.precio {
+    width: 40px;
+    max-width: 40px;
+    word-break: break-all;
+}
+
+.centrado {
+    text-align: center;
+    align-content: center;
+}
+
+.ticket {
+    /* width: 270px;
+    max-width: 270px; */
+    width: 155px;
+    max-width: 155px;
+}
+
+img {
+    max-width: inherit;
+    width: inherit;
+}
+
+@media print {
+    p {
+        font-size: 20px;
+        color: red;
+    }
+}

@@ -101,7 +101,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                                                             direccion,
                                                             tipo_pago_matricula,
                                                             medio_informacion_id,
-                                                            status,
+                                                            estate,
                                                             created_by,
                                                             created_date
                                                             )
@@ -136,7 +136,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
         //  REGISTRO DE RECIBO
         $ins_recibo = $con->query("INSERT INTO tb_recibos( 
-                                                            persona_id,
                                                             sede_recibo_id,
                                                             tipo_concepto_id,
                                                             monto_total,
@@ -145,7 +144,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                                                             created_date
                                                             )
                                                             VALUES (
-                                                                    '$persona_id',
                                                                     '$sede_recibo_id',
                                                                     '1',
                                                                     '$primer_pago',
@@ -223,7 +221,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     //  REGISTRO DE RECIBO
         $ins_recibo = $con->query("INSERT INTO tb_recibos( 
-                                                            persona_id,
                                                             sede_recibo_id,
                                                             tipo_concepto_id,
                                                             monto_total,
@@ -232,7 +229,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                                                             created_date
                                                             )
                                                             VALUES (
-                                                                    '$persona_id',
                                                                     '$sede_recibo_id',
                                                                     '1',
                                                                     '$primer_pago',
@@ -337,7 +333,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
         //  REGISTRO DE RECIBO
         $ins_recibo = $con->query("INSERT INTO tb_recibos( 
-                                                            persona_id,
                                                             sede_recibo_id,
                                                             tipo_concepto_id,
                                                             monto_total,
@@ -346,7 +341,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                                                             created_date
                                                             )
                                                     VALUES (
-                                                            '$persona_id',
                                                             '$sede_recibo_id',
                                                             '1',
                                                             '$primer_pago',
