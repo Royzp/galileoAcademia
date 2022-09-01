@@ -2,9 +2,10 @@
   
   <?php
 
-    $sql2=" SELECT u.*,tu.nombre_tipo_usuario From tb_usuario  AS u 
+    $sql2="SELECT u.*,tu.nombre_tipo_usuario,se.nombre_sede From tb_usuario  AS u 
     INNER JOIN tb_tipo_usuario AS tu ON tu.id_tipo_usuario = u.tipo_user
-     WHERE estado ='Y'  ";
+    INNER JOIN  tb_sede AS se  ON se.sede_id = u.sede_user_id
+     WHERE estado ='Y' ";
     $sentencia2 = $pdo->prepare($sql2);
     $sentencia2-> execute();
 

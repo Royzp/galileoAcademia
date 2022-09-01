@@ -20,7 +20,7 @@
                      <th align="center">DNI</th>
                      <th>NOMBRE</th>
                      <th>APELLIDO</th>
-
+                     <th>SEDE</th>
                      <th>CONTRASEÑA</th>
                      <th>TIPO USUARIO</th>
 
@@ -39,7 +39,8 @@
                              <td><?php echo $item['id_user']; ?></td>
                              <td><?php echo $item['numero_dni']; ?></td>
                              <td><?php echo $item['nombre_user']; ?></td>
-                             <td><?php echo $item['apellido_user']; ?></td>
+                             <td><?php echo $item['apellido_user']; ?></td> 
+                             <td><?php echo $item['nombre_sede']; ?></td>
                              <td><?php echo $item['clave_user']; ?></td>
                              <td><?php echo $item['nombre_tipo_usuario']; ?></td>
 
@@ -55,6 +56,7 @@
                                   data-dni="<?php echo $item['numero_dni']; ?>"
                                    data-nombre="<?php echo $item['nombre_user']; ?>"
                                     data-apellido="<?php echo $item['apellido_user']; ?>" 
+                                    data-sede="<?php echo $item['sede_user_id']; ?>" 
                                     data-contra="<?php echo $item['clave_user']; ?>"
                                      data-typeuser="<?php echo $item['tipo_user']; ?>">
                                      <i class="material-icons">edit</i>

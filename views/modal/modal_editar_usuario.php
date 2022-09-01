@@ -71,18 +71,35 @@
                                 <div class="row col-lg-12" align="center">
 
 
-                                    <div class="form-group col-md-6">
+                                <div class="form-group col-md-4">
+                                        <label>SEDE </label>
+
+                                        <select class="form-control" id="txt_sedes_edit" name="txt_sedes_edit" style=" width: 225px;">
+                                        <?php
+                                            $query2 = $mysqli->query("SELECT   sede_id,nombre_sede FROM  tb_sede ");
+                                            while ($valor = mysqli_fetch_array($query2)) {
+                                                echo '<option value="' . $valor['sede_id'] . '" >' . $valor['nombre_sede'] . '</option>';
+                                            }
+                                            ?>
+
+                                        </select>
+
+                                       
+                                    </div>
+
+
+                                    <div class="form-group col-md-4">
 
                                         <label>CONTRASEÑA</label>
-                                        <input type="text" class="form-control" id="txt_contra_edit" name="txt_contra_edit" autocomplete="off" style="    width: 340px;">
+                                        <input type="text" class="form-control" id="txt_contra_edit" name="txt_contra_edit" autocomplete="off" style="    width: 225px;">
 
                                     </div>
 
 
-                                    <div class="form-group col-md-6">
+                                    <div class="form-group col-md-4">
                                         <label>TIPO USUARIO </label>
-
-                                        <select class="form-control" id="txt_tipouser_edit" name="txt_tipouser_edit" style=" width: 340px;">
+                                           
+                                        <select class="form-control" id="txt_tipouser_edit" name="txt_tipouser_edit" style=" width: 225px;">
                                         <?php
                                             $query2 = $mysqli->query("SELECT   id_tipo_usuario,nombre_tipo_usuario FROM  tb_tipo_usuario ");
                                             while ($valor = mysqli_fetch_array($query2)) {
@@ -91,6 +108,7 @@
                                             ?>
 
                                         </select>
+                                       
                                     </div>
 
                                 </div>

@@ -588,6 +588,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
             var nombre_user = $(this).attr("data-nombre");
             var apellido_user = $(this).attr("data-apellido");
             var clave_user = $(this).attr("data-contra");
+            var sede_user_id = $(this).attr("data-sede");
             var tipo_user = $(this).attr("data-typeuser");
 
 
@@ -602,6 +603,16 @@ scratch. This page gets rid of all links and provides the needed markup only.
             $('#txt_dni_edit').attr('value', dni_user);
             $('#txt_nombre_edit').attr('value', nombre_user);
             $('#txt_apellido_edit').attr('value', apellido_user);
+
+            $('#txt_tipouser_edit').attr('value', sede_user_id);
+            $('#txt_tipouser_edit').find("option").each(function() {
+                if ($(this).val() == sede_user_id) {
+                    $(this).prop("selected", "selected");
+                }
+
+            });
+
+
             $('#txt_contra_edit').attr('value', clave_user);
 
             $('#txt_tipouser_edit').attr('value', tipo_user);

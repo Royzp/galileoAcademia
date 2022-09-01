@@ -271,12 +271,13 @@ include_once 'conexion_bd/consulta_user.php';
             var dni_user = $(this).attr("data-dni");
             var nombre_user = $(this).attr("data-nombre");
             var apellido_user = $(this).attr("data-apellido");
+            var sede_user_id = $(this).attr("data-sede");
             var clave_user = $(this).attr("data-contra");
             var tipo_user = $(this).attr("data-typeuser");
 
 
 
-
+            
 
 
 
@@ -286,6 +287,13 @@ include_once 'conexion_bd/consulta_user.php';
             $('#txt_dni_edit').attr('value', dni_user);
             $('#txt_nombre_edit').attr('value', nombre_user);
             $('#txt_apellido_edit').attr('value', apellido_user);
+            $('#txt_sedes_edit').attr('value', sede_user_id);
+            $('#txt_sedes_edit').find("option").each(function() {
+                if ($(this).val() == sede_user_id) {
+                    $(this).prop("selected", "selected");
+                }
+
+            });
             $('#txt_contra_edit').attr('value', clave_user);
 
             $('#txt_tipouser_edit').attr('value', tipo_user);
@@ -354,6 +362,7 @@ include_once 'conexion_bd/consulta_user.php';
                                 dni_edit: $('#txt_dni_edit').val(),
                                 nombre_edit: $('#txt_nombre_edit').val(),
                                 apellido_edit: $('#txt_apellido_edit').val(),
+                                sede_edit: $('#txt_sedes_edit').val(),
                                 contra_edit: $('#txt_contra_edit').val(),
                                 tipousuario_edit: $('#txt_tipouser_edit').val(),
 
@@ -374,7 +383,7 @@ include_once 'conexion_bd/consulta_user.php';
                                     )
 
                                 }
-                               alert(data);
+                               //alert(data);
                             }
                         });
 

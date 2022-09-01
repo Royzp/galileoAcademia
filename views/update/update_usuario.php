@@ -10,7 +10,7 @@
     $dni         = $_POST["dni_edit"];
     $nombre      = $_POST["nombre_edit"];
     $apellido    = $_POST["apellido_edit"];
-
+    $sede        = $_POST["sede_edit"];
     $contra      = $_POST["contra_edit"];
     $tipousuario = $_POST["tipousuario_edit"];
    
@@ -23,10 +23,11 @@
 
     $sql  =" UPDATE tb_usuario  SET  
          
-         numero_dni      =  '". $dni ."' ,
+         numero_dni    =  '". $dni ."' ,
          nombre_user   =  '". $nombre ."',
          apellido_user =  '". $apellido ."',
-         clave_user     =  MD5('".$contra."'),
+         sede_user_id  =  '". $sede ."',
+         clave_user    =  MD5('".$contra."'),
          tipo_user     =  '". $tipousuario ."'
 
         WHERE
