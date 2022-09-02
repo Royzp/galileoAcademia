@@ -164,19 +164,19 @@ scratch. This page gets rid of all links and provides the needed markup only.
                         <br>
                         <br>
                         <label>Numero DNI</label>
-                        <input type="text" name="tx_dni" id="tx_dni" placeholder="Ingrese numero de DNI" required="" autocomplete="off">
+                        <input type="text" name="tx_dni" id="tx_dni" placeholder="Ingrese numero de DNI"  autocomplete="off" required>
                         <br>
                         <br>
                         <label>Nombres</label>
-                        <input type="text" name="tx_nombre" id="tx_nombre" placeholder="Ingrese Nombres" required="" autocomplete="off">
+                        <input type="text" name="tx_nombre" id="tx_nombre" placeholder="Ingrese Nombres" autocomplete="off" required >
                         <br>
                         <br>
                         <label>Apellidos</label>
-                        <input type="text" name="tx_apellido" id="tx_apellido" placeholder="Ingrese Apellidos" required="" autocomplete="off">
+                        <input type="text" name="tx_apellido" id="tx_apellido" placeholder="Ingrese Apellidos" autocomplete="off" required >
                         <br>
                         <br>
                         <label>Contraseña</label>
-                        <input type="text" name="tx_contra" id="tx_contra" placeholder="Ingrese Contraseña" required="" autocomplete="off">
+                        <input type="text" name="tx_contra" id="tx_contra" placeholder="Ingrese Contraseña"  autocomplete="off" required >
 
                         <label>Sede</label>
                         <br>

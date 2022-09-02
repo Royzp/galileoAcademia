@@ -61,7 +61,7 @@ if (!empty($_SESION['active'])) {
   //     $conexion=mysqli_connect('localhost','root','','bd_academia');
   //  mysqli_query($conexion,"set names utf8");
 
-    print_r($conexion);
+   // print_r($conexion);
 
       $user  = $_POST['usuario'];
       $clav  = $_POST['clave'];
@@ -73,7 +73,7 @@ if (!empty($_SESION['active'])) {
       
       
       $result = mysqli_num_rows($query);
-      echo $result;
+      //echo $result;
 
 
 
@@ -90,10 +90,10 @@ if (!empty($_SESION['active'])) {
 
 
 
-        print_r($data);
+        // print_r($data);
 
-        print_r($data['nombre_user']);
-        print_r($data['apellido_user']);
+        // print_r($data['nombre_user']);
+        // print_r($data['apellido_user']);
         //echo $result;
 
         //var_dump($data);

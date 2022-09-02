@@ -149,6 +149,16 @@
                     </a>
                 </li>
 
+                <li class="nav-item" >
+                    <a href="lista_egresos.php" class="nav-link" style="color: white;">
+                        <i class="nav-icon fas fa-th"></i>
+                        <p>
+                            Lista de Egresos
+                            <!-- <span class="badge badge-info right">2</span> -->
+                        </p>
+                    </a>
+                </li>
+
                 <li class="nav-header" style="color:black;font-weight: bold;">REPORTES</li>
 
                 <li class="nav-item" >

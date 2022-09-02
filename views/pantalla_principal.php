@@ -50,7 +50,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <div class="wrapper">
 
     <!-- Navbar -->
-    <nav class="main-header navbar navbar-expand navbar-white navbar-light">
+  <nav class="main-header navbar navbar-expand navbar-white navbar-light">
     <!-- Left navbar links -->
     <ul class="navbar-nav">
         <li class="nav-item">
@@ -194,6 +194,17 @@ scratch. This page gets rid of all links and provides the needed markup only.
                         <i class="nav-icon fas fa-th"></i>
                         <p>
                             Venta de Items
+                            <!-- <span class="badge badge-info right">2</span> -->
+                        </p>
+                    </a>
+                </li>
+
+
+                <li class="nav-item" >
+                    <a href="lista_egresos.php" class="nav-link" style="color: white;">
+                        <i class="nav-icon fas fa-th"></i>
+                        <p>
+                            Lista de Egresos
                             <!-- <span class="badge badge-info right">2</span> -->
                         </p>
                     </a>
