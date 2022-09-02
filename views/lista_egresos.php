@@ -268,7 +268,7 @@ include_once 'conexion_bd/datos_egresos.php';
                 </div>
 
                 <!-- MODAL   -->
-                <div class="modal fade bd-example-modal-lg" id="exampleModalEditEgresos" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                <div class="modal fade bd-example-modal-lg" id="exampleModal9" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
                     <div class="modal-dialog modal-lg">
                         <div class="modal-content">
                             <div class="modal-header" style="background-color:#CF4D10; ">
@@ -291,6 +291,35 @@ include_once 'conexion_bd/datos_egresos.php';
                         </div>
                     </div>
                 </div>
+
+
+                <!--  MODAL EDITAR -->
+
+                <div class="modal fade bd-example-modal-lg" id="exampleModalEditEgresos" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-lg">
+                        <div class="modal-content">
+                            <div class="modal-header" style="background-color:#CF4D10; ">
+                                <b>
+                                    <P class="modal-title" id="exampleModalLongTitle" style="font-size: 30px;color: #FFFFFF; font-family: arial;">
+                                        <i class="fa fa-cloud-upload" aria-hidden="true" style="font-family: system-ui;">
+                                            Editar Egreso
+                                        </i>
+                                    </P>
+                                </b>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <?php
+                                include_once("modal/modal_editar_egreso.php");
+                                ?>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
 
                 <div class="modal fade" id="modalPdf" tabindex="-1" aria-labelledby="modalPdf" aria-hidden="true">
                     <div class="modal-dialog modal-lg" style="max-width:100%!important;margin: 0px">
@@ -640,12 +669,12 @@ include_once 'conexion_bd/datos_egresos.php';
 
 <script type="text/javascript">
         $(document).on("click", ".btnEditarEgresos", function() {
-            var concepto_id = $(this).attr("data-id");
-            var tipo_concepto = $(this).attr("data-tipoconcepto");
-            var concepto = $(this).attr("data-concepto");
-            var precio = $(this).attr("data-precio");
-            var estate = $(this).attr("data-estate");
-            var tipo_concepto_id = $(this).attr("data-idtipo");
+            var id_egreso = $(this).attr("data-id");
+            var monto_egreso = $(this).attr("data-monto");
+            var descripcion = $(this).attr("data-descripcion");
+            
+            // var estate = $(this).attr("data-estate");
+            // var tipo_concepto_id = $(this).attr("data-idtipo");
            
             
 
@@ -654,19 +683,19 @@ include_once 'conexion_bd/datos_egresos.php';
 
             //mostrar al modal
             $('#exampleModalEditEgresos').modal('show');
-            $('#id_editarrr_item').attr('value', concepto_id);
-            $('#tipo_concepto_edit').attr('value', tipo_concepto_id);
-            $('#tipo_concepto_edit').find("option").each(function() {
-                if ($(this).val() == tipo_concepto_id) {
-                    $(this).prop("selected", "selected");
-                }
+            $('#id_editarrr_egreso').attr('value', id_egreso);
+            // $('#tipo_concepto_edit').attr('value', tipo_concepto_id);
+            // $('#tipo_concepto_edit').find("option").each(function() {
+            //     if ($(this).val() == tipo_concepto_id) {
+            //         $(this).prop("selected", "selected");
+            //     }
 
-            });
+            // });
 
 
-            $('#txt_concepto_edit').attr('value', concepto);
-            $('#txt_precio_edit').attr('value', precio);
-            $('#txt_estatus_editt').attr('value', estate);
+            $('#txt_monto_edit').attr('value', monto_egreso);
+            $('#txt_descripcion_edit').attr('value', descripcion);
+           
             // $('#txt_idtipo_editt').attr('value', tipo_concepto_id);
           
 

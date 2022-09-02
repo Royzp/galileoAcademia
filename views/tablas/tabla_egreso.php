@@ -41,9 +41,9 @@
                                      class="btn btn_table btn-info btnEditarEgresos" 
                                      data-toggle="modal" 
                                      data-target="#exampleModalEditEgresos" 
-                                     data-id="<?php echo $item['concepto_id']; ?>" 
-                                     data-tipoconcepto="<?php echo $item['tipo_concepto']; ?>" 
-                                     data-concepto="<?php echo $item['concepto']; ?>"
+                                     data-id="<?php echo $item['id_egreso']; ?>" 
+                                     data-monto="<?php echo $item['monto_egreso']; ?>" 
+                                     data-descripcion="<?php echo $item['descripcion']; ?>"
                                      data-precio="<?php echo $item['precio']; ?>"
                                      data-idtipo="<?php echo $item['tipo_concepto_id']; ?>"
                                      data-estate="<?php echo $item['estate']; ?>">
