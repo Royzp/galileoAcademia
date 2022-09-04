@@ -330,13 +330,9 @@ $resultado_cuotas = $sentencia->fetchAll();
 
 
 
-
-
-
-
      <!-- MODAL   -->
         <?php          
-            include_once("modal/modal_vista_recivo.php");
+            include_once("modal/modal_vista_recibo.php");
         ?>
 
 

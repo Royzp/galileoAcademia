@@ -157,7 +157,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                                                                     '$sede_user_id',
                                                                     '1',
                                                                     '$primer_pago',
-                                                                    'PRIMERA CUOTA',
+                                                                    '',
                                                                     '$id_user',
                                                                     '$nombre_apoderado',
                                                                     'Y',
@@ -166,20 +166,20 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             // echo 'success';
             if ($ins_recibo == true) {
             $recibo_cuota_unica_id = $con->insert_id;
-            // print_r("Id de la unica cuota:");
-            // print_r($recibo_cuota_unica_id);
             }
 
         // DETALLE  RECIBO
         $ins_detalle_recibo = $con->query("INSERT INTO tb_detalle_recibo( 
                                                             recibo_id,
                                                             concepto_id,
+                                                            descripcion,
                                                             precio_unitario,
                                                             unidades,
                                                             total)
                                                             VALUES (
                                                                     '$recibo_cuota_unica_id',
                                                                     '1',
+                                                                    'PAGO TOTAL DE MATRICULA',
                                                                     '$primer_pago',
                                                                     '1',
                                                                     '$primer_pago')");
@@ -191,25 +191,32 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             }
 
         //  REGISTRO DE CUOTA
+
         $ins_cuota_unica = $con->query("INSERT INTO tb_cuotas_pendientes( 
+                                                             
                                                                 matricula_id,
                                                                 numero_cuota,
                                                                 total_cuotas,
                                                                 monto_cuota,
+
                                                                 estado_cuota,
+
                                                                 fecha_pago,
                                                                 fecha_programada,
                                                                 comprobante_pago_id,
                                                                 status,
                                                                 created_by,
-                                                                created_date,
+                                                                created_date
                                                                 )
                                                                 VALUES (
+
                                                                         '$matricula_id',
                                                                         '1',
-                                                                        '1',
-                                                                        '$primer_pago',
+                                                                        '$numero_cuotas',
+                                                                        '$primer_pago', 
+
                                                                         'CANCELADO',
+
                                                                         '$fecha_sistem',
                                                                         '$fecha_sistem',
                                                                         '$recibo_cuota_unica_id',
@@ -217,28 +224,22 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                                                                         '$created_by',
                                                                         '$fecha_sistem'
                                                                         )");
+
         // echo 'success';
         if ($ins_cuota_unica == true) {
             $cuota_unica_id = $con->insert_id;
-            // print_r("Id de la unica cuota:");
-            // print_r($cuota_unica_id);
+        }else{
+
         }
     }
 
     if ($tipo_pago_matricula == 0 && $numero_cuotas == 2) {
         
-    //  $segunda_cuota   
-    //  $fecha_segunda   
-
-    //  $tercera_cuota   
-    //  $fecha_tercera   
-
     //  REGISTRO DE RECIBO
         $ins_recibo = $con->query("INSERT INTO tb_recibos( 
                                                             sede_recibo_id,
                                                             tipo_concepto_id,
                                                             monto_total,
-                                                            descripcion,
                                                             id_user,
                                                             responsable,
                                                             status,
@@ -249,7 +250,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                                                                     '$sede_user_id',
                                                                     '1',
                                                                     '$primer_pago',
-                                                                    'PRIMERA CUOTA',
                                                                     '$id_user',
                                                                     '$nombre_apoderado',
                                                                     'Y',
@@ -266,12 +266,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $ins_detalle_recibo = $con->query("INSERT INTO tb_detalle_recibo( 
                                                             recibo_id,
                                                             concepto_id,
+                                                            descripcion,
                                                             precio_unitario,
                                                             unidades,
                                                             total)
                                                             VALUES (
                                                                     '$recibo_primera_cuota_id',
                                                                     '2',
+                                                                    'MATRICULA PRIMERA CUOTA',
                                                                     '$primer_pago',
                                                                     '1',
                                                                     '$primer_pago')");
@@ -351,7 +353,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                                                             sede_recibo_id,
                                                             tipo_concepto_id,
                                                             monto_total,
-                                                            descripcion,
                                                             id_user,
                                                             responsable,
                                                             status,
@@ -362,7 +363,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                                                             '$sede_user_id',
                                                             '1',
                                                             '$primer_pago',
-                                                            'PRIMERA CUOTA'
                                                             '$id_user',
                                                             '$nombre_apoderado',
                                                             'Y',
@@ -377,20 +377,19 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $ins_detalle_recibo = $con->query("INSERT INTO tb_detalle_recibo( 
                 recibo_id,
                 concepto_id,
+                descripcion,
                 precio_unitario,
                 unidades,
                 total)
                 VALUES (
                         '$recibo_primera_cuota_id',
                         '2',
+                        'MATRICULA PRIMERA CUOTA',
                         '$primer_pago',
                         '1',
                         '$primer_pago')");
-        // echo 'success';
         if ($ins_detalle_recibo == true) {
             $detalle_recibo_id = $con->insert_id;
-            // print_r("Detalle Recibo _id:");
-            // print_r($detalle_recibo_id);
         }
 
         //  REGISTRO DE PRIMERA CUOTA
@@ -423,8 +422,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         // echo 'success';
         if ($ins_primera_cuota == true) {
             $primera_cuota_id = $con->insert_id;
-            // print_r("Id de la unica cuota:");
-            // print_r($primera_cuota_id);
         }
 
         //  REGISTRO DE SEGUNDA CUOTA
@@ -453,8 +450,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         // echo 'success';
         if ($ins_segunda_cuota == true) {
             $segunda_cuota_id = $con->insert_id;
-            // print_r("Id de la unica cuota:");
-            // print_r($segunda_cuota_id);
         }
         //  REGISTRO DE TERCERA CUOTA
         $ins_tercera_cuota = $con->query("INSERT INTO tb_cuotas_pendientes( 
@@ -482,8 +477,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         // echo 'success';
         if ($ins_tercera_cuota == true) {
             $tercera_cuota_id = $con->insert_id;
-            // print_r("Id de la unica cuota:");
-            // print_r($tercera_cuota_id);
         }
     }
 
