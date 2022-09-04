@@ -494,8 +494,15 @@ include_once 'conexion_bd/datos_egresos.php';
 <script type="text/javascript">
         $(document).on("click", ".btnEditarEgresos", function() {
             var id_egreso = $(this).attr("data-id");
-            var monto_egreso = $(this).attr("data-monto");
-            var descripcion = $(this).attr("data-descripcion");
+            var id_tipo_egreso = $(this).attr("data-id-egreso");
+            var tipo_comprobante_id = $(this).attr("data-idtipo");
+            var numero_comprobante= $(this).attr("data-numcompro");
+            var descripcion= $(this).attr("data-descrip");
+            var monto_egreso= $(this).attr("data-monto");
+            var fecha_pago= $(this).attr("data-fecha");
+            
+          
+            
             
             // var estate = $(this).attr("data-estate");
             // var tipo_concepto_id = $(this).attr("data-idtipo");
@@ -508,21 +515,33 @@ include_once 'conexion_bd/datos_egresos.php';
             //mostrar al modal
             $('#exampleModalEditEgresos').modal('show');
             $('#id_editarrr_egreso').attr('value', id_egreso);
-            // $('#tipo_concepto_edit').attr('value', tipo_concepto_id);
-            // $('#tipo_concepto_edit').find("option").each(function() {
-            //     if ($(this).val() == tipo_concepto_id) {
-            //         $(this).prop("selected", "selected");
-            //     }
 
-            // });
+             $('#tipo_egreso_edit').attr('value', id_tipo_egreso);
+             $('#tipo_egreso_edit').find("option").each(function() {
+                if ($(this).val() == id_tipo_egreso) {
+                    $(this).prop("selected", "selected");
+                }
+
+            });
 
 
-            $('#txt_monto_edit').attr('value', monto_egreso);
+            $('#tipo_comprobante_edit').attr('value', tipo_comprobante_id);
+             $('#tipo_comprobante_edit').find("option").each(function() {
+                if ($(this).val() == tipo_comprobante_id) {
+                    $(this).prop("selected", "selected");
+                }
+
+            });
+
+         
+            $('#txt_numcomprobante_edit').attr('value', numero_comprobante);
             $('#txt_descripcion_edit').attr('value', descripcion);
-           
-            // $('#txt_idtipo_editt').attr('value', tipo_concepto_id);
-          
+            $('#txt_monto_edit').attr('value', monto_egreso);
+            $('#txt_fecha_edit').attr('value', fecha_pago);
 
+            
+            
+            
 
 
 

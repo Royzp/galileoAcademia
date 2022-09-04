@@ -19,7 +19,7 @@
         <div class="form-group col-md-4">
             <label> Tipo de comprobante </label>
             <br>
-            <select name="tipo_comprobante_id" id="tipo_comprobante_id" style="height:36px!important; width: 244px!important;" onchange="showDiv2(this)">
+            <select name="tipo_comprobante_id" id="tipo_comprobante_id" style="height:36px!important; width: 244px!important;">
                 <option>Seleccione:</option>
                 <option value="3" selected>SIN COMPROBANTE</option>
                 <option value="1">BOLETA</option>

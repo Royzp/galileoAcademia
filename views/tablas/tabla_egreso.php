@@ -61,11 +61,12 @@
                                      data-toggle="modal" 
                                      data-target="#exampleModalEditEgresos" 
                                      data-id="<?php echo $item['id_egreso']; ?>" 
-                                     data-monto="<?php echo $item['monto_egreso']; ?>" 
-                                     data-descripcion="<?php echo $item['descripcion']; ?>"
-                                     data-precio="<?php echo $item['precio']; ?>"
-                                     data-idtipo="<?php echo $item['tipo_concepto_id']; ?>"
-                                     data-estate="<?php echo $item['estate']; ?>">
+                                     data-id-egreso='<?php echo $item['tipo_egreso_id']; ?>'
+                                     data-numcompro="<?php echo $item['numero_comprobante']; ?>"
+                                     data-monto="<?php echo $item['monto_egreso']; ?>"
+                                     data-descrip="<?php echo $item['descripcion']; ?>"
+                                     data-idtipo="<?php echo $item['tipo_comprobante_id']; ?>"
+                                     data-fecha="<?php echo $item['fecha_pago']; ?>">
                                      <i class="material-icons">edit</i>
                                   </button>
 
