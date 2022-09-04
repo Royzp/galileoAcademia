@@ -57,8 +57,20 @@ $resultado_cuotas = $sentencia->fetchAll();
     <div class="wrapper">
 
         <?php
-            include_once("navbar_sidebar.php");
+            if($_SESSION['tipoUser'] ==  1){
+                // 1 = ADMINISTRADO
+                include_once("navbar_sidebar.php");
+            }
+            if($_SESSION['tipoUser'] ==  2){
+                // 2 = GERENTE
+                include_once("navbar_sidebar_g.php");
+            }
+            if($_SESSION['tipoUser'] ==  3){
+                // 3 = SECRETARIA
+                include_once("navbar_sidebar_s.php");
+            }
         ?>
+
       
         <!-- Content Wrapper. Contains page content -->
         <div class="content-wrapper">
@@ -168,22 +180,21 @@ $resultado_cuotas = $sentencia->fetchAll();
                                     <table class="datos_cliente">
                                         <tr>
                                             <td>
-                                                <label>N° DOcumento:</label>
-                                                <p class="mb-0">54895468</p>
-                                            </td>
-                                           
+                                                <label>N° Documento:</label>
+                                                <p class="mb-0" id="numero_documento_apoderado">54895468</p>
+                                            </td>                                           
                                             <td>
                                                 <label>Nombre:</label>
-                                                <p class="mb-0">Angel Arana Cabrera</p>
+                                                <p class="mb-0" id="nombres_apoderado">Angel Arana Cabrera</p>
                                             </td>
                                         </tr>
                                         <tr>
                                             <td>
                                                 <label>Teléfono:</label>
-                                                <p class="mb-0">7854526</p>
+                                                <p class="mb-0" id="telefono">7854526</p>
                                             </td>
                                             <td><label>Dirección:</label>
-                                                <p class="mb-0">Calzada Buena Vista</p>
+                                                <p class="mb-0" id="direccion">Calzada Buena Vista</p>
                                             </td>
                                         </tr>
                                     </table>
@@ -202,6 +213,8 @@ $resultado_cuotas = $sentencia->fetchAll();
                                 <th >N° Cuota</th>
                                 <th >Monto</th>
                                 <th >Estado Cota</th>
+                                <th >Fecha Programada</th>
+                                <th >Fecha de pago</th>
                                 <th >N° Recibo</th>
                                 <th class="text-right">Acción</th>
                             </tr>
@@ -217,10 +230,36 @@ $resultado_cuotas = $sentencia->fetchAll();
                                         <td class=""><?php echo $item['numero_cuota']  ?></td>
                                         <td class=""><?php echo $item['monto_cuota']  ?></td>
                                         <td class=""><?php echo $item['estado_cuota']  ?></td>
+                                        <td class="">
+
+                                        <?php if ( $item['fecha_programada'] == '' ||  $item['fecha_programada'] == null ) { 
+                                            echo '-';
+                                            }else {
+                                                echo date('d/m/Y', strtotime($item['fecha_programada']));
+                                            }
+                                         ?>
+                                        </td>
+                                        <td class="">
+
+                                        <?php if ( $item['fecha_pago'] == '' ||  $item['fecha_pago'] == null ) { 
+                                            echo '-';
+                                            }else {
+                                                echo date('d/m/Y', strtotime($item['fecha_pago']));
+                                            }
+                                         ?>
+                                        </td>
                                         <td class=""><?php echo $item['comprobante_pago_id']  ?></td>
+
                                         <td class="text-right">
-                                            <button class="btn" style="background: blue;color: #fff;margin: 3px;height: 25px;    line-height: 5px;font-weight: bold;">Detalle</button>
-                                            <button class="btn" style="background: blue;color: #fff;margin: 3px;height: 25px;    line-height: 5px;font-weight: bold;">Print</button>
+
+                                        <?php if ( $item['comprobante_pago_id'] == '' ||  $item['comprobante_pago_id'] == null ) { 
+                                            echo '-';
+                                            }else {
+                                                ?>
+
+                                                <button class="btn" style="background: blue;color: #fff;margin: 3px;height: 25px;    line-height: 5px;font-weight: bold;" onclick="getDetalleRecibo(<?php echo $item['comprobante_pago_id']?>)">Detalle</button>
+                                                <?php   } ?>
+                                           
                                         </td>
                                     </tr>
 
@@ -289,6 +328,19 @@ $resultado_cuotas = $sentencia->fetchAll();
     </div>
     <!-- ./wrapper -->
 
+
+
+
+
+
+
+     <!-- MODAL   -->
+        <?php          
+            include_once("modal/modal_vista_recivo.php");
+        ?>
+
+
+
     <!-- REQUIRED SCRIPTS -->
 
     <!-- jQuery -->
@@ -297,6 +349,10 @@ $resultado_cuotas = $sentencia->fetchAll();
     <script src="../views/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
     <!-- AdminLTE App -->
     <script src="../views/dist/js/adminlte.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.15.0/moment.min.js"></script>
+    <!-- importo todos los idiomas -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.15.0/moment-with-locales.min.js"></script>
 
     <script>
         function getMatriculaById() {
@@ -310,8 +366,6 @@ $resultado_cuotas = $sentencia->fetchAll();
                     console.info(data);
                     let res = $.parseJSON(data);
                     document.getElementById("numero_matricula").innerHTML = `${res.matricula_id}`;
-                    // document.getElementById("condicion").innerHTML = `${res.periodo_id}`;
-                    // document.getElementById("responsable").innerHTML = `${res.created_by}`;
                     document.getElementById("fecha_matricula").innerHTML = `${res.created_date}`;
                     document.getElementById("documento_alumno").innerHTML = `${res.numero_documento}`;
                     document.getElementById("nombre_alumno").innerHTML = `${res.nombre}`;
@@ -324,11 +378,10 @@ $resultado_cuotas = $sentencia->fetchAll();
                     document.getElementById("turno").innerHTML = `${res.nombre_turno}`;
                     document.getElementById("condicion").innerHTML = `${res.condicion}`;
 
-
-
-
-
-
+                    document.getElementById("nombres_apoderado").innerHTML = `${res.nombres_apoderado}`;
+                    document.getElementById("numero_documento_apoderado").innerHTML = `${res.numero_documento_apoderado}`;
+                    document.getElementById("telefono").innerHTML = `${res.telefono}`;
+                    document.getElementById("direccion").innerHTML = `${res.direccion}`;
 
                 }
             });
@@ -338,6 +391,119 @@ $resultado_cuotas = $sentencia->fetchAll();
             getMatriculaById();
         });
     </script>
+
+
+
+<script>
+
+
+
+
+function getDetalleRecibo(ID) {
+        var body = {
+            recibo_id: ID
+        };
+        $.ajax({
+            type: "POST",
+            url: "conexion_bd/consulta_reciboid.php",
+            data: body,
+            success: function(res) {
+                console.info(res);
+                let data =JSON.parse(res)
+                console.info(data);
+                let recibo = data.recibo;
+                let arrayDetalle = data.detalle;
+                var items = '';
+                for (let i = 0; i < arrayDetalle.length; i++) {
+                    const el = arrayDetalle[i];
+                    items = items + `
+                                        <tr>
+                                            <td style="padding:3px 5px;text-transform: uppercase; ">${el.descripcion}</td>
+                                            <td style="text-align:center;padding:3px 5px; max-width: 20px!important;">${parseInt(el.unidades)}</td>
+                                            <td style="padding:3px 5px; max-width: 20px!important;">${el.precio_unitario}</td>
+                                            <td style="padding:3px 5px; ">${el.total}</td>
+                                        </tr>
+                                            `;
+                    if (arrayDetalle.length == i + 1) {
+                        console.info(items);
+                        document.getElementById('tableReciboDetalle').insertAdjacentHTML("beforebegin",items);
+                        // document.getElementById('tableReciboDetalle').insertAdjacentHTML("afterend",items);
+                        // document.getElementById("subTotal").innerHTML = subTotal.toFixed(2);
+                    }
+                }
+
+                var hoy = new Date( recibo[0].created_date);
+                var fecha = hoy.getDate() + '-' + ( hoy.getMonth() + 1 ) + '-' + hoy.getFullYear();
+                var hora = hoy.getHours() + ':' + hoy.getMinutes() + ':' + hoy.getSeconds();
+                
+
+                moment.locale('es');
+                //
+                var dateTime = moment( recibo[0].created_date);
+                // formato de fecha miercoles 1, junio 2016
+                var full = dateTime.format('dddd D, MMMM YYYY');
+                // mes
+                var mes = dateTime.format(' MMMM');
+                // dia (escrito)
+                var dia = dateTime.format('dddd');
+                // dia
+                var diaN = dateTime.format('D');
+                /////
+                // Update
+                var full2 = dateTime.format('LL');
+                //
+                var fullTime = dateTime.format('llll');
+
+                console.log(full, mes, dia, diaN, full2, fullTime );
+
+                document.getElementById("idResponsableRecibo").innerHTML = recibo[0].responsable; 
+                document.getElementById("idMontoTotalRecibo").innerHTML = recibo[0].monto_total;
+                document.getElementById("idReciboRecibo").innerHTML = recibo[0].recibo_id;
+                document.getElementById("idNombreSedeRecibo").innerHTML = recibo[0].nombre_sede;
+                document.getElementById("idCreadoPor").innerHTML = recibo[0].created_by;
+                document.getElementById("idDescripcionRecibo").innerHTML = recibo[0].descripcion;
+                document.getElementById("idFechaRecibo").innerHTML = full;
+                document.getElementById("idHoraRecibo").innerHTML = hora;
+                // document.getElementById("idfullTime").innerHTML = fullTime;
+
+                openModalReciboEmitido();
+            }
+        });
+    }
+
+
+
+    function openModalReciboEmitido() {
+        $('#modalReciboEmitido').modal('show');
+    }
+
+    function printRoy() {
+        var div = document.querySelector("#printId");
+        var ventana = window.open('', 'PRINT', 'height=600,width=1000');
+        ventana.document.write('<html>');
+
+        ventana.document.write('<body>');
+        ventana.document.write('<br> <br><div class="container-fluid">');
+
+        ventana.document.write('<div class="row">');
+        ventana.document.write('<div>');
+        ventana.document.write(div.innerHTML);
+        ventana.document.write('</div>');
+        ventana.document.write('</div>');
+
+        ventana.document.write('</div>');
+        ventana.document.write('</body></html>');
+
+        ventana.document.close();
+
+        ventana.focus();
+        ventana.print();
+        ventana.close();
+        return true;
+    }
+</script>
+
+
 </body>
 
 </html>

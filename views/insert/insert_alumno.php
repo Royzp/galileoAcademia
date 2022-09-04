@@ -7,9 +7,12 @@ if ($con->connect_errno) {
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
-    $sede_recibo_id = "1";//  desde donde esta asignado el usuario
-    $nombre_usuario = "Administrador developer";//  desde donde esta asignado el usuario
-
+    $creado_por_nombre = $con->real_escape_string(htmlentities($_POST['creado_por_nombre']));
+    $creado_por_apellido = $con->real_escape_string(htmlentities($_POST['creado_por_apellido']));
+    //
+    $created_by = $creado_por_nombre.' '.$creado_por_apellido;
+    $id_user = $con->real_escape_string(htmlentities($_POST['id_user']));
+    $sede_user_id = $con->real_escape_string(htmlentities($_POST['sede_id']));
 
     // datos de la persona
     $tipo_documento  = $con->real_escape_string(htmlentities($_POST['tipo_documento']));
@@ -24,11 +27,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $carrera_alumno         = $con->real_escape_string(htmlentities($_POST['carrera_alumno']));
     $turno_alumno           = $con->real_escape_string(htmlentities($_POST['turno_alumno']));
     $direcc_alumno          = $con->real_escape_string(htmlentities($_POST['direcc_alumno']));
-    $sede                   = $con->real_escape_string(htmlentities($_POST['sede_matricula']));
+    // $sede                   = $con->real_escape_string(htmlentities($_POST['sede_matricula']));
     $modalidad              = $con->real_escape_string(htmlentities($_POST['modalidad_academia']));
     $ciclo_id               = $con->real_escape_string(htmlentities($_POST['ciclo_id']));
     $periodo_id             = $con->real_escape_string(htmlentities($_POST['periodo_id']));
-    $nombre_apodera         = $con->real_escape_string(htmlentities($_POST['nombre_apoderado']));
+    $nombre_apoderado         = $con->real_escape_string(htmlentities($_POST['nombre_apoderado']));
     $telef_apoderado        = $con->real_escape_string(htmlentities($_POST['telefono_apoderado']));
     $dni_apoderado          = $con->real_escape_string(htmlentities($_POST['dni_apoderado']));
     $direc_apoderado        = $con->real_escape_string(htmlentities($_POST['direccion_apoderado']));
@@ -48,7 +51,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $tercera_cuota          = $con->real_escape_string(htmlentities($_POST['tercera_cuota']));
     $fecha_tercera          = $con->real_escape_string(htmlentities($_POST['fecha_tercera_cuota']));
 
-    $fecha_sistem = date("Y-m-d h:i:sa");
+    $timestamp = new DateTime(null, new DateTimeZone('America/Lima'));
+    $fecha_sistem = $timestamp->format('Y-m-d H:i:s');    
 
     // 1.- BUSCAR PERSONA POR NUMERO DE DOCUMENTO
     $existe_persona = $con->query("SELECT * FROM tb_persona AS p WHERE p.numero_documento = '$numero_documento' ");
@@ -86,12 +90,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         // echo $row[0];
     }
 
+    if ($tipo_pago_matricula == 1){
+        $condicion = "PAGADO";
+    }else{
+        $condicion = "PENDIENTE";
+    }
     // 3.- REGISTRAR MATRICULA
     $ins_matricula = $con->query("INSERT INTO tb_matricula( 
                                                             persona_id,
                                                             carrera,
                                                             turno,
-                                                            sede_id,
                                                             modalidad_id,
                                                             ciclo_id,
                                                             periodo_id,
@@ -101,54 +109,59 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                                                             direccion,
                                                             tipo_pago_matricula,
                                                             medio_informacion_id,
+                                                            condicion,
+                                                            sede_id,
+                                                            id_user,
                                                             estate,
                                                             created_by,
-                                                            created_date
-                                                            )
+                                                            created_date )
                                                 VALUES (
                                                         '$persona_id',
                                                         '$carrera_alumno',
                                                         '$turno_alumno',
-                                                        '$sede',
                                                         '$modalidad ',
                                                         '$ciclo_id ',
                                                         '$periodo_id',
-                                                        '$nombre_apodera',
+                                                        '$nombre_apoderado',
                                                         '$dni_apoderado',
                                                         '$telef_apoderado',
                                                         '$direc_apoderado',
                                                         '$tipo_pago_matricula',
                                                         '$promo_academia',
+                                                        '$condicion',
+                                                        '$sede_user_id',
+                                                        '$id_user',
                                                         'Y',
-                                                        'Admin Developer',
+                                                        '$created_by',
                                                         '$fecha_sistem')");
     // echo 'success';
     if ($ins_matricula == true) {
         $matricula_id = $con->insert_id;
-        // print_r("PRUEBAA:");
-        // print_r($matricula_id);
     }
-
-    //  REGISTRA  RECIBO Y CUOTAS
-    
+    //  REGISTRA  RECIBO Y CUOTAS    
     //  valor  0  es  fraccionado
     if ($tipo_pago_matricula == 1) {
-
         //  REGISTRO DE RECIBO
         $ins_recibo = $con->query("INSERT INTO tb_recibos( 
                                                             sede_recibo_id,
                                                             tipo_concepto_id,
                                                             monto_total,
+                                                            descripcion,
+                                                            id_user,
+                                                            responsable,
                                                             status,
                                                             created_by,
                                                             created_date
                                                             )
                                                             VALUES (
-                                                                    '$sede_recibo_id',
+                                                                    '$sede_user_id',
                                                                     '1',
                                                                     '$primer_pago',
+                                                                    'PRIMERA CUOTA',
+                                                                    '$id_user',
+                                                                    '$nombre_apoderado',
                                                                     'Y',
-                                                                    '$nombre_usuario',
+                                                                    '$created_by',
                                                                     '$fecha_sistem')");
             // echo 'success';
             if ($ins_recibo == true) {
@@ -201,7 +214,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                                                                         '$fecha_sistem',
                                                                         '$recibo_cuota_unica_id',
                                                                         'Y',
-                                                                        '$nombre_usuario',
+                                                                        '$created_by',
                                                                         '$fecha_sistem'
                                                                         )");
         // echo 'success';
@@ -216,6 +229,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         
     //  $segunda_cuota   
     //  $fecha_segunda   
+
     //  $tercera_cuota   
     //  $fecha_tercera   
 
@@ -224,16 +238,22 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                                                             sede_recibo_id,
                                                             tipo_concepto_id,
                                                             monto_total,
+                                                            descripcion,
+                                                            id_user,
+                                                            responsable,
                                                             status,
                                                             created_by,
                                                             created_date
                                                             )
                                                             VALUES (
-                                                                    '$sede_recibo_id',
+                                                                    '$sede_user_id',
                                                                     '1',
                                                                     '$primer_pago',
+                                                                    'PRIMERA CUOTA',
+                                                                    '$id_user',
+                                                                    '$nombre_apoderado',
                                                                     'Y',
-                                                                    '$nombre_usuario',
+                                                                    '$created_by',
                                                                     '$fecha_sistem')");
             // echo 'success';
             if ($ins_recibo == true) {
@@ -286,7 +306,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                                                                         '$fecha_sistem',
                                                                         '$recibo_primera_cuota_id',
                                                                         'Y',
-                                                                        '$nombre_usuario',
+                                                                        '$created_by',
                                                                         '$fecha_sistem'
                                                                         )");
         // echo 'success';
@@ -315,43 +335,42 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     'PENDIENTE',
                     '$fecha_segunda',
                     'Y',
-                    '$nombre_usuario',
+                    '$created_by',
                     '$fecha_sistem'
                     )");
         // echo 'success';
         if ($ins_segunda_cuota == true) {
             $segunda_cuota_id = $con->insert_id;
-            // print_r("Id de la unica cuota:");
-            // print_r($segunda_cuota_id);
         }
     }
 
     if ($tipo_pago_matricula == 0 && $numero_cuotas == 3) {
         
-    //  $tercera_cuota   
-    //  $fecha_tercera   
-
         //  REGISTRO DE RECIBO
         $ins_recibo = $con->query("INSERT INTO tb_recibos( 
                                                             sede_recibo_id,
                                                             tipo_concepto_id,
                                                             monto_total,
+                                                            descripcion,
+                                                            id_user,
+                                                            responsable,
                                                             status,
                                                             created_by,
                                                             created_date
                                                             )
                                                     VALUES (
-                                                            '$sede_recibo_id',
+                                                            '$sede_user_id',
                                                             '1',
                                                             '$primer_pago',
+                                                            'PRIMERA CUOTA'
+                                                            '$id_user',
+                                                            '$nombre_apoderado',
                                                             'Y',
-                                                            '$nombre_usuario',
+                                                            '$created_by',
                                                             '$fecha_sistem')");
         // echo 'success';
         if ($ins_recibo == true) {
             $recibo_primera_cuota_id = $con->insert_id;
-            // print_r("Id de primera cuota:");
-            // print_r($recibo_primera_cuota_id);
         }
 
         // DETALLE  RECIBO
@@ -398,7 +417,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                             '$fecha_sistem',
                             '$recibo_primera_cuota_id',
                             'Y',
-                            '$nombre_usuario',
+                            '$created_by',
                             '$fecha_sistem'
                             )");
         // echo 'success';
@@ -428,7 +447,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             'PENDIENTE',
             '$fecha_segunda',
             'Y',
-            '$nombre_usuario',
+            '$created_by',
             '$fecha_sistem'
             )");
         // echo 'success';
@@ -457,7 +476,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             'PENDIENTE',
             '$fecha_tercera',
             'Y',
-            '$nombre_usuario',
+            '$created_by',
             '$fecha_sistem'
             )");
         // echo 'success';

@@ -34,8 +34,7 @@
                               <td align="center"><?php echo $item['nombre_turno']; ?></td>
                               <td align="center"><?php echo $item['nombre_periodo']; ?></td>
                               <td align="center"><?php echo $item['condicion']; ?></td>
-                              
-                              
+                                                           
                               <!-- <td class="text-right" style="min-width: 100px;width: 80px;"> -->
                               <td class="text-center" style="min-width: 100px;width: 80px;">
 
@@ -53,9 +52,9 @@
                                          delete_forever
                                      </i>
                                   </button>
-                                <!-- <button type="button" class="btn btn_table btn-info" onclick="goDetalle(<?php echo $item['matricula_id']; ?>)">
+                                <button type="button" class="btn btn_table btn-info" onclick="goDetalle(<?php echo $item['matricula_id']; ?>)">
                                     <i class="material-icons">more</i>
-                                </button> -->
+                                </button>
 
                               </td>
 

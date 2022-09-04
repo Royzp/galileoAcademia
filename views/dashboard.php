@@ -58,9 +58,22 @@ $mysqli = new mysqli('localhost', 'root', '', 'bd_academia');
     <div class="wrapper">
 
         <!-- Navbar -->
+        
         <?php
-        include_once("navbar_sidebar.php");
+            if($_SESSION['tipoUser'] ==  1){
+                // 1 = ADMINISTRADO
+                include_once("navbar_sidebar.php");
+            }
+            if($_SESSION['tipoUser'] ==  2){
+                // 2 = GERENTE
+                include_once("navbar_sidebar_g.php");
+            }
+            if($_SESSION['tipoUser'] ==  3){
+                // 3 = SECRETARIA
+                include_once("navbar_sidebar_s.php");
+            }
         ?>
+
 
         <!-- Content Wrapper. Contains page content -->
         <div class="content-wrapper">

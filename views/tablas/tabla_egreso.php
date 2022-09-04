@@ -13,11 +13,12 @@
                      
                       <th>ID</th>
                       <th>TIPO EGRESO</th>                      
+                      <th>TIPO COMPROBANTE</th>                      
+                      <th>NUMERO COMRPOBANTE</th>                      
                       <th>DESCRIPCION</th>  
                       <th>MONTO</th>  
                       <th>FECHA PAGO</th>                      
-                                               
-                           
+                                                                          
                       <th style="max-width: 100px;width: 50px;">ACCIÓN</th>
 
                   </tr>
@@ -29,6 +30,24 @@
                           <tr style="font-size: 13px;">
                               <td align="center"><?php echo $item['id_egreso']; ?></td>                              
                               <td align="center"><?php echo $item['nombre_tipo_egreso']; ?></td>
+                              
+                              <td align="center"><?php
+
+                              if( $item['tipo_comprobante_id'] == 1){
+                                echo 'BOLETA'; 
+                              }
+                              if( $item['tipo_comprobante_id'] == 2){
+                                echo 'FACTURA'; 
+                              }
+                              if( $item['tipo_comprobante_id'] == 3){
+                                echo 'SIN COMPROBANTE'; 
+                              }
+                              if( $item['tipo_comprobante_id'] == '' ||  $item['tipo_comprobante_id'] == null){
+                                echo 'SIN COMPROBANTE'; 
+                              }
+                              
+                              ?></td>
+                              <td align="center"><?php echo $item['numero_comprobante']; ?></td>
                               <td align="center"><?php echo $item['descripcion']; ?></td>
                               <td align="center"><?php echo $item['monto_egreso']; ?></td>
                               <td align="center"><?php echo $item['fecha_pago']; ?></td>

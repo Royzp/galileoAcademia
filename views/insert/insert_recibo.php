@@ -7,7 +7,10 @@ if ($con->connect_errno) {
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     
-    $fecha_sistem = date("Y-m-d h:i:sa");
+    
+    $timestamp = new DateTime(null, new DateTimeZone('America/Lima'));
+    $fecha_sistem = $timestamp->format('Y-m-d H:i:s');    
+    // $fecha_sistem = date("Y-m-d h:i:sa");
     
     // 
     $sede_recibo_id  = $_POST['sede_recibo_id'];
