@@ -8,7 +8,8 @@ $concepto = $row['concepto'];
 
     ?>   
         <div>
-            <input type="text" class="form-control" value="S/.<?php echo $precio; ?>" id="precio_venta" name="precio_venta" autocomplete="off" style="text-align: center;" readonly="readonly">
+            <!-- <input type="text" class="form-control" value="S/.<?php echo $precio; ?>" id="precio_venta" name="precio_venta" autocomplete="off" style="text-align: center;"> -->
+            <input type="tel" class="form-control" placeholder="0.00" id="precio_venta" name="precio_venta" autocomplete="off" style="text-align: center;">
             <input type="hidden" class="form-control" value="<?php echo $concepto; ?>" id="nombre_producto" name="nombre_producto" autocomplete="off" style="text-align: center;" readonly="readonly">
         </div>
         

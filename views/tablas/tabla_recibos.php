@@ -46,15 +46,16 @@
                                      class="btn btn_table btn-info btnEditarDocument" 
                                      data-toggle="modal" 
                                      data-target="#exampleModal2" 
-                                     data-id="<?php echo $item['matricula_id']; ?>" 
+                                     data-id="<?php echo $item['recibo_id']; ?>" 
                                      data-producto="<?php echo $item['nombre']; ?>" >
                                       <i class="material-icons">more</i>
                                   </button>
-                                <button type="button" class="btn btn_table btn-info" onclick="goDetalle(<?php echo $item['matricula_id']; ?>)">
+                                <button type="button" class="btn btn_table btn-info" onclick="getDetalleRecibo(<?php echo $item['recibo_id']; ?>)">
                                     <i class="material-icons">more</i>
                                 </button>
 
                               </td>
+
 
 
                           </tr>

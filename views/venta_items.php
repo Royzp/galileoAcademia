@@ -1,10 +1,8 @@
 <?php
     session_start();
-
     if (empty($_SESSION['active'])) {
         header('location: http://localhost:8080/GalileoAcademia/');
     }
-
     include_once 'conexion_bd/conexion.php';
     $mysqli = new mysqli('localhost', 'root', '', 'bd_academia');
 ?>
@@ -32,7 +30,7 @@
 </head>
 
 
-<style type="text/css">
+<!-- <style type="text/css">
 .indicadores_monto {
     height: 75px;
     width: 100%;
@@ -55,15 +53,13 @@
 
 table {
     width: 100%;
-    /* margin-top: 80px; */
-    /* border: 1px solid #343a40; */
+  
     border-collapse: collapse;
     font-size: 14px;
 }
 
 th,
 td {
-    /* border: 1px solid #343a40; */
     padding: 16px 10px;
     text-align: left;
 }
@@ -81,7 +77,7 @@ tbody tr:nth-child(even) {
 tbody tr:nth-child(odd) {
     background-color: #e9ecef;
 }
-</style>
+</style> -->
 
 <style>
 .select2-container .select2-selection--single {
@@ -94,16 +90,23 @@ tbody tr:nth-child(odd) {
 <body class="hold-transition sidebar-mini">
     <div class="wrapper">
 
-        <!-- Navbar -->
         <?php
-            include_once("navbar_sidebar.php");
+            if($_SESSION['tipoUser'] ==  1){
+                // 1 = ADMINISTRADO
+                include_once("navbar_sidebar.php");
+            }
+            if($_SESSION['tipoUser'] ==  2){
+                // 2 = GERENTE
+                include_once("navbar_sidebar_g.php");
+            }
+            if($_SESSION['tipoUser'] ==  3){
+                // 3 = SECRETARIA
+                include_once("navbar_sidebar_s.php");
+            }
         ?>
         <!-- Content Wrapper. Contains page content -->
         <div class="content-wrapper">
-
-
             <!-- Main content -->
-
             <div class="container">
 
                 <!-- <form id="formVentas" name="formVenta"> -->
@@ -114,7 +117,6 @@ tbody tr:nth-child(odd) {
                             <b>
                                 <h4 class="m-0 text-left"
                                     style="font-family:'Source Sans Pro';font-weight: bold;font-size: 19px;">
-                                    <!-- <img src="../views/dist/img/regist.jpg" style="height:35px;width: auto;">  -->
                                     VENTA DE ITEMS
                                 </h4>
                             </b>
@@ -163,8 +165,8 @@ tbody tr:nth-child(odd) {
                                         <tr>
                                             <td>
                                                 <div id="preProducto">
-                                                    <input type="text" class="text-center form-control" value="0.00"
-                                                        readonly>
+                                                    <input type="text" class="text-center form-control"
+                                                        placeholder="0.00" readonly>
                                                 </div>
                                             </td>
                                             <td>
@@ -228,18 +230,8 @@ tbody tr:nth-child(odd) {
                     </div>
                 </div>
 
-                <!-- </form> -->
-
-
-
-
-
-
-
-
                 <!-- /.content -->
             </div>
-
 
             <button class="btn" onclick="openModalReciboEmitido()">Modal</button>
 
@@ -248,96 +240,9 @@ tbody tr:nth-child(odd) {
         </div>
         <!-- /.content-wrapper -->
 
-
-
-
-
-        <!-- MODAL   -->
-        <div class="modal fade bd-example-modal-lg" id="modalReciboEmitido" tabindex="-1" role="dialog"
-            aria-labelledby="myLargeModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-lg">
-                <div class="modal-content">
-                    <div class="modal-header" style="background-color:#1471B6; ">
-                        <b>
-                            <P class="modal-title" id="exampleModalLongTitle"
-                                style="font-size: 30px;color: #FFFFFF; font-family: arial;">
-                                <i class="fa fa-cloud-upload" aria-hidden="true">
-                                    Recibo emitido
-                                </i>
-                            </P>
-                        </b>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-
-                        <div class="container-fluid">
-                            <div class="row">
-                                <div class="col-12">
-
-                                   
-                                        <div class="ticket" id="printId">
-                                            <img style="width: 90px;" src="https://yt3.ggpht.com/-3BKTe8YFlbA/AAAAAAAAAAI/AAAAAAAAAAA/ad0jqQ4IkGE/s900-c-k-no-mo-rj-c0xffffff/photo.jpg"
-                                                alt="Logotipo">
-                                            <p class="centrado">Parzibyte's blog
-                                                <br>New New York
-                                                <br>23/08/2017 08:22 a.m.
-                                            </p>
-                                            <table>
-                                                <thead>
-                                                    <tr>
-                                                        <th class="cantidad">CANT</th>
-                                                        <th class="producto">PRODUCTO</th>
-                                                        <th class="precio">$$</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    <tr>
-                                                        <td class="cantidad">1.00</td>
-                                                        <td class="producto">CHEETOS VERDES 80 G</td>
-                                                        <td class="precio">$8.50</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td class="cantidad">2.00</td>
-                                                        <td class="producto">KINDER DELICE</td>
-                                                        <td class="precio">$10.00</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td class="cantidad">1.00</td>
-                                                        <td class="producto">COCA COLA 600 ML</td>
-                                                        <td class="precio">$10.00</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td class="cantidad"></td>
-                                                        <td class="producto">TOTAL</td>
-                                                        <td class="precio">$28.50</td>
-                                                    </tr>
-                                                </tbody>
-                                            </table>
-                                            <p class="centrado">¡GRACIAS POR SU COMPRA!
-                                                <br>parzibyte.me
-                                            </p>
-                                        </div>
-
-                                </div>
-
-                                <div class="col-12">
-                                <button class="btn" onclick="printDocument('printId')">IMPRIMIR</button>
-                                <!-- <button class="btn" onclick="print()">IMPRIMIR</button> -->
-
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-        </div>
-
-
-
-
+        <?php          
+            include_once("modal/modal_vista_recivo.php");
+        ?>
 
     </div>
     <!-- ./wrapper -->
@@ -366,6 +271,10 @@ tbody tr:nth-child(odd) {
 
     <link rel="stylesheet" type="text/css" href="../views/plugins/sweetalert2/sweetalert2.css">
     <script type="text/javascript" charset="utf8" src="../views/plugins/sweetalert2/sweetalert2.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.15.0/moment.min.js"></script>
+    <!-- importo todos los idiomas -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.15.0/moment-with-locales.min.js"></script>
 
 
     <script type="text/javascript">
@@ -409,13 +318,13 @@ tbody tr:nth-child(odd) {
     var array_productos = [];
 
     function calcularNuevaVenta() {
-
+        console.info("prueba");
         //  declaracion de VALORES  BASE            
         var CP = parseFloat(document.getElementById("cantidad_producto").value); //  Numero de Productos
         var PV_STRING = document.getElementById("precio_venta").value; //  Precio de Producto
-        var PV = parseFloat(PV_STRING.substr(3)); //  Precio de Producto        
+        var PV = parseFloat(PV_STRING); //  Precio de Producto        
+        // var PV = parseFloat(PV_STRING.substr(3)); //  Precio de Producto        
         var PDN = document.getElementById("nombre_producto").value;
-
         let TV = CP * PV;
         // $("#total_venta").val(TV.toFixed(0));
         array_productos.push({
@@ -423,6 +332,7 @@ tbody tr:nth-child(odd) {
             nombre_producto: PDN.trim(),
             cantidad_producto: CP.toFixed(0),
             precio_producto: PV.toFixed(2),
+            // precio_producto: document.getElementById("precio_venta").value,
             total_venta: TV.toFixed(2)
         })
         // insertar a la tabla
@@ -500,7 +410,6 @@ tbody tr:nth-child(odd) {
         })
     }
 
-
     function insertRecibo() {
         var body = {
             sede_recibo_id: 1,
@@ -517,10 +426,87 @@ tbody tr:nth-child(odd) {
             url: "insert/insert_recibo.php",
             data: body,
             success: function(res) {
-                alert(res);
+                // alert(res);
+                getDetalleRecibo(res);
+
             }
         });
 
+    }
+
+
+
+    function getDetalleRecibo(ID) {
+        var body = {
+            recibo_id: ID
+        };
+        $.ajax({
+            type: "POST",
+            url: "conexion_bd/consulta_reciboid.php",
+            data: body,
+            success: function(res) {
+                console.info(res);
+                let data = JSON.parse(res)
+                console.info(data);
+                let recibo = data.recibo;
+                let arrayDetalle = data.detalle;
+                var items = '';
+                for (let i = 0; i < arrayDetalle.length; i++) {
+                    const el = arrayDetalle[i];
+                    items = items + `
+                                        <tr>
+                                            <td style="padding:3px 5px;text-transform: uppercase; ">${el.descripcion}</td>
+                                            <td style="text-align:center;padding:3px 5px; max-width: 20px!important;">${parseInt(el.unidades)}</td>
+                                            <td style="padding:3px 5px; max-width: 20px!important;">${el.precio_unitario}</td>
+                                            <td style="padding:3px 5px; ">${el.total}</td>
+                                        </tr>
+                                            `;
+                    if (arrayDetalle.length == i + 1) {
+                        console.info(items);
+                        document.getElementById('tableReciboDetalle').insertAdjacentHTML("beforebegin",
+                            items);
+                        // document.getElementById('tableReciboDetalle').insertAdjacentHTML("afterend",items);
+                        // document.getElementById("subTotal").innerHTML = subTotal.toFixed(2);
+                    }
+                }
+
+                var hoy = new Date(recibo[0].created_date);
+                var fecha = hoy.getDate() + '-' + (hoy.getMonth() + 1) + '-' + hoy.getFullYear();
+                var hora = hoy.getHours() + ':' + hoy.getMinutes() + ':' + hoy.getSeconds();
+
+
+                moment.locale('es');
+                //
+                var dateTime = moment(recibo[0].created_date);
+                // formato de fecha miercoles 1, junio 2016
+                var full = dateTime.format('dddd D, MMMM YYYY');
+                // mes
+                var mes = dateTime.format(' MMMM');
+                // dia (escrito)
+                var dia = dateTime.format('dddd');
+                // dia
+                var diaN = dateTime.format('D');
+                /////
+                // Update
+                var full2 = dateTime.format('LL');
+                //
+                var fullTime = dateTime.format('llll');
+
+                console.log(full, mes, dia, diaN, full2, fullTime);
+
+                document.getElementById("idResponsableRecibo").innerHTML = recibo[0].responsable;
+                document.getElementById("idMontoTotalRecibo").innerHTML = recibo[0].monto_total;
+                document.getElementById("idReciboRecibo").innerHTML = recibo[0].recibo_id;
+                document.getElementById("idNombreSedeRecibo").innerHTML = recibo[0].nombre_sede;
+                document.getElementById("idCreadoPor").innerHTML = recibo[0].created_by;
+                document.getElementById("idDescripcionRecibo").innerHTML = recibo[0].descripcion;
+                document.getElementById("idFechaRecibo").innerHTML = full;
+                document.getElementById("idHoraRecibo").innerHTML = hora;
+                // document.getElementById("idfullTime").innerHTML = fullTime;
+
+                openModalReciboEmitido();
+            }
+        });
     }
 
 
@@ -529,69 +515,30 @@ tbody tr:nth-child(odd) {
         $('#modalReciboEmitido').modal('show');
     }
 
-    function print() 
-    {
+    function printRoy() {
+        var div = document.querySelector("#printId");
+        var ventana = window.open('', 'PRINT', 'height=600,width=1000');
+        ventana.document.write('<html>');
 
-        var divToPrint = document.getElementById('printId');  
-    //Firefox was just opening a new window with same content as opener and not performing the printing dialog, so needed to make it open a new instance of the window opener    
-        // newWin= window.open(self.location.href);
-    //We want to format the document appropriately
-       newWin.document.write("\<!DOCTYPE html\>\<html lang='es'\>\<head\>\<meta charset='utf-8'\/\>\<meta name='viewport' content='width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no'><meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'\>\<meta name='HandheldFriendly' content='true'\/\>");
-    //HTML ELEMENTS THAT WE WANT TO HIDE FROM THE PRINTING AREA
-        newWin.document.write("<style type='text/css'>@media print{.dataTables_info,.dataTables_filter{height:0!important;width:0!important;margin:0!important;padding:0!important;min-height:0!important;line-height:0!important;overflow:visible!important;visibility:hidden}");
-        newWin.document.write("<style  rel='stylesheet' media='print'  href='styles/style_ticket_print.css'>");
-    //General Styling for Printing
-        newWin.document.write("body {z-index:100!important;visibility:visible!important;position:relative!important;display:block!important;background-color:lightgray!important;height:297mm!important;width:211mm!important;position:relative!important;padding:0;top:0!important;left:0!important;margin:0!important;orphans:0!important;widows:0!important;overflow:visible!important;page-break-after:always}");
-    //Some forced styling in css rules includying page break for a div
-        newWin.document.write("body h1{font-size:1em; font-family:Verdana;} a.marked{color:black; text-decoration:none} .pagebreak { page-break-before: always; } ");
-        newWin.document.write("@page{size:A4; margin:2em; orphans:0!important;widows:0!important}}</style>\<\/head>\<body>");
-        newWin.document.write(divToPrint.innerHTML);
-        newWin.document.write("</body></html>");
+        ventana.document.write('<body>');
+        ventana.document.write('<br> <br><div class="container-fluid">');
 
-        // newWin.document.close();
-        newWin.focus();
-        newWin.print();
-        // newWin.close();
-        // newWin.focus();
-        // newWin.print();
+        ventana.document.write('<div class="row">');
+        ventana.document.write('<div>');
+        ventana.document.write(div.innerHTML);
+        ventana.document.write('</div>');
+        ventana.document.write('</div>');
+
+        ventana.document.write('</div>');
+        ventana.document.write('</body></html>');
+
+        ventana.document.close();
+
+        ventana.focus();
+        ventana.print();
+        ventana.close();
+        return true;
     }
-
-
-
-
-    function printDocument(elemid) {
-
-//Check if element is empty
-if (elemid == "") {
-    window.print();
-}
-else {
-    //array to store ids separated with comma if available
-    var arrelemid = elemid.split(',');
-    var htmlContent = "";
-    for (var i = 0; i < arrelemid.length; i++) {
-        htmlContent += document.getElementById(arrelemid[i]).innerHTML;
-    }
-
-    //Window Width (ww) and Window Height (wh) of the user's screen, in pixels
-    var ww = screen.availWidth;
-    var wh = screen.availHeight - 90;
-
-    //Print Window (pw)
-    var pw = window.open("", "newWin", "width=" + ww + ",height=" + wh);
-    pw.document.write('<html><title>Printed Page</title><body>');
-    pw.document.write('</head><body>');
-    pw.document.write(htmlContent);
-    pw.document.write('</body></html>');
-    pw.document.close();
-    pw.print();
-    pw.close();
-
-    // Created by Sartaj Husain for www.codebrary.com
-}
-}
-
-
     </script>
 
 

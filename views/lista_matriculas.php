@@ -52,9 +52,22 @@ include_once 'conexion_bd/datos_matriculas.php';
     <div class="wrapper">
 
         <!-- Navbar -->
+        
         <?php
-            include_once("navbar_sidebar.php");
+            if($_SESSION['tipoUser'] ==  1){
+                // 1 = ADMINISTRADO
+                include_once("navbar_sidebar.php");
+            }
+            if($_SESSION['tipoUser'] ==  2){
+                // 2 = GERENTE
+                include_once("navbar_sidebar_g.php");
+            }
+            if($_SESSION['tipoUser'] ==  3){
+                // 3 = SECRETARIA
+                include_once("navbar_sidebar_s.php");
+            }
         ?>
+
 
         <!-- Content Wrapper. Contains page content -->
         <div class="content-wrapper">
@@ -346,21 +359,15 @@ include_once 'conexion_bd/datos_matriculas.php';
                 showCancelButton: true,
                 confirmButtonColor: '#3085d6',
                 cancelButtonColor: '#d33',
-                confirmButtonText: 'Sí, ingresar'
+                confirmButtonText: 'Sí, eliminar'
             }).then((result) => {
                 if (result.isConfirmed) {
-
                     $.ajax({
                         url: 'delete/delete_matricula.php',
                         type: 'POST',
-                        data: {
-
-                            
-                            status_eliminar: $('#estado_elim').val(),
-                            
-
+                        data: {                            
+                            status_eliminar: $('#estado_elim').val(),    
                             id_matricula: $('#id_elim_Matricula').val()
-
                         },
 
                         success(data) {

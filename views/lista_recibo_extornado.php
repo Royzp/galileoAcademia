@@ -3,6 +3,7 @@ session_start();
 if (empty($_SESSION['active'])) {
     header('location: http://localhost:8080/GalileoAcademia/');
 }
+
 $mysqli = new mysqli('localhost', 'root', '', 'bd_academia');
 include_once 'conexion_bd/conexion.php';
 include_once 'conexion_bd/config_conexion.php';
@@ -16,7 +17,7 @@ include_once 'conexion_bd/datos_recibos_extorno.php';
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Ferreteria</title>
+    <title>Academia</title>
     <script src="../views/plugins/jquery/jquery.min.js"></script>
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet"
@@ -52,9 +53,22 @@ include_once 'conexion_bd/datos_recibos_extorno.php';
     <div class="wrapper">
 
         <!-- Navbar -->
+        
         <?php
-            include_once("navbar_sidebar.php");
+            if($_SESSION['tipoUser'] ==  1){
+                // 1 = ADMINISTRADO
+                include_once("navbar_sidebar.php");
+            }
+            if($_SESSION['tipoUser'] ==  2){
+                // 2 = GERENTE
+                include_once("navbar_sidebar_g.php");
+            }
+            if($_SESSION['tipoUser'] ==  3){
+                // 3 = SECRETARIA
+                include_once("navbar_sidebar_s.php");
+            }
         ?>
+
 
         <!-- Content Wrapper. Contains page content -->
         <div class="content-wrapper">

@@ -16,7 +16,7 @@ include_once 'conexion_bd/datos_recibos.php';
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Ferreteria</title>
+    <title>Academia</title>
     <script src="../views/plugins/jquery/jquery.min.js"></script>
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet"
@@ -51,10 +51,22 @@ include_once 'conexion_bd/datos_recibos.php';
 <body class="hold-transition sidebar-mini">
     <div class="wrapper">
 
-        <!-- Navbar -->
+        
         <?php
-            include_once("navbar_sidebar.php");
+            if($_SESSION['tipoUser'] ==  1){
+                // 1 = ADMINISTRADO
+                include_once("navbar_sidebar.php");
+            }
+            if($_SESSION['tipoUser'] ==  2){
+                // 2 = GERENTE
+                include_once("navbar_sidebar_g.php");
+            }
+            if($_SESSION['tipoUser'] ==  3){
+                // 3 = SECRETARIA
+                include_once("navbar_sidebar_s.php");
+            }
         ?>
+
 
         <!-- Content Wrapper. Contains page content -->
         <div class="content-wrapper">
@@ -144,6 +156,146 @@ include_once 'conexion_bd/datos_recibos.php';
 
 
 
+
+
+
+
+        <!-- MODAL   -->
+        <div class="modal fade bd-example-modal-lg" id="modalReciboEmitido" tabindex="-1" role="dialog"
+            aria-labelledby="myLargeModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header"
+                        style="background-color:#1471B6; background-color: #1471B6;padding: 0px 15px;">
+                        <b>
+                            <P class="modal-title" id="exampleModalLongTitle"
+                                style="font-size: 30px;color: #FFFFFF; font-family: arial;">
+                                <i class="fa fa-cloud-upload" aria-hidden="true" style="font-size: 18px;
+                                    text-transform: uppercase;
+                                    font-family: 'Source Sans Pro';">
+                                    Recibo emitido
+                                </i>
+                            </P>
+                        </b>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true" style="position: relative;
+                                top: 5px;
+                                font-size: 36px;">
+                                &times;
+                            </span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+
+                        <div class="container-fluid">
+                            <div class="row">
+                                <div class="col-12 text-center">
+
+
+
+
+                                    <!-- <div class="ticket" id="printId" style="width: 300px;"> -->
+                                    <div id="printId" style="width: 300px;margin: 0 auto;">
+                                        <div style="width: 100%;text-align:center">
+                                            <img style="width: 200px;" src="../assets/img/logo_recibo.png"
+                                                alt="Logotipo">
+                                        </div>
+                                        <p style="text-align:center;margin-bottom: 0px;">
+                                            Parzibyte's blog
+                                            <br> RECIBO N° <span id="idReciboRecibo"></span>
+                                        </p>
+                                        <p
+                                            style="text-align: left;font-size: 16px;margin-bottom: 0px;text-transform: uppercase;font-weight: 600;">
+                                            SEDE : <span id="idNombreSedeRecibo"> </span>
+                                        </p>
+                                        <p style="text-align:justify; font-size: 15px;margin-bottom: 0px;">
+
+                                            F: <span id="idFechaRecibo"></span> - <span id="idHoraRecibo"></span>
+
+                                        </p>
+                                        <!-- <p style="text-align:justify; font-size: 15px;margin-bottom: 0px;">
+                                            Fecha: <span id="idFechaRecibo"></span> - Hora: <span id="idHoraRecibo"></span>
+                                        </p> -->
+
+                                        <p style="text-align:center; font-size: 18px;margin-bottom: 0px;">
+                                            <b id="idDescripcionRecibo">
+
+                                                <b>
+                                        </p>
+
+                                        <p style="text-align:center; font-size: 18px;margin-bottom: 0px;">
+                                            <b>
+                                                <span id="idResponsableRecibo"></span>
+                                                <b>
+                                        </p>
+
+                                        <table
+                                            style="text-align:left;width: 100%;font-family: 'Source Sans Pro';font-weight:400;">
+                                            <!-- <thead> -->
+                                            <tr>
+                                                <th
+                                                    style="padding:3px 5px;font-size: 14px!important;font-weight:400;background: #fff;">
+                                                    PRODUCTO</th>
+                                                <th
+                                                    style="padding:3px 5px;font-size: 14px!important;font-weight:400;background: #fff;">
+                                                    CANT</th>
+                                                <th
+                                                    style="padding:3px 5px;font-size: 14px!important;font-weight:400;background: #fff;">
+                                                    PU</th>
+                                                <th
+                                                    style="padding:3px 5px;font-size: 14px!important;font-weight:400;background: #fff;">
+                                                    s/</th>
+                                            </tr>
+
+                                            <!-- </thead> -->
+                                            <tbody id="tableReciboDetalle">
+
+                                                <tr>
+                                                    <td style="text-align:center;padding:3px 5px; max-width: 20px;">
+                                                    </td>
+                                                    <td style="padding:3px 5px; max-width: 20px;"></td>
+                                                    <td style="    padding: 3px 5px;
+                                                                    text-transform: uppercase;
+                                                                    text-align: right;
+                                                                    font-weight: bold;">TOTAL</td>
+                                                    <td style="padding:3px 5px; " id="idMontoTotalRecibo"></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                        <p style="margin-top: 20px;">
+                                            ¡GRACIAS POR SU PREFERENCIA!
+                                            <!-- <br>parzibyte.me -->
+                                        </p>
+
+                                        <p style="    margin-bottom: 0px;
+                                                    font-weight: 400;
+                                                    font-size: 13px;
+                                                    text-align: left;
+                                                    text-transform: uppercase;">
+                                            Vendedor: <span id="idCreadoPor"></span>
+
+                                        </p>
+
+
+                                    </div>
+
+                                </div>
+
+                                <div class="col-12">
+                                    <!-- <button class="btn" onclick="printDocument('printId')">IMPRIMIR</button> -->
+                                    <button class="btn" onclick="printRoy()">IMPRIMIR</button>
+
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
     <!-- REQUIRED SCRIPTS -->
 
     <!-- jQuery -->
@@ -163,6 +315,10 @@ include_once 'conexion_bd/datos_recibos.php';
     </script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.15.0/moment.min.js"></script>
+    <!-- importo todos los idiomas -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.15.0/moment-with-locales.min.js"></script>
 
     <script type="text/javascript">
     $(document).ready(function() {
@@ -718,6 +874,113 @@ include_once 'conexion_bd/datos_recibos.php';
     </script>
 
 
+
+<script>
+    
+    function getDetalleRecibo(ID) {
+        var body = {
+            recibo_id: ID
+        };
+        $.ajax({
+            type: "POST",
+            url: "conexion_bd/consulta_reciboid.php",
+            data: body,
+            success: function(res) {
+                console.info(res);
+                let data = JSON.parse(res)
+                console.info(data);
+                let recibo = data.recibo;
+                let arrayDetalle = data.detalle;
+                var items = '';
+                for (let i = 0; i < arrayDetalle.length; i++) {
+                    const el = arrayDetalle[i];
+                    items = items + `
+                                        <tr>
+                                            <td style="padding:3px 5px;text-transform: uppercase; ">${el.descripcion}</td>
+                                            <td style="text-align:center;padding:3px 5px; max-width: 20px!important;">${parseInt(el.unidades)}</td>
+                                            <td style="padding:3px 5px; max-width: 20px!important;">${el.precio_unitario}</td>
+                                            <td style="padding:3px 5px; ">${el.total}</td>
+                                        </tr>
+                                            `;
+                    if (arrayDetalle.length == i + 1) {
+                        console.info(items);
+                        document.getElementById('tableReciboDetalle').insertAdjacentHTML("beforebegin",
+                            items);
+                        // document.getElementById('tableReciboDetalle').insertAdjacentHTML("afterend",items);
+                        // document.getElementById("subTotal").innerHTML = subTotal.toFixed(2);
+                    }
+                }
+
+                var hoy = new Date(recibo[0].created_date);
+                var fecha = hoy.getDate() + '-' + (hoy.getMonth() + 1) + '-' + hoy.getFullYear();
+                var hora = hoy.getHours() + ':' + hoy.getMinutes() + ':' + hoy.getSeconds();
+
+
+                moment.locale('es');
+                //
+                var dateTime = moment(recibo[0].created_date);
+                // formato de fecha miercoles 1, junio 2016
+                var full = dateTime.format('dddd D, MMMM YYYY');
+                // mes
+                var mes = dateTime.format(' MMMM');
+                // dia (escrito)
+                var dia = dateTime.format('dddd');
+                // dia
+                var diaN = dateTime.format('D');
+                /////
+                // Update
+                var full2 = dateTime.format('LL');
+                //
+                var fullTime = dateTime.format('llll');
+
+                console.log(full, mes, dia, diaN, full2, fullTime);
+
+                document.getElementById("idResponsableRecibo").innerHTML = recibo[0].responsable;
+                document.getElementById("idMontoTotalRecibo").innerHTML = recibo[0].monto_total;
+                document.getElementById("idReciboRecibo").innerHTML = recibo[0].recibo_id;
+                document.getElementById("idNombreSedeRecibo").innerHTML = recibo[0].nombre_sede;
+                document.getElementById("idCreadoPor").innerHTML = recibo[0].created_by;
+                document.getElementById("idDescripcionRecibo").innerHTML = recibo[0].descripcion;
+                document.getElementById("idFechaRecibo").innerHTML = full;
+                document.getElementById("idHoraRecibo").innerHTML = hora;
+                // document.getElementById("idfullTime").innerHTML = fullTime;
+
+                openModalReciboEmitido();
+            }
+        });
+    }
+
+
+
+    function openModalReciboEmitido() {
+        $('#modalReciboEmitido').modal('show');
+    }
+
+    function printRoy() {
+        var div = document.querySelector("#printId");
+        var ventana = window.open('', 'PRINT', 'height=600,width=1000');
+        ventana.document.write('<html>');
+
+        ventana.document.write('<body>');
+        ventana.document.write('<br> <br><div class="container-fluid">');
+
+        ventana.document.write('<div class="row">');
+        ventana.document.write('<div>');
+        ventana.document.write(div.innerHTML);
+        ventana.document.write('</div>');
+        ventana.document.write('</div>');
+
+        ventana.document.write('</div>');
+        ventana.document.write('</body></html>');
+
+        ventana.document.close();
+
+        ventana.focus();
+        ventana.print();
+        ventana.close();
+        return true;
+    }
+</script>
 
 
 
