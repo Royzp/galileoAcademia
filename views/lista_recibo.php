@@ -522,7 +522,10 @@ include_once 'conexion_bd/datos_recibos.php';
         var recibo_id   = $(this).attr("data-numrecibo");
         var nombre_sede = $(this).attr("data-sede");
         var monto_total = $(this).attr("data-monto");
+        var descripcion = $(this).attr("data-descripcion");
         var status = $(this).attr("data-status");
+
+        
        
 
         
@@ -533,6 +536,7 @@ include_once 'conexion_bd/datos_recibos.php';
         $('#numero_recibo_elim').attr('value', recibo_id);
         $('#sede_elim').attr('value', nombre_sede);
         $('#monto_elim').attr('value', monto_total);
+        $('#descripcion_elimimar').attr('value', descripcion);
         $('#estado_elim').attr('value', status);
 
        
@@ -574,7 +578,7 @@ include_once 'conexion_bd/datos_recibos.php';
 
 
             Swal.fire({
-                title: 'Estas seguro de Editar ?',
+                title: 'Estas seguro de Eliminar el Recibo ?',
                 text: "No podrás revertir esto!",
                 icon: 'warning',
                 showCancelButton: true,
@@ -585,11 +589,12 @@ include_once 'conexion_bd/datos_recibos.php';
                 if (result.isConfirmed) {
 
                     $.ajax({
-                        url: 'update/update_logistica.php',
+                        url: 'delete/delete_recibo.php',
                         type: 'POST',
                         data: {
 
-                            numero_edit: $('#numero_compra_edit').val(),
+                            estado_eliminar: $('#estado_elim').val(),
+                            descripcion: $('#descripcion_elimimar').val(),
                           
                           
 
@@ -609,7 +614,7 @@ include_once 'conexion_bd/datos_recibos.php';
                                 )
 
                             }
-                            alert(data);
+                            //alert(data);
                         }
                     });
 

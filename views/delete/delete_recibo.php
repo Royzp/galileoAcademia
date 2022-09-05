@@ -6,19 +6,20 @@
 
 
   
-    $estado       = $_POST["estado_elim"];
-    $id_concept     = $_POST["concept_id"];
+    //$estado       = $_POST["estado_elim"];
+    $descripcion       = $_POST["descripcion"];
+    $id_recibo     = $_POST["id_recibo"];
     
    
 
-    $sql  =" UPDATE tb_concepto  SET  
+    $sql  =" UPDATE tb_recibos  SET  
          
-         
-         estate =  'N'
+         descripcion =  '$descripcion',
+         status =  'N'
 
         WHERE
 
-        concepto_id='".$id_concept."'  ";
+        recibo_id='".$id_recibo."'  ";
 
 
 

@@ -77,7 +77,7 @@
 
                         <div class="col-lg-12">
 
-                            <input type="text" class="form-control" id="nombre_egreso_elim" name="nombre_egreso_elim" placeholder="Ingrese Descripcion" required autocomplete="off">
+                            <input type="text" class="form-control" id="descripcion_elimimar" name="descripcion_elimimar" placeholder="Ingrese Descripcion" required autocomplete="off">
                         </div>
 
 

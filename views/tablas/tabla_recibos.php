@@ -50,6 +50,7 @@
                                      data-numrecibo="<?php echo $item['recibo_id']; ?>" 
                                      data-monto="<?php echo $item['monto_total']; ?>" 
                                      data-status="<?php echo $item['status']; ?>" 
+                                     data-descripcion="<?php echo $item['descripcion']; ?>" 
                                      data-sede="<?php echo $item['nombre_sede']; ?>" >
                                       <i class="material-icons">delete</i>
                                   </button>
