@@ -143,7 +143,7 @@ $mysqli = new mysqli('localhost', 'root', '', 'bd_academia');
                                 <button class="btn btn-primary" name="search"><i class="fa fa-search"
                                         aria-hidden="true"></i></button>
 
-                                <a href="http://localhost:8080/galileoAcademia/views/dashboard.php" type="button"
+                                <a href="http://localhost/galileoAcademia/views/dashboard.php" type="button"
                                     class="btn btn-success"><i class="fa fa-spinner" aria-hidden="true"></i></a>
                             </div>
                         </form>
@@ -192,7 +192,15 @@ $mysqli = new mysqli('localhost', 'root', '', 'bd_academia');
                                     <div class="row">
                                         <div class="col-12 text">Total de ingresos</div>
                                         <div class="col-12 monto">
-                                            <h3> + S/ <?php echo $total_ingresos['total']?> </h3>
+                                            <h3> + S/ <?php 
+
+                                            if($total_ingresos != 0){
+                                                echo $total_ingresos['total'];
+                                            }else{
+                                                echo '0.00';
+                                            }
+                                            
+                                            ?> </h3>
                                         </div>
                                     </div>
                                 </div>
@@ -202,7 +210,14 @@ $mysqli = new mysqli('localhost', 'root', '', 'bd_academia');
                                     <div class="row">
                                         <div class="col-12 text">Total de egresos</div>
                                         <div class="col-12 monto">
-                                            <h3>- S/ <?php echo $total_egresos['total']?></h3>
+                                            <h3>- S/ <?php 
+
+                                                if( $total_egresos != 0){
+                                                    echo $total_egresos['total'];
+                                                }else{
+                                                    echo '0.00';
+                                                }
+                                            ?></h3>
                                         </div>
                                     </div>
                                 </div>
