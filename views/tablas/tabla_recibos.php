@@ -15,7 +15,7 @@
                       <!-- <th>Nombres</th>                      
                       <th>N° Doc</th>                       -->
                       <th>Monto</th>                      
-                      <th>Tipo</th>                      
+                      <!-- <th>Tipo</th>                       -->
                       <th>Sede</th>                      
                       <th>Creado Por</th>                      
                       <th>Fecha</th>                      
@@ -32,7 +32,7 @@
                               <!-- <td align="center"><?php echo $item['nombre']; ?> <?php echo $item['apellidos']; ?></td>
                               <td align="center"><?php echo $item['numero_documento']; ?></td> -->
                               <td align="center"><?php echo $item['monto_total']; ?></td>
-                              <td align="center"><?php echo $item['tipo_concepto']; ?></td>
+                              <!-- <td align="center"><?php echo $item['tipo_concepto']; ?></td> -->
                               <td align="center"><?php echo $item['nombre_sede']; ?></td>
                               <td align="center"><?php echo $item['created_by']; ?></td>
                               <td align="center"><?php echo $item['created_date']; ?></td>
@@ -43,12 +43,15 @@
 
                                 <button 
                                      type="button" 
-                                     class="btn btn_table btn-info btnEditarDocument" 
+                                     class="btn btn_table btn-info btnEliminarRecibo" 
                                      data-toggle="modal" 
-                                     data-target="#exampleModal2" 
+                                     data-target="#exampleModalEliminarRecibo" 
                                      data-id="<?php echo $item['recibo_id']; ?>" 
-                                     data-producto="<?php echo $item['nombre']; ?>" >
-                                      <i class="material-icons">more</i>
+                                     data-numrecibo="<?php echo $item['recibo_id']; ?>" 
+                                     data-monto="<?php echo $item['monto_total']; ?>" 
+                                     data-status="<?php echo $item['status']; ?>" 
+                                     data-sede="<?php echo $item['nombre_sede']; ?>" >
+                                      <i class="material-icons">delete</i>
                                   </button>
                                 <button type="button" class="btn btn_table btn-info" onclick="getDetalleRecibo(<?php echo $item['recibo_id']; ?>)">
                                     <i class="material-icons">more</i>
