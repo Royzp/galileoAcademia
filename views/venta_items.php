@@ -222,10 +222,25 @@ tbody tr:nth-child(odd) {
                             </div>
                         </div>
 
+
+                        <input type="hidden" id="creado_por_nombre" name="creado_por_nombre" value="<?php echo $_SESSION['nombre']; ?>">
+                            <input type="hidden" id="creado_por_apellido" name="creado_por_apellido" value="<?php echo $_SESSION['apellido']; ?>">
+                            <input type="hidden" id="id_user" name="id_user" value="<?php echo $_SESSION['idUser']; ?>">
+                            <input type="hidden" id="tipo_usuario" name="tipo_usuario" value="<?php echo $_SESSION['tipoUser']; ?>">
+                            <input type="hidden" id="sede_id" name="sede_id" value="<?php echo $_SESSION['sede']; ?>">
+
+
+
+
                         <div class="col-12 text-center mt-5">
                             <button class="btn" style="color: #fff;background: blue;min-width: 300px;"
                                 onclick="validarInsertRecibo()">Emitir recibo</button>
                         </div>
+
+
+
+
+
 
                     </div>
                 </div>
@@ -392,6 +407,7 @@ tbody tr:nth-child(odd) {
 
 
     <script>
+
     function validarInsertRecibo() {
         Swal.fire({
             title: 'Estas emitir este recibo',
@@ -411,11 +427,14 @@ tbody tr:nth-child(odd) {
     }
 
     function insertRecibo() {
+
+      
         var body = {
             sede_recibo_id: 1,
             monto_total: v_subtotal,
             responsable: document.getElementById('idResponsable').value,
-            created_by: "Administrador developer",
+            id_user: document.getElementById('id_user').value,
+            created_by: document.getElementById('creado_por_nombre').value +' '+document.getElementById('creado_por_apellido').value,
             items: array_productos
         }
 
@@ -463,10 +482,20 @@ tbody tr:nth-child(odd) {
                                             `;
                     if (arrayDetalle.length == i + 1) {
                         console.info(items);
-                        document.getElementById('tableReciboDetalle').insertAdjacentHTML("beforebegin",
-                            items);
-                        // document.getElementById('tableReciboDetalle').insertAdjacentHTML("afterend",items);
-                        // document.getElementById("subTotal").innerHTML = subTotal.toFixed(2);
+                        
+                        items = items + `
+                        <tr>
+                        <td style="text-align:center;padding:3px 5px; max-width: 20px;">
+                        </td>
+                        <td style="padding:3px 5px; max-width: 20px;"></td>
+                        <td style="    padding: 3px 5px;
+                        text-transform: uppercase;
+                        text-align: right;
+                        font-weight: bold;">TOTAL</td>
+                        <td style="padding:3px 5px;">${recibo[0].monto_total}</td>
+                        </tr>  `;
+
+                        document.getElementById("tableReciboDetalle").innerHTML = items;
                     }
                 }
 
@@ -495,7 +524,7 @@ tbody tr:nth-child(odd) {
                 console.log(full, mes, dia, diaN, full2, fullTime);
 
                 document.getElementById("idResponsableRecibo").innerHTML = recibo[0].responsable;
-                document.getElementById("idMontoTotalRecibo").innerHTML = recibo[0].monto_total;
+                // document.getElementById("idMontoTotalRecibo").innerHTML = recibo[0].monto_total;
                 document.getElementById("idReciboRecibo").innerHTML = recibo[0].recibo_id;
                 document.getElementById("idNombreSedeRecibo").innerHTML = recibo[0].nombre_sede;
                 document.getElementById("idCreadoPor").innerHTML = recibo[0].created_by;

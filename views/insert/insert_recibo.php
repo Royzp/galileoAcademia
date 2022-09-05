@@ -18,17 +18,20 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $responsable  = $_POST['responsable'];   
     $status = "Y";//  desde donde esta asignado el usuario
     $created_by  = $_POST['created_by'];
+    $id_user  = $_POST['id_user'];
     $items  = $_POST['items'];
 
     $sql_ins_recibo = "INSERT INTO tb_recibos ( sede_recibo_id,
                                                 monto_total,
                                                 responsable,
+                                                id_user,
                                                 status,
                                                 created_by,
                                                 created_date )
                                             VALUES ( '$sede_recibo_id',
                                                     '$monto_total',
                                                     '$responsable',
+                                                    '$id_user',
                                                     '$status',
                                                     '$created_by',
                                                     '$fecha_sistem')";       

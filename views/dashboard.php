@@ -33,7 +33,7 @@ $mysqli = new mysqli('localhost', 'root', '', 'bd_academia');
 
 <style type="text/css">
 .indicadores_monto {
-    height:60px;
+    height: 60px;
     width: 100%;
     color: #fff;
     padding: 10px;
@@ -54,11 +54,41 @@ $mysqli = new mysqli('localhost', 'root', '', 'bd_academia');
 </style>
 
 
+
+
+
+
+<style>
+#customers {
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#customers td, #customers th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+#customers tr:nth-child(even){background-color: #f2f2f2;}
+
+#customers tr:hover {background-color: #ddd;}
+
+#customers th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #04AA6D;
+  color: white;
+}
+</style>
+
+
 <body class="hold-transition sidebar-mini">
     <div class="wrapper">
 
         <!-- Navbar -->
-        
+
         <?php
             if($_SESSION['tipoUser'] ==  1){
                 // 1 = ADMINISTRADO
@@ -121,6 +151,20 @@ $mysqli = new mysqli('localhost', 'root', '', 'bd_academia');
 
                     <!--  Tabla de Filtro -->
 
+                    <div class="col-md-12">
+                            <button type="button" onclick="exportTableToExcel('tableExportExcel', 'Academia-data')" style="border: 4px solid #B5E13F ;
+                        border-radius: 6px;
+                        background: #28a745;
+                        color: white;
+                        width: 147px;
+                        height: 59px;">
+                        <img src="../views/dist/img/ecx.png" width="40" height="40">
+
+                        EXCEL.xls
+
+                    </button>
+                    </div>
+
                     <div class="col-md-7">
                         <div class="table-responsive">
                             <table class="table table-bordered" id="tablaDate">
@@ -158,7 +202,7 @@ $mysqli = new mysqli('localhost', 'root', '', 'bd_academia');
                                     <div class="row">
                                         <div class="col-12 text">Total de egresos</div>
                                         <div class="col-12 monto">
-                                            <h3>- S/  <?php echo $total_egresos['total']?></h3>
+                                            <h3>- S/ <?php echo $total_egresos['total']?></h3>
                                         </div>
                                     </div>
                                 </div>
@@ -167,7 +211,6 @@ $mysqli = new mysqli('localhost', 'root', '', 'bd_academia');
 
                         <div class="row">
                             <div class="col-12 pt-4">
-
                                 <h4>Ingresos por sede</h4>
                                 <table class="table">
                                     <thead>
@@ -180,10 +223,10 @@ $mysqli = new mysqli('localhost', 'root', '', 'bd_academia');
 
                                         <?php if(!empty($total_ingresos_porsede)){ ?>
                                         <?php foreach($total_ingresos_porsede as $valor) { ?>
-                                                <tr>
-                                                <td><?php echo $valor['nombre_sede'];?></td>
-                                                    <td><?php echo $valor['total'];?></td>
-                                                </tr>
+                                        <tr>
+                                            <td><?php echo $valor['nombre_sede'];?></td>
+                                            <td><?php echo $valor['total'];?></td>
+                                        </tr>
                                         <?php  }?>
                                         <?php  }?>
                                     </tbody>
@@ -195,63 +238,47 @@ $mysqli = new mysqli('localhost', 'root', '', 'bd_academia');
 
                 </div>
             </div>
-            <!-- </div> -->
 
-            <!-- Fin Tabla -->
 
-            <!-- Main content -->
-            <!-- <div class="container">
-                <div class="row pt-4">
-                    <div class="col-6">
-                        <div class="indicadores_monto" style="background: #098f00">
-                            <div class="row">
-                                <div class="col-6 text">Total de ingresos</div>
-                                <div class="col-6 monto">
-                                    <h3> + S/ <?php echo $total_ingresos['total']?> </h3>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-6">
-                        <div class="indicadores_monto" style="background: red">
-                            <div class="row">
-                                <div class="col-6 text">Total de egresos</div>
-                                <div class="col-6 monto">
-                                    <h3>- S/7,000.00</h3>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
+            <div class="container" id="tableExportExcel" style="display: none;">
                 <div class="row">
-                    <div class="col-12 pt-4">
 
-                        <h4>Ingresos por sede</h4>
-                        <table class="table">
-                            <thead>
-                                <tr>
-                                    <th>Sede</th>
-                                    <th>Ingreso</th>
-                                </tr>
-                            </thead>
+                <div class="col-12">
+                    <h4>
+                        REPORTE DE INGRESOS ACADEMIA GALILEO
+                    </h4>
+                </div>
+                    <div class="col-12">
+                        <table id="customers">
                             <tr>
-                                <td>Barranca</td>
-                                <td>S/ 32,000.00</td>
+                                <th>ID</th>
+                                <th>A nnombre de</th>
+                                <th>Monto Recibo</th>
+                                <th>Sede de emision</th>
+                                <th>Responsbale emision</th>
+                                <th>Fecha de emision</th>
                             </tr>
-                            <tr>
-                                <td>Supe</td>
-                                <td>S/ 32,000.00</td>
-                            </tr>
-                            <tr>
-                                <td>Huacho</td>
-                                <td>S/ 32,000.00</td>
-                            </tr>
+                            <?php
+                                    foreach ($excelDashboard as $valor) {
+                                    ?>
+                                    <tr>
+                                            <td><?php echo $valor['recibo_id']?></td>
+                                            <td><?php echo $valor['responsable']?></td>
+                                            <td><?php echo $valor['monto_total']?></td>
+                                            <td><?php echo $valor['nombre_sede']?></td>
+                                            <td><?php echo $valor['created_by']?></td>
+                                            <td><?php echo $valor['created_date']?></td>
+                                            </tr>
+                                    <?php
+                                        }
+                                    ?>                           
+                         
                         </table>
+
                     </div>
                 </div>
-            </div> -->
-            <!-- /.content -->
+            </div>
+
 
         </div>
         <!-- /.content-wrapper -->
@@ -338,6 +365,40 @@ $mysqli = new mysqli('localhost', 'root', '', 'bd_academia');
 
     });
     </script>
+
+
+
+
+
+<script>
+
+function exportTableToExcel(name_id, filename) {
+      var uri = 'data:application/vnd.ms-excel;base64,',
+        template = '<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:x="urn:schemas-microsoft-com:office:excel" xmlns="http://www.w3.org/TR/REC-html40"><meta http-equiv="content-type" content="application/vnd.ms-excel; charset=UTF-8"><head><!--[if gte mso 9]><xml><x:ExcelWorkbook><x:ExcelWorksheets><x:ExcelWorksheet><x:Name>{worksheet}</x:Name><x:WorksheetOptions><x:DisplayGridlines/></x:WorksheetOptions></x:ExcelWorksheet></x:ExcelWorksheets></x:ExcelWorkbook></xml><![endif]--></head><body><table>{table}</table></body></html>',
+        base64 = function(s) {
+          return window.btoa(unescape(encodeURIComponent(s)))
+        },
+        format = function(s, c) {
+          return s.replace(/{(\w+)}/g, function(m, p) {
+            return c[p];
+          })
+        }
+      var table = document.getElementById(name_id);
+      var name = 'reporte';
+      var html = table.innerHTML;
+      var ctx = {
+        worksheet: name || 'Worksheet',
+        table: html
+      }
+      var link = document.createElement("a");
+      link.download = filename + ".xls";
+      link.href = uri + base64(format(template, ctx))
+      link.click();
+
+    }
+
+
+ </script>
 
 
 

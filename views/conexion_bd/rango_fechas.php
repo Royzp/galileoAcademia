@@ -3,6 +3,10 @@
    include_once ("conexion_bd/config_conexion.php");
    include_once ("conexion_bd/conexion.php");
   
+
+   $pdo = new PDO('mysql:host=localhost;dbname=bd_academia','root','');
+   $pdo->exec("set names utf8");
+
   if(ISSET($_POST['search'])){
     $date1 = date("Y-m-d", strtotime($_POST['date1']));
     $date2 = date("Y-m-d", strtotime($_POST['date2']));
@@ -11,6 +15,14 @@
        INNER JOIN tb_sede as s ON s.sede_id = r.sede_recibo_id
        WHERE r.status = 'Y' AND r.created_date BETWEEN'$date1' AND '$date2'");
     $row=mysqli_num_rows($query);
+
+    $queryPDO = "SELECT r.* , s.nombre_sede FROM tb_recibos  AS r 
+    INNER JOIN tb_sede as s ON s.sede_id = r.sede_recibo_id
+    WHERE r.status = 'Y' AND r.created_date BETWEEN'$date1' AND '$date2'";
+    $sentencia44 = $pdo->prepare($queryPDO);
+    $sentencia44-> execute();
+    $excelDashboard = $sentencia44-> fetchAll(); 
+
     ////
     $query_total_ingresos=mysqli_query($conexion, "SELECT SUM(monto_total) as total FROM tb_recibos  AS r 
       WHERE r.status = 'Y' AND (r.created_date BETWEEN'$date1' AND '$date2')");
@@ -52,6 +64,14 @@
   }else{
     $query=mysqli_query($conexion, "SELECT r.* , s.nombre_sede FROM tb_recibos  AS r 
     INNER JOIN tb_sede as s ON s.sede_id = r.sede_recibo_id WHERE r.status = 'Y'");
+
+
+    $queryPDO = "SELECT r.* , s.nombre_sede FROM tb_recibos  AS r 
+    INNER JOIN tb_sede as s ON s.sede_id = r.sede_recibo_id WHERE r.status = 'Y'";
+    $sentencia44 = $pdo->prepare($queryPDO);
+    $sentencia44-> execute();
+    $excelDashboard = $sentencia44-> fetchAll();
+
 
     ////
     $query_total_ingresos=mysqli_query($conexion, "SELECT SUM(monto_total) as total FROM tb_recibos  AS r 
