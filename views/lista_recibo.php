@@ -16,13 +16,13 @@ include_once 'conexion_bd/datos_recibos.php';
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Academia</title>
+    <title>Academia Galileo</title>
     <script src="../views/plugins/jquery/jquery.min.js"></script>
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link rel="icon" type="image" href="../views/dist/img/martillo.png" />
+    <link rel="icon" type="image" href="../views/dist/img/icono_galileo.png" />
     <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="../views/plugins/fontawesome-free/css/all.min.css">
     <!-- Theme style -->
@@ -83,6 +83,7 @@ include_once 'conexion_bd/datos_recibos.php';
                 <div class="container-fluid">
                     <?php
                     include_once("tablas/tabla_recibos.php");
+
                     ?>
                 </div>
 
@@ -150,7 +151,7 @@ include_once 'conexion_bd/datos_recibos.php';
 
     <?php
 
-    include_once("modal/modal_editar_producto.php");
+    include_once("modal/modal_eliminar_recibo.php");
 
     ?>
 
@@ -466,196 +467,6 @@ include_once 'conexion_bd/datos_recibos.php';
     </script>
 
 
-    <script>
-    $(document).ready(function() {
-        $.datepicker.setDefaults({
-            dateFormat: 'yy-mm-dd'
-        });
-        $(function() {
-            $("#from_date").datepicker();
-            $("#to_date").datepicker();
-        });
-        /*$('#button_filter_in').click(function() {
-          var from_date = $('#from_date').val();
-          var to_date = $('#to_date').val();
-          // alert(from_date + to_date);
-          if (from_date != '' && to_date != '') {
-            $.ajax({
-              url: "filter_logistica.php",
-              method: "POST",
-              data: {
-                from_date: from_date,
-                to_date: to_date
-              },
-              success: function(data) {
-                $('#order_table').html(data);
-              }
-            });
-          } else {
-            alert("Seleccione una Fecha");
-          }
-        });*/
-    });
-    </script>
-
-
-
-
-
-
-
-
-
-
-
-    <!--  FORMULARIO EDITAR FORMULARIO -->
-
-    <script type="text/javascript">
-    $(document).on("click", ".btnEditarDocument", function() {
-        var id_producto = $(this).attr("data-id");
-        var nombre_producto = $(this).attr("data-producto");
-        var categoria = $(this).attr("data-categoria");
-        var lote = $(this).attr("data-lote");
-        var stock = $(this).attr("data-stock");
-        var precio_venta = $(this).attr("data-precio");
-        var proveedor = $(this).attr("data-proveedor");
-        var marca = $(this).attr("data-marca");
-        var modelo = $(this).attr("data-modelo");
-        var unidad_medida = $(this).attr("data-unidad");
-        var foto_producto = $(this).attr("data-foto");
-
-
-
-
-        //mostrar al modal
-        $('#exampleModal2').modal('show');
-        $('#idDocumento').attr('value', id_producto);
-        $('#txt_nombre_producto').attr('value', nombre_producto);
-
-        $('#txt_categoria_edit').attr('value', categoria);
-        $('#txt_categoria_edit').find("option").each(function() {
-            if ($(this).val() == categoria) {
-                $(this).prop("selected", "selected");
-            }
-
-        });
-
-        $('#txt_lote_edit').attr('value', lote);
-        $('#txt_stock_edit').attr('value', stock);
-        $('#txt_precio_edit').attr('value', precio_venta);
-
-        $('#txt_proveedor_edit').attr('value', proveedor);
-        $('#txt_proveedor_edit').find("option").each(function() {
-            if ($(this).val() == proveedor) {
-                $(this).prop("selected", "selected");
-            }
-
-        });
-
-        $('#txt_marca_edit').attr('value', marca);
-        $('#txt_modelo_edit').attr('value', modelo);
-        $('#txt_unidad_edit').attr('value', unidad_medida);
-        $('#txt_foto_edit').attr('value', foto_producto);
-
-
-
-
-
-    });
-    $('#exampleModal2').on('shown.bs.modal', function() {
-        //alert("Registro Encontrado");
-    });
-    </script>
-
-    <script>
-    $(document).ready(function() {
-        $("#printButton").click(function() {
-            // var mode = 'iframe'; //popup
-            // var close = mode == "popup";
-            // var options = {
-            //     mode: mode,
-            //     popClose: close
-            // };
-            // $("div.printableArea").printArea(options);
-            var printContents = document.getElementById('printableArea').innerHTML;
-            var originalContents = document.body.innerHTML;
-            // document.body.innerHTML = printContents;
-            window.print();
-            document.body.innerHTML = originalContents;
-        });
-
-
-        //Envio de formulario  de actualizar
-        $("#Actualizar_Doc").submit(function(e) {
-            e.preventDefault();
-            //validar que coincidan
-            //para copiar dentro de if
-
-
-
-            Swal.fire({
-                title: 'Estas seguro de Editar ?',
-                text: "No podrás revertir esto!",
-                icon: 'warning',
-                showCancelButton: true,
-                confirmButtonColor: '#3085d6',
-                cancelButtonColor: '#d33',
-                confirmButtonText: 'Sí, ingresar'
-            }).then((result) => {
-                if (result.isConfirmed) {
-
-                    $.ajax({
-                        url: 'update/update_logistica.php',
-                        type: 'POST',
-                        data: {
-
-                            numero_edit: $('#numero_compra_edit').val(),
-                            peru_edit: $('#peru_compra_edit').val(),
-                            fecha_edit: $('#fecha_emision_edit').val(),
-                            dias_edit: $('#dia_entrega_edit').val(),
-                            expediente_edit: $('#expediente_edit').val(),
-                            document_edit: $('#documento_edit').val(),
-                            siaf_edit: $('#siaf_edit').val(),
-                            meta_edit: $('#meta_edit').val(),
-                            area_usuaria_edit: $('#area_edit').val(),
-                            provee_edit: $('#proveedor_edit').val(),
-                            monto_edit: $('#monto_edit').val(),
-                            descript_edit: $('#descripcion_edit').val(),
-
-                            id_logistica: $('#id_Documento_logistica').val()
-
-                        },
-
-                        success(data) {
-                            if (data == "1") {
-                                location.reload();
-
-                                $('.modal').modal('hide');
-                                Swal.fire(
-                                    'Modificado!',
-                                    'Fue Ingresado Correctamente',
-                                    'success'
-                                )
-
-                            }
-                            alert(data);
-                        }
-                    });
-
-                }
-            })
-
-
-
-
-
-
-
-        });
-
-
-    });
-    </script>
 
     <script>
     function updateProducto() {
@@ -706,45 +517,112 @@ include_once 'conexion_bd/datos_recibos.php';
     <!-- DELETE DOCUMENTO -->
 
     <script type="text/javascript">
-    $(document).on("click", "#btnEliminar", function() {
-        var id_document = $(this).attr("data-id");
-        Swal.fire({
-            title: 'Estas seguro de Eliminar ?',
-            text: "No podrás revertir esto!",
-            icon: 'warning',
-            showCancelButton: true,
-            confirmButtonColor: '#3085d6',
-            cancelButtonColor: '#d33',
-            confirmButtonText: 'Sí, ingresar'
-        }).then((result) => {
-            if (result.isConfirmed) {
+    $(document).on("click", ".btnEliminarRecibo", function() {
+        var recibo_id   = $(this).attr("data-id");
+        var recibo_id   = $(this).attr("data-numrecibo");
+        var nombre_sede = $(this).attr("data-sede");
+        var monto_total = $(this).attr("data-monto");
+        var status = $(this).attr("data-status");
+       
 
-                $.ajax({
-                    url: 'delete/delete_logistica.php',
-                    type: 'POST',
-                    data: {
-                        datito: id_document
-                    },
+        
 
-                    success(data) {
-                        if (data >= "1") {
-                            location.reload();
+        //mostrar al modal
+        $('#exampleModalEliminarRecibo').modal('show');
+        $('#id_elim_recibo').attr('value', recibo_id);
+        $('#numero_recibo_elim').attr('value', recibo_id);
+        $('#sede_elim').attr('value', nombre_sede);
+        $('#monto_elim').attr('value', monto_total);
+        $('#estado_elim').attr('value', status);
 
-                            $('.modal').modal('hide');
-                            Swal.fire(
-                                'Modificado!',
-                                'Fue Ingresado Correctamente',
-                                'success'
-                            )
+       
+        
+        
 
+
+
+    });
+    $('#exampleModalEliminarRecibo').on('shown.bs.modal', function() {
+        //alert("Registro Encontrado");
+    });
+    </script>
+
+    <script>
+    $(document).ready(function() {
+        $("#printButton").click(function() {
+            // var mode = 'iframe'; //popup
+            // var close = mode == "popup";
+            // var options = {
+            //     mode: mode,
+            //     popClose: close
+            // };
+            // $("div.printableArea").printArea(options);
+            var printContents = document.getElementById('printableArea').innerHTML;
+            var originalContents = document.body.innerHTML;
+            // document.body.innerHTML = printContents;
+            window.print();
+            document.body.innerHTML = originalContents;
+        });
+
+
+        //Envio de formulario  de actualizar
+        $("#frm_eliminar_recibo").submit(function(e) {
+            e.preventDefault();
+            //validar que coincidan
+            //para copiar dentro de if
+
+
+
+            Swal.fire({
+                title: 'Estas seguro de Editar ?',
+                text: "No podrás revertir esto!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Sí, ingresar'
+            }).then((result) => {
+                if (result.isConfirmed) {
+
+                    $.ajax({
+                        url: 'update/update_logistica.php',
+                        type: 'POST',
+                        data: {
+
+                            numero_edit: $('#numero_compra_edit').val(),
+                          
+                          
+
+                            id_recibo: $('#id_elim_recibo').val()
+
+                        },
+
+                        success(data) {
+                            if (data == "1") {
+                                location.reload();
+
+                                $('.modal').modal('hide');
+                                Swal.fire(
+                                    'Modificado!',
+                                    'Fue Ingresado Correctamente',
+                                    'success'
+                                )
+
+                            }
+                            alert(data);
                         }
-                        //alert(data);
-                    }
-                });
+                    });
 
-            }
-        })
+                }
+            })
 
+
+
+
+
+
+
+        });
 
 
     });

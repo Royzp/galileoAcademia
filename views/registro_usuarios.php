@@ -143,7 +143,44 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
             <div class="form-group col-md-12" style="overflow: hidden;overflow-y: auto;">
 
+<<<<<<< HEAD
+                </div>
+
+
+
+                <div class="form-group col-md-6" style="padding: 35px; float: left; width: 50%; text-align: justify;">
+
+
+
+
+
+                    <form method="Post" name="frm_admi" id="frm_admi">
+                        <h1 style="font-family: 'Font Awesome 5 Free';">Registro de Personal Galileo</h1>
+                        <br>
+                        <br>
+                        <label>Numero DNI</label>
+                        <input type="text" name="tx_dni" id="tx_dni" placeholder="Ingrese numero de DNI" maxlength="8" autocomplete="off" required>
+                        <br>
+                        <br>
+                        <label>Nombres</label>
+                        <input type="text" name="tx_nombre" id="tx_nombre" placeholder="Ingrese Nombres" autocomplete="off" required >
+                        <br>
+                        <br>
+                        <label>Apellidos</label>
+                        <input type="text" name="tx_apellido" id="tx_apellido" placeholder="Ingrese Apellidos" autocomplete="off" required >
+                        <br>
+                        <br>
+                        <label>Contraseña</label>
+                        <input type="text" name="tx_contra" id="tx_contra" placeholder="Ingrese Contraseña"  autocomplete="off" required >
+
+                        <label>Sede</label>
+                        <br>
+                        <select id="select_sede" name="select_sede" style="width: 488px!important;">
+
+                            <option>Seleccione:</option>
+=======
                 <div class="row">
+>>>>>>> 70302841bf87a5a97add81c732db34c13bf0c4b3
 
                     <div class="form-group col-md-6">
                         <img src="../views/dist/img/galileo5.jpg" style="width: 100%;">
