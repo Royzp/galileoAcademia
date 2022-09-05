@@ -164,7 +164,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                         <br>
                         <br>
                         <label>Numero DNI</label>
-                        <input type="text" name="tx_dni" id="tx_dni" placeholder="Ingrese numero de DNI"  autocomplete="off" required>
+                        <input type="text" name="tx_dni" id="tx_dni" placeholder="Ingrese numero de DNI" maxlength="8" autocomplete="off" required>
                         <br>
                         <br>
                         <label>Nombres</label>
