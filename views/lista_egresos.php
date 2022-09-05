@@ -52,18 +52,18 @@ include_once 'conexion_bd/datos_egresos.php';
 
         <!-- Navbar -->
         <?php
-            if($_SESSION['tipoUser'] ==  1){
-                // 1 = ADMINISTRADO
-                include_once("navbar_sidebar.php");
-            }
-            if($_SESSION['tipoUser'] ==  2){
-                // 2 = GERENTE
-                include_once("navbar_sidebar_g.php");
-            }
-            if($_SESSION['tipoUser'] ==  3){
-                // 3 = SECRETARIA
-                include_once("navbar_sidebar_s.php");
-            }
+        if ($_SESSION['tipoUser'] ==  1) {
+            // 1 = ADMINISTRADO
+            include_once("navbar_sidebar.php");
+        }
+        if ($_SESSION['tipoUser'] ==  2) {
+            // 2 = GERENTE
+            include_once("navbar_sidebar_g.php");
+        }
+        if ($_SESSION['tipoUser'] ==  3) {
+            // 3 = SECRETARIA
+            include_once("navbar_sidebar_s.php");
+        }
         ?>
 
         <!-- Content Wrapper. Contains page content -->
@@ -181,9 +181,10 @@ include_once 'conexion_bd/datos_egresos.php';
     </div>
     <!-- ./wrapper -->
 
+   
     <?php
 
-    include_once("modal/modal_eliminar_matricula.php");
+    include_once("modal/modal_eliminar_egreso.php");
 
     ?>
 
@@ -311,63 +312,80 @@ include_once 'conexion_bd/datos_egresos.php';
     </script>
 
 
-<script type="text/javascript">
-    function onSubmitEgresos() {
+    <script type="text/javascript">
+        function onSubmitEgresos() {
 
-      var frm = document.getElementById('frm_registro_egresos');
-      var df = new FormData(frm);
+            var frm = document.getElementById('frm_registro_egresos');
+            var df = new FormData(frm);
 
-      $.ajax({
-        url: 'insert/insert_egresos.php',
-        type: 'POST',
-        processData: false,
-        contentType: false,
-        data: df,
-        success(data) {
-          console.log(data);
+            $.ajax({
+                url: 'insert/insert_egresos.php',
+                type: 'POST',
+                processData: false,
+                contentType: false,
+                data: df,
+                success(data) {
+                    console.log(data);
 
 
-          if (data == 'success') {
+                    if (data == 'success') {
 
-            // 1. RESET FORMULARIO   
-            $('#frm_registro_egresos').trigger('reset');
-            // 2. CERRAMOS EL MODAL
-            $('.modal').modal('hide');
-            location.reload();
+                        // 1. RESET FORMULARIO   
+                        $('#frm_registro_egresos').trigger('reset');
+                        // 2. CERRAMOS EL MODAL
+                        $('.modal').modal('hide');
+                        location.reload();
 
-            recargarData();
+                        recargarData();
 
-          } else {
-            alert(data);
-          }
+                    } else {
+                        alert(data);
+                    }
+                }
+            });
         }
-      });
-    }
-    function openModelPDF(url) {
-      $('#modalPdf').modal('show');
+
+        function openModelPDF(url) {
+            $('#modalPdf').modal('show');
 
 
-      $('#iframePDF').attr('src', '<?php echo 'http://'. $_SERVER['HTTP_HOST'].'/GestionInformatica/views/'; ?>' + url);
-    }
-
-
-  </script>
+            $('#iframePDF').attr('src', '<?php echo 'http://' . $_SERVER['HTTP_HOST'] . '/GestionInformatica/views/'; ?>' + url);
+        }
+    </script>
 
 
 
-
-
-
-
-    <!--  FORMULARIO EDITAR FORMULARIO -->
 
     <script type="text/javascript">
-        $(document).on("click", ".btnEliminarMAtricula", function() {
-            var matricula_id = $(this).attr("data-id");
-            var nombre = $(this).attr("data-nombre");
-            var nombre_ciclo = $(this).attr("data-ciclo");
-            var nombre_periodo = $(this).attr("data-periodo");
-            var estate = $(this).attr("data-estado");
+        function showDiv2(select) {
+            //   document.getElementById('hi1').style.display = "block";
+            if (select.value == 6) {
+                document.getElementById('hidden_div1').style.display = "block";
+                document.getElementById('hidden_div2').style.display = "none";
+            } else {
+                document.getElementById('hidden_div1').style.display = "none";
+                document.getElementById('hidden_div2').style.display = "block";
+            }
+
+        }
+    </script>
+
+
+    <script type="text/javascript">
+        $(document).on("click", ".btnEditarEgresos", function() {
+            var id_egreso = $(this).attr("data-id");
+            var id_tipo_egreso = $(this).attr("data-id-egreso");
+            var tipo_comprobante_id = $(this).attr("data-idtipo");
+            var numero_comprobante = $(this).attr("data-numcompro");
+            var descripcion = $(this).attr("data-descrip");
+            var monto_egreso = $(this).attr("data-monto");
+            var fecha_pago = $(this).attr("data-fecha");
+
+
+
+
+            // var estate = $(this).attr("data-estate");
+            // var tipo_concepto_id = $(this).attr("data-idtipo");
 
 
 
@@ -375,24 +393,44 @@ include_once 'conexion_bd/datos_egresos.php';
 
 
             //mostrar al modal
-            $('#exampleModalEliminarMatricula').modal('show');
-            $('#id_elim_Matricula').attr('value', matricula_id);
-            $('#nombre_matricula_elim').attr('value', nombre);
-            $('#nombre_ciclo_elim').attr('value', nombre_ciclo);
+            $('#exampleModalEditEgresos').modal('show');
+            $('#id_editarrr_egreso').attr('value', id_egreso);
+
+            $('#tipo_egreso_edit').attr('value', id_tipo_egreso);
+            $('#tipo_egreso_edit').find("option").each(function() {
+                if ($(this).val() == id_tipo_egreso) {
+                    $(this).prop("selected", "selected");
+                }
+
+            });
 
 
-            $('#nombre_periodo_elim').attr('value', nombre_periodo);
-            $('#estado_elim').attr('value', estate);
+            $('#tipo_comprobante_edit').attr('value', tipo_comprobante_id);
+            $('#tipo_comprobante_edit').find("option").each(function() {
+                if ($(this).val() == tipo_comprobante_id) {
+                    $(this).prop("selected", "selected");
+                }
+
+            });
+
+
+            $('#txt_numcomprobante_edit').attr('value', numero_comprobante);
+            $('#txt_descripcion_edit').attr('value', descripcion);
+            $('#txt_monto_edit').attr('value', monto_egreso);
+            $('#txt_fecha_edit').attr('value', fecha_pago);
+
+
 
 
 
 
 
         });
-        $('#exampleModalEliminarMatricula').on('shown.bs.modal', function() {
+        $('#exampleModalEditEgresos').on('shown.bs.modal', function() {
             //alert("Registro Encontrado");
         });
     </script>
+
 
     <script>
         $(document).ready(function() {
@@ -413,7 +451,7 @@ include_once 'conexion_bd/datos_egresos.php';
 
 
             //Envio de formulario  de actualizar
-            $("#frm_eliminar_matricula").submit(function(e) {
+            $("#form_editar_egresos").submit(function(e) {
                 e.preventDefault();
                 //validar que coincidan
                 //para copiar dentro de if
@@ -421,7 +459,7 @@ include_once 'conexion_bd/datos_egresos.php';
 
 
                 Swal.fire({
-                    title: 'Estas seguro de Eliminar esta Matricula?',
+                    title: 'Estas seguro de Editar ?',
                     text: "No podrás revertir esto!",
                     icon: 'warning',
                     showCancelButton: true,
@@ -432,15 +470,18 @@ include_once 'conexion_bd/datos_egresos.php';
                     if (result.isConfirmed) {
 
                         $.ajax({
-                            url: 'delete/delete_matricula.php',
+                            url: 'update/update_egresos.php',
                             type: 'POST',
                             data: {
 
+                                tipo_ingreso_id: $('#tipo_egreso_edit').val(),
+                                tipo_comprobante: $('#tipo_comprobante_edit').val(),
+                                numero_comprobante: $('#txt_numcomprobante_edit').val(),
+                                descripcion: $('#txt_descripcion_edit').val(),
+                                monto: $('#txt_monto_edit').val(),
+                                fecha: $('#txt_fecha_edit').val(),
 
-                                status_eliminar: $('#estado_elim').val(),
-
-
-                                id_matricula: $('#id_elim_Matricula').val()
+                                egreso_id: $('#id_editarrr_egreso').val()
 
                             },
 
@@ -476,80 +517,119 @@ include_once 'conexion_bd/datos_egresos.php';
     </script>
 
 
+
     <script type="text/javascript">
-    function showDiv2(select) {
-    //   document.getElementById('hi1').style.display = "block";
-      if (select.value == 6) {
-        document.getElementById('hidden_div1').style.display = "block";
-        document.getElementById('hidden_div2').style.display = "none";
-      } else {
-        document.getElementById('hidden_div1').style.display = "none";
-        document.getElementById('hidden_div2').style.display = "block";
-      }
-
-    }
-  </script>
-
-
-<script type="text/javascript">
-        $(document).on("click", ".btnEditarEgresos", function() {
+        $(document).on("click", ".btnEliminarEgresos", function() {
             var id_egreso = $(this).attr("data-id");
-            var id_tipo_egreso = $(this).attr("data-id-egreso");
-            var tipo_comprobante_id = $(this).attr("data-idtipo");
-            var numero_comprobante= $(this).attr("data-numcompro");
-            var descripcion= $(this).attr("data-descrip");
-            var monto_egreso= $(this).attr("data-monto");
-            var fecha_pago= $(this).attr("data-fecha");
-            
-          
-            
-            
-            // var estate = $(this).attr("data-estate");
-            // var tipo_concepto_id = $(this).attr("data-idtipo");
-           
-            
+            var nombre_tipo_egreso = $(this).attr("data-egreso");
+            var monto_egreso = $(this).attr("data-monto");
+            var descripcion = $(this).attr("data-descripcion");
+            var status = $(this).attr("data-estate");
+
+
 
 
 
 
             //mostrar al modal
-            $('#exampleModalEditEgresos').modal('show');
-            $('#id_editarrr_egreso').attr('value', id_egreso);
-
-             $('#tipo_egreso_edit').attr('value', id_tipo_egreso);
-             $('#tipo_egreso_edit').find("option").each(function() {
-                if ($(this).val() == id_tipo_egreso) {
-                    $(this).prop("selected", "selected");
-                }
-
-            });
+            $('#exampleModalEliminarEgreso').modal('show');
+            $('#id_elim_egreso').attr('value', id_egreso);
+            $('#nombre_egreso_elim').attr('value', nombre_tipo_egreso);
+            $('#monto_egreso_elim').attr('value', monto_egreso);
 
 
-            $('#tipo_comprobante_edit').attr('value', tipo_comprobante_id);
-             $('#tipo_comprobante_edit').find("option").each(function() {
-                if ($(this).val() == tipo_comprobante_id) {
-                    $(this).prop("selected", "selected");
-                }
+            $('#descripcion_elim').attr('value', descripcion);
+            $('#estado_elim').attr('value', status);
 
-            });
 
-         
-            $('#txt_numcomprobante_edit').attr('value', numero_comprobante);
-            $('#txt_descripcion_edit').attr('value', descripcion);
-            $('#txt_monto_edit').attr('value', monto_egreso);
-            $('#txt_fecha_edit').attr('value', fecha_pago);
-
-            
-            
-            
 
 
 
         });
-        $('#exampleModalEditEgresos').on('shown.bs.modal', function() {
+        $('#exampleModalEliminarEgreso').on('shown.bs.modal', function() {
             //alert("Registro Encontrado");
         });
     </script>
+
+    <script>
+        $(document).ready(function() {
+            $("#printButton").click(function() {
+                // var mode = 'iframe'; //popup
+                // var close = mode == "popup";
+                // var options = {
+                //     mode: mode,
+                //     popClose: close
+                // };
+                // $("div.printableArea").printArea(options);
+                var printContents = document.getElementById('printableArea').innerHTML;
+                var originalContents = document.body.innerHTML;
+                // document.body.innerHTML = printContents;
+                window.print();
+                document.body.innerHTML = originalContents;
+            });
+
+
+            //Envio de formulario  de actualizar
+            $("#frm_eliminar_egreso").submit(function(e) {
+                e.preventDefault();
+                //validar que coincidan
+                //para copiar dentro de if
+
+
+
+                Swal.fire({
+                    title: 'Estas seguro de Eliminar esta Matricula?',
+                    text: "No podrás revertir esto!",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Sí, ingresar'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+
+                        $.ajax({
+                            url: 'delete/delete_egresos.php',
+                            type: 'POST',
+                            data: {
+
+
+                          status_eliminar: $('#estado_elim').val(),
+                                id_egreso: $('#id_elim_egreso').val()
+
+                            },
+
+                            success(data) {
+                                if (data == "1") {
+                                    location.reload();
+
+                                    $('.modal').modal('hide');
+                                    Swal.fire(
+                                        'Modificado!',
+                                        'Fue Ingresado Correctamente',
+                                        'success'
+                                    )
+
+                                }
+                                // alert(data);
+                            }
+                        });
+
+                    }
+                })
+
+
+
+
+
+
+
+            });
+
+
+        });
+    </script>
+
 
 
 

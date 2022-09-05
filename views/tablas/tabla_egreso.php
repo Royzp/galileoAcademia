@@ -72,13 +72,14 @@
 
                                   <button 
                                      type="button" 
-                                     class="btn btn_table btn-info btnEliminarItems" 
+                                     class="btn btn_table btn-info btnEliminarEgresos" 
                                      data-toggle="modal" 
-                                     data-target="#exampleModalElimItems" 
-                                     data-id="<?php echo $item['concepto_id']; ?>" 
-                                     data-concepto="<?php echo $item['concepto']; ?>"
-                                     data-precio="<?php echo $item['precio']; ?>"
-                                     data-estate="<?php echo $item['estate']; ?>">
+                                     data-target="#exampleModalEliminarEgreso" 
+                                     data-id="<?php echo $item['id_egreso']; ?>" 
+                                     data-egreso="<?php echo $item['nombre_tipo_egreso']; ?>"
+                                     data-monto="<?php echo $item['monto_egreso']; ?>"
+                                     data-descripcion="<?php echo $item['descripcion']; ?>"
+                                     data-estate="<?php echo $item['status']; ?>">
                                      <i class="material-icons">delete_forever</i>
                                   </button>
 
