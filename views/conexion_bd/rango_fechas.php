@@ -15,6 +15,12 @@
     $query_total_ingresos=mysqli_query($conexion, "SELECT SUM(monto_total) as total FROM tb_recibos  AS r 
       WHERE r.status = 'Y' AND (r.created_date BETWEEN'$date1' AND '$date2')");
     $total_ingresos = mysqli_fetch_array($query_total_ingresos);
+    ////   
+    
+    $query_total_egresos=mysqli_query($conexion, "SELECT SUM(monto_egreso) as total FROM tb_egreso  AS r 
+      WHERE r.status = 'Y' AND (r.created_date BETWEEN'$date1' AND '$date2')");
+    $total_egresos = mysqli_fetch_array($query_total_egresos);
+
     ////        
     $sql2 = "SELECT r.sede_recibo_id , SUM(r.monto_total) as total, s.nombre_sede FROM tb_recibos  AS r    
     INNER JOIN tb_sede as s ON s.sede_id = r.sede_recibo_id
@@ -51,6 +57,11 @@
     $query_total_ingresos=mysqli_query($conexion, "SELECT SUM(monto_total) as total FROM tb_recibos  AS r 
       WHERE r.status = 'Y'");
     $total_ingresos = mysqli_fetch_array($query_total_ingresos);
+
+      ////
+    $query_total_egresos=mysqli_query($conexion, "SELECT SUM(monto_egreso) as total FROM tb_egreso  AS r 
+      WHERE r.status = 'Y' ");
+    $total_egresos = mysqli_fetch_array($query_total_egresos);
     ////        
     $sql2 = "SELECT r.sede_recibo_id , SUM(r.monto_total) as total, s.nombre_sede FROM tb_recibos  AS r 
        

@@ -89,16 +89,7 @@
                                             <!-- </thead> -->
                                             <tbody id="tableReciboDetalle">
 
-                                                <tr>
-                                                    <td style="text-align:center;padding:3px 5px; max-width: 20px;">
-                                                    </td>
-                                                    <td style="padding:3px 5px; max-width: 20px;"></td>
-                                                    <td style="    padding: 3px 5px;
-                                                                    text-transform: uppercase;
-                                                                    text-align: right;
-                                                                    font-weight: bold;">TOTAL</td>
-                                                    <td style="padding:3px 5px; " id="idMontoTotalRecibo"></td>
-                                                </tr>
+                                                
                                             </tbody>
                                         </table>
                                         <p style="margin-top: 20px;">

@@ -158,7 +158,7 @@ $mysqli = new mysqli('localhost', 'root', '', 'bd_academia');
                                     <div class="row">
                                         <div class="col-12 text">Total de egresos</div>
                                         <div class="col-12 monto">
-                                            <h3>- S/7,000.00</h3>
+                                            <h3>- S/  <?php echo $total_egresos['total']?></h3>
                                         </div>
                                     </div>
                                 </div>
