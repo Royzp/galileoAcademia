@@ -904,10 +904,21 @@ include_once 'conexion_bd/datos_recibos.php';
                                             `;
                     if (arrayDetalle.length == i + 1) {
                         console.info(items);
-                        document.getElementById('tableReciboDetalle').insertAdjacentHTML("beforebegin",
-                            items);
-                        // document.getElementById('tableReciboDetalle').insertAdjacentHTML("afterend",items);
-                        // document.getElementById("subTotal").innerHTML = subTotal.toFixed(2);
+                       
+
+                        items = items + `
+                        <tr>
+                        <td style="text-align:center;padding:3px 5px; max-width: 20px;">
+                        </td>
+                        <td style="padding:3px 5px; max-width: 20px;"></td>
+                        <td style="    padding: 3px 5px;
+                        text-transform: uppercase;
+                        text-align: right;
+                        font-weight: bold;">TOTAL</td>
+                        <td style="padding:3px 5px;">${recibo[0].monto_total}</td>
+                        </tr>  `;
+
+                        document.getElementById("tableReciboDetalle").innerHTML = items;
                     }
                 }
 
@@ -936,7 +947,7 @@ include_once 'conexion_bd/datos_recibos.php';
                 console.log(full, mes, dia, diaN, full2, fullTime);
 
                 document.getElementById("idResponsableRecibo").innerHTML = recibo[0].responsable;
-                document.getElementById("idMontoTotalRecibo").innerHTML = recibo[0].monto_total;
+                // document.getElementById("idMontoTotalRecibo").innerHTML = recibo[0].monto_total;
                 document.getElementById("idReciboRecibo").innerHTML = recibo[0].recibo_id;
                 document.getElementById("idNombreSedeRecibo").innerHTML = recibo[0].nombre_sede;
                 document.getElementById("idCreadoPor").innerHTML = recibo[0].created_by;

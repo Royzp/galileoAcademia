@@ -33,7 +33,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <title>Academia Galileo</title>
 
     <!-- Google Font: Source Sans Pro -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
     <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="../views/plugins/fontawesome-free/css/all.min.css">
     <!-- Theme style -->
@@ -55,77 +56,77 @@ scratch. This page gets rid of all links and provides the needed markup only.
 </head>
 
 <style>
-    /*  CSS  DE FORMULARIO  */
+/*  CSS  DE FORMULARIO  */
 
 
-    ::-webkit-input-placeholder {
-        color: #bbb;
-    }
+::-webkit-input-placeholder {
+    color: #bbb;
+}
 
-    :-moz-placeholder {
-        color: #bbb;
-    }
+:-moz-placeholder {
+    color: #bbb;
+}
 
-    .placeholder {
-        color: #bbb;
-        /* polyfill */
-    }
+.placeholder {
+    color: #bbb;
+    /* polyfill */
+}
 
-    #frm_admi input {
-        margin: 5px 0;
-        padding: 15px;
-        width: 100%;
-        *width: 518px;
-        /* IE7 and below */
-        box-sizing: border-box;
-        border: 1px solid #ccc;
-        border-radius: 3px;
-    }
+#frm_admi input {
+    margin: 5px 0;
+    padding: 15px;
+    width: 100%;
+    *width: 518px;
+    /* IE7 and below */
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}
 
-    #frm_admi input:focus {
-        outline: 0;
-        border-color: #aaa;
-        box-shadow: 0 2px 1px rgba(0, 0, 0, .3) inset;
-    }
+#frm_admi input:focus {
+    outline: 0;
+    border-color: #aaa;
+    box-shadow: 0 2px 1px rgba(0, 0, 0, .3) inset;
+}
 
-    #frm_admi select {
+#frm_admi select {
 
-        width: 80px !important;
-        height: 48px !important;
+    width: 80px !important;
+    height: 48px !important;
 
-    }
+}
 
 
-    #frm_admi button {
-        margin: 20px 0 0 0;
-        padding: 15px 8px;
-        width: 100%;
-        cursor: pointer;
-        border: 1px solid #2493FF;
-        overflow: visible;
-        display: inline-block;
-        color: #fff;
-        font: bold 1.4em arial, helvetica;
-        text-shadow: 0 -1px 0 rgba(0, 0, 0, .4);
-        background-color: #ff8524;
-        background-image: linear-gradient(top, rgba(255, 255, 255, .5), rgba(255, 255, 255, 0));
-        transition: background-color .2s ease-out;
-        border-radius: 3px;
-        box-shadow: 0 2px 1px rgba(0, 0, 0, .3),
-            0 1px 0 rgba(255, 255, 255, .5) inset;
-    }
+#frm_admi button {
+    margin: 20px 0 0 0;
+    padding: 15px 8px;
+    width: 100%;
+    cursor: pointer;
+    border: 1px solid #2493FF;
+    overflow: visible;
+    display: inline-block;
+    color: #fff;
+    font: bold 1.4em arial, helvetica;
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, .4);
+    background-color: #ff8524;
+    background-image: linear-gradient(top, rgba(255, 255, 255, .5), rgba(255, 255, 255, 0));
+    transition: background-color .2s ease-out;
+    border-radius: 3px;
+    box-shadow: 0 2px 1px rgba(0, 0, 0, .3),
+        0 1px 0 rgba(255, 255, 255, .5) inset;
+}
 
-    #frm_admi button:hover {
-        background-color: #7cbfff;
-        border-color: #7cbfff;
-    }
+#frm_admi button:hover {
+    background-color: #7cbfff;
+    border-color: #7cbfff;
+}
 
-    #frm_admi button:active {
-        position: relative;
-        top: 3px;
-        text-shadow: none;
-        box-shadow: 0 1px 0 rgba(255, 255, 255, .3) inset;
-    }
+#frm_admi button:active {
+    position: relative;
+    top: 3px;
+    text-shadow: none;
+    box-shadow: 0 1px 0 rgba(255, 255, 255, .3) inset;
+}
 </style>
 
 
@@ -140,98 +141,98 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <div class="content-wrapper">
 
 
-            <div class="form-group col-md-12" style="overflow: hidden;
-                                              overflow-y: auto;">
+            <div class="form-group col-md-12" style="overflow: hidden;overflow-y: auto;">
 
+                <div class="row">
 
-                <div class="form-group col-md-6" style="padding: 10px; float: left; width: 45%; text-align: justify;">
+                    <div class="form-group col-md-6">
+                        <img src="../views/dist/img/galileo5.jpg" style="width: 100%;">
+                    </div>
 
-                    <img src="../views/dist/img/galileo5.jpg" style="height:740px ; width: 568px;">
+                    <div class="form-group col-md-6"
+                        style="padding: 15px 35px; float: left; width: 50%; text-align: justify;">
 
+                        <form method="Post" name="frm_admi" id="frm_admi">
+                            <h1 style="    font-size: 20px;
+    font-weight: bold;
+    text-transform: uppercase;">Registro de Personal Galileo</h1>
+                            <br>
 
-                </div>
+                            <label>Numero DNI</label>
+                            <input type="text" name="tx_dni" id="tx_dni" placeholder="Ingrese numero de DNI"
+                                autocomplete="off" required>
+                            <br>
+                            <label>Nombres</label>
+                            <input type="text" name="tx_nombre" id="tx_nombre" placeholder="Ingrese Nombres"
+                                autocomplete="off" required>
+                            <br>
+                            <label>Apellidos</label>
+                            <input type="text" name="tx_apellido" id="tx_apellido" placeholder="Ingrese Apellidos"
+                                autocomplete="off" required>
+                            <br>
+                            <label>Contraseña</label>
+                            <input type="text" name="tx_contra" id="tx_contra" placeholder="Ingrese Contraseña"
+                                autocomplete="off" required>
 
+                            <label>Sede</label>
+                            <br>
+                            <select id="select_sede" name="select_sede" style="width: 488px!important;">
 
+                                <option>Seleccione:</option>
 
-                <div class="form-group col-md-6" style="padding: 35px; float: left; width: 50%; text-align: justify;">
-
-
-
-
-
-                    <form method="Post" name="frm_admi" id="frm_admi">
-                        <h1 style="font-family: 'Font Awesome 5 Free';">Registro de Personal Galileo</h1>
-                        <br>
-                        <br>
-                        <label>Numero DNI</label>
-                        <input type="text" name="tx_dni" id="tx_dni" placeholder="Ingrese numero de DNI"  autocomplete="off" required>
-                        <br>
-                        <br>
-                        <label>Nombres</label>
-                        <input type="text" name="tx_nombre" id="tx_nombre" placeholder="Ingrese Nombres" autocomplete="off" required >
-                        <br>
-                        <br>
-                        <label>Apellidos</label>
-                        <input type="text" name="tx_apellido" id="tx_apellido" placeholder="Ingrese Apellidos" autocomplete="off" required >
-                        <br>
-                        <br>
-                        <label>Contraseña</label>
-                        <input type="text" name="tx_contra" id="tx_contra" placeholder="Ingrese Contraseña"  autocomplete="off" required >
-
-                        <label>Sede</label>
-                        <br>
-                        <select id="select_sede" name="select_sede" style="width: 488px!important;">
-
-                            <option>Seleccione:</option>
-
-                            <?php
-
+                                <?php
+    
                             $query2 = $mysqli->query("SELECT   sede_id,nombre_sede FROM  tb_sede ");
                             while ($valor = mysqli_fetch_array($query2)) {
-
+    
                                 echo '<option value="' . $valor['sede_id'] . '" >' . $valor['nombre_sede'] . '</option>';
                             }
-
+    
                             ?>
 
 
 
-                        </select>
+                            </select>
 
-                        <label>Tipo Usuario</label>
-                        <br>
-                        <select id="select_user" name="select_user" style="width: 488px!important;">
+                            <label>Tipo Usuario</label>
+                            <br>
+                            <select id="select_user" name="select_user" style="width: 488px!important;">
 
-                            <option>Seleccione:</option>
+                                <option>Seleccione:</option>
 
-                            <?php
-
+                                <?php
+    
                             $query2 = $mysqli->query("SELECT   id_tipo_usuario,nombre_tipo_usuario FROM  tb_tipo_usuario ");
                             while ($valor = mysqli_fetch_array($query2)) {
-
+    
                                 echo '<option value="' . $valor['id_tipo_usuario'] . '" >' . $valor['nombre_tipo_usuario'] . '</option>';
                             }
-
+    
                             ?>
 
 
 
-                        </select>
+                            </select>
 
 
-                        <br>
-                        <br>
+                            <br>
+                            <br>
 
-                        <input type="hidden" name="creado_por" id="creado_por" value="<?php echo $_SESSION['nombre']; ?>" placeholder="Ingrese Contraseña" required="" autocomplete="off">
-
-
-
-
-                        <button id="btngrabar" type="button" class="button" value="REGISTRAR" onclick="onSubmituser()">¡Registrate!</button>
-                    </form>
+                            <input type="hidden" name="creado_por" id="creado_por"
+                                value="<?php echo $_SESSION['nombre']; ?>" placeholder="Ingrese Contraseña" required=""
+                                autocomplete="off">
 
 
+
+
+                            <button id="btngrabar" type="button" class="button" value="REGISTRAR"
+                                onclick="onSubmituser()">¡Registrate!</button>
+                        </form>
+
+
+                    </div>
                 </div>
+
 
 
             </div>
@@ -267,7 +268,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
 
             <!-- MODAL DE PROCESOS -->
-            <div class="modal fade bd-example-modal-lg" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal fade bd-example-modal-lg" id="exampleModal2" tabindex="-1" role="dialog"
+                aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog modal-lg" role="document">
                     <div class="modal-content">
                         <div class="modal-header" style="background-color:#29358E">
@@ -279,7 +281,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                     </font>
                                 </h3>
                             </center>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="background:#6672CB;color: #fff; ">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"
+                                style="background:#6672CB;color: #fff; ">
                                 <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
@@ -295,7 +298,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                             <span id="error2"></span>
                                             <center> <label for="Fecha">N° Registro</label> </center>
 
-                                            <input type="text" value="" autocomplete="off" class="form-control" id="idUser" name="idUser" style="text-align:center; width: 707px;" disabled>
+                                            <input type="text" value="" autocomplete="off" class="form-control"
+                                                id="idUser" name="idUser" style="text-align:center; width: 707px;"
+                                                disabled>
 
                                         </div>
 
@@ -313,13 +318,16 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
                                     <div class="form-group col-md-4">
                                         <label>N° DNI</label>
-                                        <input type="text" class="form-control" id="txt_dni_edit" maxlength="8" name="txt_dni_edit" placeholder="Ingrese N° Ruc" autocomplete="off">
+                                        <input type="text" class="form-control" id="txt_dni_edit" maxlength="8"
+                                            name="txt_dni_edit" placeholder="Ingrese N° Ruc" autocomplete="off">
                                     </div>
 
 
                                     <div class="form-group col-md-4">
                                         <label>NOMBRES</label>
-                                        <input type="text" class="form-control" id="txt_nombre_edit" name="txt_nombre_edit" placeholder="Ingrese Razon Social " autocomplete="off">
+                                        <input type="text" class="form-control" id="txt_nombre_edit"
+                                            name="txt_nombre_edit" placeholder="Ingrese Razon Social "
+                                            autocomplete="off">
                                     </div>
 
 
@@ -327,7 +335,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
                                     <div class="form-group col-md-4">
                                         <label>APELLIDOS</label>
-                                        <input type="text" class="form-control" id="txt_apellido_edit" name="txt_apellido_edit" placeholder="Ingrese Expediente" autocomplete="off">
+                                        <input type="text" class="form-control" id="txt_apellido_edit"
+                                            name="txt_apellido_edit" placeholder="Ingrese Expediente"
+                                            autocomplete="off">
                                     </div>
 
 
@@ -341,7 +351,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                     <div class="form-group col-md-6">
 
                                         <label>CONTRASEÑA</label>
-                                        <input type="text" class="form-control" id="txt_contra_edit" name="txt_contra_edit" autocomplete="off" style="    width: 340px;">
+                                        <input type="text" class="form-control" id="txt_contra_edit"
+                                            name="txt_contra_edit" autocomplete="off" style="    width: 340px;">
 
                                     </div>
 
@@ -349,7 +360,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                     <div class="form-group col-md-6">
                                         <label>TIPO USUARIO </label>
 
-                                        <select class="form-control" id="txt_tipouser_edit" name="txt_tipouser_edit" style=" width: 340px;">
+                                        <select class="form-control" id="txt_tipouser_edit" name="txt_tipouser_edit"
+                                            style=" width: 340px;">
                                             <option value="1">ADMINISTRADOR</option>
                                             <option value="2">USUARIO</option>
 
@@ -385,7 +397,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <!-- FIN DE MODAL -->
 
 
-            <div class="modal fade bd-example-modal-lg" id="exampleModal77" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal fade bd-example-modal-lg" id="exampleModal77" tabindex="-1" role="dialog"
+                aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog modal-lg" role="document">
                     <div class="modal-content">
                         <div class="modal-header" style="background-color:#B81C1C">
@@ -397,7 +410,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                     </font>
                                 </h3>
                             </center>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="background:#6672CB;color: #fff; ">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"
+                                style="background:#6672CB;color: #fff; ">
                                 <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
@@ -413,7 +427,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                             <span id="error2"></span>
                                             <center> <label for="Fecha">N° Registro</label> </center>
 
-                                            <input type="text" value="" autocomplete="off" class="form-control" id="id_elim_User" name="id_elim_User" style="text-align:center; width: 707px;" disabled>
+                                            <input type="text" value="" autocomplete="off" class="form-control"
+                                                id="id_elim_User" name="id_elim_User"
+                                                style="text-align:center; width: 707px;" disabled>
 
                                         </div>
 
@@ -431,13 +447,16 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
                                     <div class="form-group col-md-4">
                                         <label>N° DNI</label>
-                                        <input type="text" class="form-control" id="txt_dni_elim" maxlength="8" name="txt_dni_elim" placeholder="Ingrese N° Ruc" autocomplete="off">
+                                        <input type="text" class="form-control" id="txt_dni_elim" maxlength="8"
+                                            name="txt_dni_elim" placeholder="Ingrese N° Ruc" autocomplete="off">
                                     </div>
 
 
                                     <div class="form-group col-md-4">
                                         <label>NOMBRES</label>
-                                        <input type="text" class="form-control" id="txt_nombre_elim" name="txt_nombre_elim" placeholder="Ingrese Razon Social " autocomplete="off">
+                                        <input type="text" class="form-control" id="txt_nombre_elim"
+                                            name="txt_nombre_elim" placeholder="Ingrese Razon Social "
+                                            autocomplete="off">
                                     </div>
 
 
@@ -445,7 +464,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
                                     <div class="form-group col-md-4">
                                         <label>APELLIDOS</label>
-                                        <input type="text" class="form-control" id="txt_apellido_elim" name="txt_apellido_elim" placeholder="Ingrese Expediente" autocomplete="off">
+                                        <input type="text" class="form-control" id="txt_apellido_elim"
+                                            name="txt_apellido_elim" placeholder="Ingrese Expediente"
+                                            autocomplete="off">
                                     </div>
 
 
@@ -454,7 +475,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
 
 
-                                <input type="hidden" class="form-control" id="txt_estado" name="txt_estado" placeholder="Ingrese Expediente" autocomplete="off">
+                                <input type="hidden" class="form-control" id="txt_estado" name="txt_estado"
+                                    placeholder="Ingrese Expediente" autocomplete="off">
 
 
 
@@ -531,46 +553,46 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <script type="text/javascript" src="../views/script/tablas_responsive.js"> </script>
 
     <script type="text/javascript">
-        function onSubmituser() {
+    function onSubmituser() {
 
-            var frm = document.getElementById('frm_admi');
-            var df = new FormData(frm);
+        var frm = document.getElementById('frm_admi');
+        var df = new FormData(frm);
 
-            $.ajax({
-                url: 'insert/insert_user.php',
-                type: 'POST',
-                processData: false,
-                contentType: false,
-                data: df,
-                success(data) {
-                    console.log(data);
+        $.ajax({
+            url: 'insert/insert_user.php',
+            type: 'POST',
+            processData: false,
+            contentType: false,
+            data: df,
+            success(data) {
+                console.log(data);
 
 
-                    if (data == 'success') {
+                if (data == 'success') {
 
-                        // 1. RESET FORMULARIO   
-                        $('#frm_admi').trigger('reset');
-                        // 2. CERRAMOS EL MODAL
-                        $('.modal').modal('hide');
-                        location.reload();
+                    // 1. RESET FORMULARIO   
+                    $('#frm_admi').trigger('reset');
+                    // 2. CERRAMOS EL MODAL
+                    $('.modal').modal('hide');
+                    location.reload();
 
-                        recargarData();
+                    recargarData();
 
-                    } else {
-                        alert(data);
-                    }
+                } else {
+                    alert(data);
                 }
-            });
-        }
+            }
+        });
+    }
     </script>
 
 
 
     <script type="text/javascript">
-        $(document).ready(function() {
-            localStorage.setItem("nombre_user", '<?php echo $_SESSION['nombre']; ?>');
-            localStorage.setItem("id_user", '<?php echo $_SESSION['idUser']; ?>');
-        });
+    $(document).ready(function() {
+        localStorage.setItem("nombre_user", '<?php echo $_SESSION['nombre']; ?>');
+        localStorage.setItem("id_user", '<?php echo $_SESSION['idUser']; ?>');
+    });
     </script>
 
 
@@ -579,49 +601,17 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <!--  FORMULARIO EDITAR FORMULARIO USUARIO -->
 
     <script type="text/javascript">
-        $(document).on("click", ".btnEditar7", function() {
+    $(document).on("click", ".btnEditar7", function() {
 
 
 
-            var id_user = $(this).attr("data-id");
-            var dni_user = $(this).attr("data-dni");
-            var nombre_user = $(this).attr("data-nombre");
-            var apellido_user = $(this).attr("data-apellido");
-            var clave_user = $(this).attr("data-contra");
-            var sede_user_id = $(this).attr("data-sede");
-            var tipo_user = $(this).attr("data-typeuser");
-
-
-
-
-
-
-
-            //mostrar al modal
-            $('#exampleModal2').modal('show');
-            $('#idUser').attr('value', id_user);
-            $('#txt_dni_edit').attr('value', dni_user);
-            $('#txt_nombre_edit').attr('value', nombre_user);
-            $('#txt_apellido_edit').attr('value', apellido_user);
-
-            $('#txt_tipouser_edit').attr('value', sede_user_id);
-            $('#txt_tipouser_edit').find("option").each(function() {
-                if ($(this).val() == sede_user_id) {
-                    $(this).prop("selected", "selected");
-                }
-
-            });
-
-
-            $('#txt_contra_edit').attr('value', clave_user);
-
-            $('#txt_tipouser_edit').attr('value', tipo_user);
-            $('#txt_tipouser_edit').find("option").each(function() {
-                if ($(this).val() == tipo_user) {
-                    $(this).prop("selected", "selected");
-                }
-
-            });
+        var id_user = $(this).attr("data-id");
+        var dni_user = $(this).attr("data-dni");
+        var nombre_user = $(this).attr("data-nombre");
+        var apellido_user = $(this).attr("data-apellido");
+        var clave_user = $(this).attr("data-contra");
+        var sede_user_id = $(this).attr("data-sede");
+        var tipo_user = $(this).attr("data-typeuser");
 
 
 
@@ -629,95 +619,127 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
 
 
+        //mostrar al modal
+        $('#exampleModal2').modal('show');
+        $('#idUser').attr('value', id_user);
+        $('#txt_dni_edit').attr('value', dni_user);
+        $('#txt_nombre_edit').attr('value', nombre_user);
+        $('#txt_apellido_edit').attr('value', apellido_user);
+
+        $('#txt_tipouser_edit').attr('value', sede_user_id);
+        $('#txt_tipouser_edit').find("option").each(function() {
+            if ($(this).val() == sede_user_id) {
+                $(this).prop("selected", "selected");
+            }
 
         });
-        $('#exampleModal2').on('shown.bs.modal', function() {
-            // alert("Registro Encontrado");
+
+
+        $('#txt_contra_edit').attr('value', clave_user);
+
+        $('#txt_tipouser_edit').attr('value', tipo_user);
+        $('#txt_tipouser_edit').find("option").each(function() {
+            if ($(this).val() == tipo_user) {
+                $(this).prop("selected", "selected");
+            }
+
         });
+
+
+
+
+
+
+
+
+    });
+    $('#exampleModal2').on('shown.bs.modal', function() {
+        // alert("Registro Encontrado");
+    });
     </script>
 
     <script>
-        $(document).ready(function() {
-            $("#printButton").click(function() {
-                // var mode = 'iframe'; //popup
-                // var close = mode == "popup";
-                // var options = {
-                //     mode: mode,
-                //     popClose: close
-                // };
-                // $("div.printableArea").printArea(options);
-                var printContents = document.getElementById('printableArea').innerHTML;
-                var originalContents = document.body.innerHTML;
-                // document.body.innerHTML = printContents;
-                window.print();
-                document.body.innerHTML = originalContents;
-            });
+    $(document).ready(function() {
+        $("#printButton").click(function() {
+            // var mode = 'iframe'; //popup
+            // var close = mode == "popup";
+            // var options = {
+            //     mode: mode,
+            //     popClose: close
+            // };
+            // $("div.printableArea").printArea(options);
+            var printContents = document.getElementById('printableArea').innerHTML;
+            var originalContents = document.body.innerHTML;
+            // document.body.innerHTML = printContents;
+            window.print();
+            document.body.innerHTML = originalContents;
+        });
 
 
-            //Envio de formulario  de actualizar
-            $("#actualizar_usuario").submit(function(e) {
-                e.preventDefault();
-                //validar que coincidan
-                //para copiar dentro de if
+        //Envio de formulario  de actualizar
+        $("#actualizar_usuario").submit(function(e) {
+            e.preventDefault();
+            //validar que coincidan
+            //para copiar dentro de if
 
 
 
-                Swal.fire({
-                    title: 'Estas seguro de Editar ?',
-                    text: "No podrás revertir esto!",
-                    icon: 'warning',
-                    showCancelButton: true,
-                    confirmButtonColor: '#3085d6',
-                    cancelButtonColor: '#d33',
-                    confirmButtonText: 'Sí, ingresar'
-                }).then((result) => {
-                    if (result.isConfirmed) {
+            Swal.fire({
+                title: 'Estas seguro de Editar ?',
+                text: "No podrás revertir esto!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Sí, ingresar'
+            }).then((result) => {
+                if (result.isConfirmed) {
 
-                        $.ajax({
-                            url: 'update/update_usuario.php',
-                            type: 'POST',
-                            data: {
+                    $.ajax({
+                        url: 'update/update_usuario.php',
+                        type: 'POST',
+                        data: {
 
-                                dni_edit: $('#txt_dni_edit').val(),
-                                nombre_edit: $('#txt_nombre_edit').val(),
-                                apellido_edit: $('#txt_apellido_edit').val(),
-                                contra_edit: $('#txt_contra_edit').val(),
-                                tipousuario_edit: $('#txt_tipouser_edit').val(),
+                            dni_edit: $('#txt_dni_edit').val(),
+                            nombre_edit: $('#txt_nombre_edit').val(),
+                            apellido_edit: $('#txt_apellido_edit').val(),
+                            contra_edit: $('#txt_contra_edit').val(),
+                            tipousuario_edit: $('#txt_tipouser_edit').val(),
 
 
-                                id_usuario: $('#idUser').val()
+                            id_usuario: $('#idUser').val()
 
-                            },
+                        },
 
-                            success(data) {
-                                if (data == "1") {
-                                    location.reload();
+                        success(data) {
+                            if (data == "1") {
+                                location.reload();
 
-                                    $('.modal').modal('hide');
-                                    Swal.fire(
-                                        'Modificado!',
-                                        'Fue Ingresado Correctamente',
-                                        'success'
-                                    )
+                                $('.modal').modal('hide');
+                                Swal.fire(
+                                    'Modificado!',
+                                    'Fue Ingresado Correctamente',
+                                    'success'
+                                )
 
-                                }
-                                alert(data);
                             }
-                        });
+                            alert(data);
+                        }
+                    });
 
-                    }
-                })
-
-
-
-
+                }
+            })
 
 
 
-            });
+
+
 
 
         });
+
+
+    });
     </script>
 
     <!--  FIN FORMULARIO EDITAR USUARIO -->
@@ -725,30 +747,15 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <!--  ELIMINAR DATOS -->
 
     <script type="text/javascript">
-        $(document).on("click", ".btnEliminar7", function() {
+    $(document).on("click", ".btnEliminar7", function() {
 
 
 
-            var id_user = $(this).attr("data-id");
-            var dni_user = $(this).attr("data-dni");
-            var nombre_user = $(this).attr("data-nombre");
-            var apellido_user = $(this).attr("data-apellido");
-            var estado = $(this).attr("data-estado");
-
-
-
-
-
-
-
-
-            //mostrar al modal
-            $('#exampleModal77').modal('show');
-            $('#id_elim_User').attr('value', id_user);
-            $('#txt_dni_elim').attr('value', dni_user);
-            $('#txt_nombre_elim').attr('value', nombre_user);
-            $('#txt_apellido_elim').attr('value', apellido_user);
-            $('#txt_estado').attr('value', estado);
+        var id_user = $(this).attr("data-id");
+        var dni_user = $(this).attr("data-dni");
+        var nombre_user = $(this).attr("data-nombre");
+        var apellido_user = $(this).attr("data-apellido");
+        var estado = $(this).attr("data-estado");
 
 
 
@@ -757,92 +764,107 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
 
 
+        //mostrar al modal
+        $('#exampleModal77').modal('show');
+        $('#id_elim_User').attr('value', id_user);
+        $('#txt_dni_elim').attr('value', dni_user);
+        $('#txt_nombre_elim').attr('value', nombre_user);
+        $('#txt_apellido_elim').attr('value', apellido_user);
+        $('#txt_estado').attr('value', estado);
 
-        });
-        $('#exampleModal77').on('shown.bs.modal', function() {
-            // alert("Registro Encontrado");
-        });
+
+
+
+
+
+
+
+
+    });
+    $('#exampleModal77').on('shown.bs.modal', function() {
+        // alert("Registro Encontrado");
+    });
     </script>
 
     <script>
-        $(document).ready(function() {
-            $("#printButton").click(function() {
-                // var mode = 'iframe'; //popup
-                // var close = mode == "popup";
-                // var options = {
-                //     mode: mode,
-                //     popClose: close
-                // };
-                // $("div.printableArea").printArea(options);
-                var printContents = document.getElementById('printableArea').innerHTML;
-                var originalContents = document.body.innerHTML;
-                // document.body.innerHTML = printContents;
-                window.print();
-                document.body.innerHTML = originalContents;
-            });
+    $(document).ready(function() {
+        $("#printButton").click(function() {
+            // var mode = 'iframe'; //popup
+            // var close = mode == "popup";
+            // var options = {
+            //     mode: mode,
+            //     popClose: close
+            // };
+            // $("div.printableArea").printArea(options);
+            var printContents = document.getElementById('printableArea').innerHTML;
+            var originalContents = document.body.innerHTML;
+            // document.body.innerHTML = printContents;
+            window.print();
+            document.body.innerHTML = originalContents;
+        });
 
 
-            //Envio de formulario  de actualizar
-            $("#elimi_usuario").submit(function(e) {
-                e.preventDefault();
-                //validar que coincidan
-                //para copiar dentro de if
-
-
-
-                Swal.fire({
-                    title: 'Estas seguro de Eliminar este Usuario !',
-                    text: "No podrás revertir esto!",
-                    icon: 'warning',
-                    showCancelButton: true,
-                    confirmButtonColor: '#3085d6',
-                    cancelButtonColor: '#d33',
-                    confirmButtonText: 'Sí, Eliminar'
-                }).then((result) => {
-                    if (result.isConfirmed) {
-
-                        $.ajax({
-                            url: 'eliminar_usuario.php',
-                            type: 'POST',
-                            data: {
-
-                                estado_edit: $('#txt_estado').val(),
+        //Envio de formulario  de actualizar
+        $("#elimi_usuario").submit(function(e) {
+            e.preventDefault();
+            //validar que coincidan
+            //para copiar dentro de if
 
 
 
-                                id_usuario: $('#id_elim_User').val()
+            Swal.fire({
+                title: 'Estas seguro de Eliminar este Usuario !',
+                text: "No podrás revertir esto!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Sí, Eliminar'
+            }).then((result) => {
+                if (result.isConfirmed) {
 
-                            },
+                    $.ajax({
+                        url: 'eliminar_usuario.php',
+                        type: 'POST',
+                        data: {
 
-                            success(data) {
-                                if (data == "1") {
-                                    location.reload();
+                            estado_edit: $('#txt_estado').val(),
 
-                                    $('.modal').modal('hide');
-                                    Swal.fire(
-                                        'Modificado!',
-                                        'Fue Ingresado Correctamente',
-                                        'success'
-                                    )
 
-                                }
-                                //alert(data);
+
+                            id_usuario: $('#id_elim_User').val()
+
+                        },
+
+                        success(data) {
+                            if (data == "1") {
+                                location.reload();
+
+                                $('.modal').modal('hide');
+                                Swal.fire(
+                                    'Modificado!',
+                                    'Fue Ingresado Correctamente',
+                                    'success'
+                                )
+
                             }
-                        });
+                            //alert(data);
+                        }
+                    });
 
-                    }
-                })
-
-
-
-
+                }
+            })
 
 
 
-            });
+
+
 
 
         });
+
+
+    });
     </script>
 
 
