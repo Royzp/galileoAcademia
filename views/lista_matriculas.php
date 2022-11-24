@@ -234,8 +234,7 @@ include_once 'conexion_bd/datos_matriculas.php';
 
 
     function goDetalle(matricula_id) {
-        window.location.replace("http://localhost/GalileoAcademia/views/matricula_detalle.php?id_matricula=" +
-            matricula_id);
+        window.location.replace("http://localhost/GalileoAcademia/views/matricula_detalle.php?matricula_id="+matricula_id);
     }
     </script>
 

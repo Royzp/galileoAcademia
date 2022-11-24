@@ -7,9 +7,9 @@ if (empty($_SESSION['active'])) {
 }
 
 // print_r($_GET['id_matricula']);
-if (isset($_GET['id_matricula'])) {
-    $v_matricula_id = $_GET['id_matricula'];
-    // print_r($_GET['id_matricula']);
+if (isset($_GET['matricula_id'])) {
+    $v_matricula_id = $_GET['matricula_id'];
+     //print_r($v_matricula_id);
 }
 
 include_once 'conexion_bd/conexion.php';

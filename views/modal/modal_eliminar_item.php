@@ -56,10 +56,9 @@
                                     </div>
 
 
-                                    <div class="form-group col-md-6">
-                                        <label>ESTADO</label>
-                                        <input type="text" class="form-control" id="estado_elim"  name="estado_elim" placeholder="Ingrese N° Ruc" autocomplete="off">
-                                    </div>
+                                   
+                                        <input type="hidden" class="form-control" id="estado_elim"  name="estado_elim" placeholder="Ingrese N° Ruc" autocomplete="off">
+                                  
 
 
 

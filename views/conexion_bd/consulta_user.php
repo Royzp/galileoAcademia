@@ -5,7 +5,7 @@
     $sql2="SELECT u.*,tu.nombre_tipo_usuario,se.nombre_sede From tb_usuario  AS u 
     INNER JOIN tb_tipo_usuario AS tu ON tu.id_tipo_usuario = u.tipo_user
     INNER JOIN  tb_sede AS se  ON se.sede_id = u.sede_user_id
-     WHERE estado ='Y' ";
+     WHERE estado ='Y' ORDER BY  u.id_user DESC ";
     $sentencia2 = $pdo->prepare($sql2);
     $sentencia2-> execute();
 

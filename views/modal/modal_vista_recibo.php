@@ -113,7 +113,9 @@
 
                                 <div class="col-12">
                                     <!-- <button class="btn" onclick="printDocument('printId')">IMPRIMIR</button> -->
-                                    <button class="btn" onclick="printRoy()">IMPRIMIR</button>
+                                    <a href="http://localhost:8080/GalileoAcademia/views/venta_items.php">
+                                    <button class="btn" onclick="printRoy()" >IMPRIMIR</button>
+                                    </a>
 
                                 </div>
                             </div>

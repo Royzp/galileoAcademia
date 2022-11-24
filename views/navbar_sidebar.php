@@ -192,7 +192,7 @@
 
 <!-- Control Sidebar -->
 <aside class="control-sidebar control-sidebar-dark" style="height: 280px;">
-    <!-- Control sidebar content goes here -->
+    
     <div class="p-3" align="center">
         <h3>ACAD.GALILEO</h3>
         <hr style="background: #FE0000;">

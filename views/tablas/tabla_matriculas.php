@@ -52,9 +52,29 @@
                                          delete_forever
                                      </i>
                                   </button>
-                                <button type="button" class="btn btn_table btn-info" onclick="goDetalle(<?php echo $item['matricula_id']; ?>)">
+                                <!-- <button type="button" class="btn btn_table btn-info" onclick="goDetalle(<?php echo $item['matricula_id']; ?>)">
                                     <i class="material-icons">more</i>
-                                </button>
+                                </button> -->
+
+                                <a target="_blank" href="http://localhost:8080/GalileoAcademia/views/matricula_detalle.php?matricula_id=<?php echo $item['matricula_id']; ?>">
+                                    <button 
+                                    type="button" 
+                                    class="btn btn_table btn-info" 
+                                    data-id="<?php echo $item['matricula_id']; ?>" 
+                                    data-producto="<?php echo $item['nombre_producto']; ?>" 
+                                    data-categoria="<?php echo $item['categoria']; ?>" 
+                                    data-lote="<?php echo $item['lote']; ?>" 
+                                    data-stock="<?php echo $item['stock']; ?>" 
+                                    data-precio="<?php echo $item['precio_venta']; ?>" 
+                                    data-proveedor="<?php echo $item['proveedor']; ?>" 
+                                    data-marca="<?php echo $item['marca']; ?>" 
+                                    data-modelo="<?php echo $item['modelo']; ?>" 
+                                    data-unidad="<?php echo $item['unidad_medida']; ?>"
+                                     data-foto="<?php echo $item['foto_producto']; ?>">
+                                        <i class="material-icons">assignment</i>
+
+                                    </button>
+                                </a>
 
                               </td>
 
